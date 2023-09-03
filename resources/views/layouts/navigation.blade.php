@@ -24,6 +24,9 @@
                     <x-nav-link :href="route('othershelf')" :active="request()->routeIs('othershelf')">
                         {{__('みんなの本棚')}}
                     </x-nav-link>
+                    <x-nav-link :href="route('newbooks')" :active="request()->routeIs('newbooks')">
+                        {{__('新刊情報')}}
+                    </x-nav-link>
                 </div>
             </div>
 
