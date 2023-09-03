@@ -10,29 +10,29 @@
     <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            マイページ
+            {{ __('私の本棚') }}
         </h2>
     </x-slot>
     <body class="antialiased">
-
-            <h1>{{Auth::user()->name}}のマイページ</h1>
-            
-            <div>
-                <h2>メモ</h2>
-            </div>
-            
-            <div>
-                <h2>一週間の読書量</h2>
-                <p>今日は</p>
-                <p>datatime</p>
-            </div>
-            
-            <div>
-                <h2>本の評価</h2>
-                <h4>漫画</h4>
-                <h4>小説</h4>
-            </div>
-            
+        <div>
+            {種類}へ
+        </div>
+        
+        <div>
+            <h2>
+                {種類}
+            </h2>
+        </div>
+        <div>
+            <p>本の追加</p>
+            <p>検索</p>
+        </div>
+        
+        <div>
+            <p>統計情報</p>
+            <p>本の追加</p>
+            <p>ページトップへ</p>
+        </div>
     </body>
     </x-app-layout>
 </html>

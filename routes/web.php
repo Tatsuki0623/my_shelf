@@ -27,6 +27,10 @@ Route::get('/mypage',function (){
     return view('home.mypage');
 })->middleware(['auth','verified'])->name('mypage');
 
+Route::get('/myshelf',function (){
+    return view('home.myshelf');
+})->middleware(['auth','verified'])->name('myshelf');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
