@@ -35,6 +35,11 @@ Route::get('/othershelf',function (){
     return view('home.othershelf');
 })->middleware(['auth','verified'])->name('othershelf');
 
+Route::get('/newbooks',function (){
+    return view('home.newbooks');
+})->middleware(['auth','verified'])->name('newbooks');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
