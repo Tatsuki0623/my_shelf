@@ -13,7 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('kinds', function (Blueprint $table) {
+            $table->id()->comment('識別id');
+            $table->string('kind')->comment('ジャンル識別');
+        });
     }
 
     /**
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('kinds');
     }
 };

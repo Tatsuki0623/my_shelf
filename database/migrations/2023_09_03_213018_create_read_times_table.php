@@ -13,7 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('read_times', function (Blueprint $table) {
+            $table->id()->comment('読書時間id');
+            $table->foreignId('user_id')->constrained('users')->comment('ユーザーid');
+            $table->integer('read_time')->comment('読書時間');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('read_times');
     }
 };
