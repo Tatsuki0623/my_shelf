@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            //
+            $table->foreignId('kind_id')->constrained('kinds')->comment('ジャンルid');
         });
     }
 
