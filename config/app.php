@@ -211,5 +211,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
+    
+    'rakuten_application_id' => env('RAKUTEN_APPLICATION_ID', false),
+    'rakuten_affiliate_id' => env('RAKUTEN_AFFILIATE_ID',false),
 
 ];
