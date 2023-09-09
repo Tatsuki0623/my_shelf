@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->foreignId('kind_id')->constrained('kindse')->comment('ジャンルid');
+        Schema::table('favorites', function (Blueprint $table) {
+            $table->timestamps();
         });
     }
 
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('books', function (Blueprint $table) {
+        Schema::table('favorites', function (Blueprint $table) {
             //
         });
     }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\ReadTime;
 
 class ReadTimesSeeder extends Seeder
 {
@@ -14,6 +15,6 @@ class ReadTimesSeeder extends Seeder
      */
     public function run()
     {
-        //
+        ReadTime::factory(5)->create();
     }
 }

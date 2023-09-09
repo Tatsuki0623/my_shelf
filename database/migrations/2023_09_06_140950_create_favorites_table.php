@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('registing_id')->constrained('users')->comment('お気に入り登録するユーザーid');
-            $table->foreignId('registered_id')->constrained('users')->comment('お気に入り登録されるユーザーid');
+            $table->foreignId('registing_id')->constrained('users')->onDelete('cascade')->comment('お気に入り登録するユーザーid');
+            $table->foreignId('registered_id')->constrained('users')->onDelete('cascade')->comment('お気に入り登録されるユーザーid');
         });
     }
 
