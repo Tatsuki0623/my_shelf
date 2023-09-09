@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,10 +36,9 @@ Route::get('/othershelf',function (){
     return view('home.othershelf');
 })->middleware(['auth','verified'])->name('othershelf');
 
-Route::get('/newbooks',function (){
-    return view('home.newbooks');
-})->middleware(['auth','verified'])->name('newbooks');
-
+Route::controller(BookController::class)->middleware(['auth'])->group(function(){
+    Route::get('/newbooks','get_rakuten_items')->name('newbooks');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

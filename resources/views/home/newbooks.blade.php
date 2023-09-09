@@ -22,7 +22,19 @@
         <div>
             <p>検索</p>
         </div>
-        
+        @foreach($items as $item)
+        <div>
+                <div>
+                    <ol>
+                            <li>
+                                <a href = {{$item['itemUrl']}}>{{$item['title']}}</a>
+                                <img src = {{$item['largeImageUrl']}} width="300" height="200"/>
+                                
+                            </li>
+                    </ol>
+                </div>
+        </div>
+        @endforeach
         <div>
             <p>ページトップへ</p>
         </div>
