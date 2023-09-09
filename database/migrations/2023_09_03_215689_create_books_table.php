@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id()->comment('メモid');
-            $table->foreignId('user_id')->constrained('users')->comment('ユーザーid');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->comment('ユーザーid');
+            $table->foreignId('kind_id')->constrained('kinds')->onDelete('cascade')->comment('ジャンルid');
             $table->integer('volume')->comment('巻数');
             $table->string('impression',600)->comment('感想');
             $table->integer('point')->comment('本の点数');
@@ -34,5 +35,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('books');
+        Schema::dropIfExists('kinds');
     }
 };

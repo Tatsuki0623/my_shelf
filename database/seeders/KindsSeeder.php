@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use App\Models\Kind;
 
 class KindsSeeder extends Seeder
 {
@@ -14,6 +16,9 @@ class KindsSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('kinds')->insert([
+            'kind'=>'漫画',
+            'kind'=>'小説',
+        ]);
     }
 }
