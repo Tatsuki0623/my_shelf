@@ -11,12 +11,12 @@ class Book extends Model
 {
     use HasFactory;
     
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
     
-    public function kinds(): HasMany
+    public function kinds()
     {
         return $this->hasMany(Kind::class);
     }
