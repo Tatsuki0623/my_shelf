@@ -10,7 +10,7 @@ class Kind extends Model
 {
     use HasFactory;
     
-    public function book(): BelongsTo
+    public function book()
     {
         return $this->belongsTo(Book::class);
     }

@@ -49,22 +49,22 @@ class User extends Authenticatable
     
     
     
-    public function books(): HasMany
+    public function books()
     {
         return $this->hasMany(Book::class);
     }
     
-    public function memos(): HasMany
+    public function memos()
     {
         return $this->hasMany(Memo::class);
     }
     
-    public function read_times(): HasMany
+    public function read_times()
     {
         return $this->hasMany(ReadTime::class);
     }
     
-    public function favorites(): BelongsToMany
+    public function favorites()
     {
         return $this->belongsToMany(User::class,'favorites','registing_id','registered_id');
     }
