@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->string('title',100)->comment('本のタイトル');
+        Schema::table('read_times', function (Blueprint $table) {
+            $table->integer('read_time')->default(0)->change();
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->dropColum('title');
+        Schema::table('read_times', function (Blueprint $table) {
+            $table->integer('read_time')->change();
         });
     }
 };

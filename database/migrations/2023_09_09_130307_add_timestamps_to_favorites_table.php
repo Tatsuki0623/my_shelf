@@ -26,7 +26,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('favorites', function (Blueprint $table) {
-            //
+            $table->dropColum('updated_at');
+            $table->dropColum('deleted_at');
         });
     }
 };
