@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use RakutenRws_Client;
+use App\Models\Book;
+
 
 class BookController extends Controller
 {
@@ -31,6 +33,11 @@ class BookController extends Controller
                 'items' => $items,
                 ]);
             }
+    }
+    
+    public function show(Book $book)
+    {
+        return view('home.myshelf')->with(['books' => $book->getPaginateByLimit()]);
     }
 }
 

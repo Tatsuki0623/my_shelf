@@ -16,9 +16,13 @@ class KindsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('kinds')->insert([
-            'kind'=>'漫画',
-            'kind'=>'小説',
-        ]);
+        $kinds=['漫画','小説'];
+        
+        foreach($kinds as $kind)
+        {
+            DB::table('kinds')->insert([
+                'kind'=> $kind,
+            ]);
+        }
     }
 }
