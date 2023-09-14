@@ -31,6 +31,6 @@ class BookController extends Controller
                 'items' => $items,
                 ]);
             }
-    }   
+    }
 }
 

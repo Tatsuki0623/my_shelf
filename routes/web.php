@@ -32,6 +32,14 @@ Route::get('/myshelf',function (){
     return view('home.myshelf');
 })->middleware(['auth','verified'])->name('myshelf');
 
+Route::get('/myshelf/add',function (){
+    return view('book.add_book');
+})->middleware(['auth','verified'])->name('add_book');
+
+Route::get('/myshelf/add/search',function (){
+    return view('book.search_book');
+})->middleware(['auth','verified'])->name('search_book');
+
 Route::get('/othershelf',function (){
     return view('home.othershelf');
 })->middleware(['auth','verified'])->name('othershelf');
