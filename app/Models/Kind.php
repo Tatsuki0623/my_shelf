@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class Kind extends Model
 {
@@ -24,12 +23,16 @@ class Kind extends Model
         define('commic',1);
         define('novel',2);
         
-        if ($current_url == 'myshelf/1'){
+        $split_url = substr($current_url,-1,1);
+        
+        $kind_id = $split_url[-1];
+        
+        if ($kind_id == "1"){
             $kind = $this::find(commic);
-        }elseif($current_url == 'myshelf/2'){
-            $kind = $this::find(novel);  
+        }elseif($kind_id == "2"){
+            $kind = $this::find(novel);
         }else{
-            return 'ページが存在しません';
+            return "ページが存在しません";
         }
         
         $user = Auth::user()->id;

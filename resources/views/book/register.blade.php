@@ -17,7 +17,8 @@
             @csrf
             <div class="title">
                 <h2>本のタイトル</h2>
-                <input type="text" name="book[title]" placeholder="本のタイトルを入力"/>
+                <input type="text" name="book[title]" placeholder="本のタイトルを入力" value="old('book.title')"/>
+                <p class="title__error" style="color:red">{{$errors->first('book.title')}}</p>
             </div>
             <select name='book[kind_id]'>
                 @foreach($kinds as $kind)

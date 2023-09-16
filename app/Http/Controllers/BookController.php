@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use RakutenRws_Client;
 use App\Models\Book;
+use App\Models\Kind;
 
 
 class BookController extends Controller
@@ -35,9 +36,21 @@ class BookController extends Controller
             }
     }
     
+    public function store(Book $book, BookRequest $request)
+    {
+        $input = $request['book'];
+        $book->fill($input)->save();
+        return redirect('/myshlef/' . $book->id . '/show');
+    }
+    
     public function show(Book $book)
     {
-        return view('home.myshelf')->with(['books' => $book->getPaginateByLimit()]);
+        return view('book.show')->with(['book' => $book]);
+    }
+    
+    public function create(Kind $kind)
+    {
+        return view('book.register')->with(['kinds' => $kind->get()]);
     }
 }
 

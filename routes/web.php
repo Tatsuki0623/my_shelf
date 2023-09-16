@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\KindController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,10 +29,6 @@ Route::get('/mypage',function (){
     return view('home.mypage');
 })->middleware(['auth','verified'])->name('mypage');
 
-Route::get('/myshelf',function (){
-    return view('home.myshelf');
-})->middleware(['auth','verified'])->name('myshelf');
-
 Route::get('/myshelf/add',function (){
     return view('book.add_book');
 })->middleware(['auth','verified'])->name('add_book');
@@ -46,6 +43,13 @@ Route::get('/othershelf',function (){
 
 Route::controller(BookController::class)->middleware(['auth'])->group(function(){
     Route::get('/newbooks','get_rakuten_items')->name('newbooks');
+    Route::get('/myshelf/books/create','create')->name('create');
+    Route::get('/myshelf/books/{book}/show','show')->name('show');
+});
+
+Route::controller(KindController::class)->middleware(['auth'])->group(function(){
+    Route::get('/myshelf/1','show')->name('myshelf_commic');
+    Route::get('/myshelf/2','show')->name('myshelf_novel');
 });
 
 Route::middleware('auth')->group(function () {
