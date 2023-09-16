@@ -66,5 +66,12 @@ class BookController extends Controller
         $book->fill($input)->save();
         return redirect('/myshelf/books/' . $book->id);
     }
+    
+    public function delete(Book $book)
+    {
+        $kind_id = $book->kind_id;
+        $book->delete();
+        return redirect('/myshelf/' .$kind_id);
+    }
 }
 
