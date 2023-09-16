@@ -18,7 +18,7 @@
             </div>
             <div>
                 <a href="{{$book->link_rakuten ?? null}}">{{$book->title}}</a>
-                <img src="{{$book->image ?? "no_image.jpg"}}" width="200" height="100"/>
+                <img src="{{$book->image ?? "/no_image.jpg"}}" width="200" height="100"/>
             </div>
             <div>
                 <button onclick="location.href='/myshelf/books/{{$book->id}}/link/edit'">リンクをつける</button>
@@ -29,12 +29,12 @@
                 <h2>感想</h2>
             </div>
             <div>
-                <p>{{$book->impression ?: ""}}</p>
+                <p>{{$book->impression ?? ""}}</p>
             </div>
         </div>
         <div>
             <div>
-                <h3>{{$book->point ?: 0}}
+                <h3>{{$book->point ?? 0}}
             </div>
             <p>点</p>
         </div>

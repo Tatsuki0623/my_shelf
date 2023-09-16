@@ -46,6 +46,8 @@ Route::controller(BookController::class)->middleware(['auth'])->group(function()
     Route::post('/myshelf/books','store')->name('store');
     Route::get('/myshelf/books/register','register')->name('register');
     Route::get('/myshelf/books/{book}','show')->name('show');
+    Route::put('/myshelf/books/{book}','update')->name('update');
+    Route::get('/myshelf/books/{book}/edit','edit')->name('edit');
 });
 
 Route::controller(KindController::class)->middleware(['auth'])->group(function(){

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\BookRequest;
 use RakutenRws_Client;
@@ -54,6 +53,18 @@ class BookController extends Controller
     public function register(Kind $kind)
     {
         return view('book.register')->with(['kinds' => $kind->get()]);
+    }
+    
+    public function edit(Book $book)
+    {
+        return view('book.edit')->with(['book' => $book]);
+    }
+    
+    public function update(BookRequest $request, Book $book)
+    {
+        $input = $request['book'];
+        $book->fill($input)->save();
+        return redirect('/myshelf/books/' . $book->id);
     }
 }
 
