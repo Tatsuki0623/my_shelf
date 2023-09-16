@@ -20,8 +20,8 @@ class Book extends Model
         'point',
         'image',
         'link_rakuten',
-        'user_id',
         'kind_id',
+        'user_id'
         ];
     
     protected $attributes = [

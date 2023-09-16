@@ -43,8 +43,9 @@ Route::get('/othershelf',function (){
 
 Route::controller(BookController::class)->middleware(['auth'])->group(function(){
     Route::get('/newbooks','get_rakuten_items')->name('newbooks');
-    Route::get('/myshelf/books/create','create')->name('create');
-    Route::get('/myshelf/books/{book}/show','show')->name('show');
+    Route::post('/myshelf/books','store')->name('store');
+    Route::get('/myshelf/books/register','register')->name('register');
+    Route::get('/myshelf/books/{book}','show')->name('show');
 });
 
 Route::controller(KindController::class)->middleware(['auth'])->group(function(){

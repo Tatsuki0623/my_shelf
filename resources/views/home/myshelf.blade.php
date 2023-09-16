@@ -35,7 +35,7 @@
             @if($books)
                 @foreach($books as $book)
                     <div>
-                        <a href="/myshelf/books/{{$book->id}}/show">{{$book->title}}</a>
+                        <a href="/myshelf/books/{{$book->id}}">{{$book->title}}</a>
                         <img src="{{$book->image}}" width="100" height="50"/>
                     </div>
                 @endforeach

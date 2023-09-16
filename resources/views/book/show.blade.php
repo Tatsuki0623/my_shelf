@@ -49,7 +49,7 @@
             </div>
         </div>
         <button onclick="location.href='/myshelf/books/{{$book->id}}/edit'">編集</button>
-        <div class="back">[<a href="/">back</a>]</div>
+        <div class="back">[<a href="/myshelf/{{$book->kind_id}}">back</a>]</div>
         </center>
     </body>
     </x-app-layout>
