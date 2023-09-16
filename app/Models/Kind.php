@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class Kind extends Model
 {
@@ -19,10 +19,21 @@ class Kind extends Model
     
     
     
-    public function getBykind(int $limit_count=10)
+    public function getPaginateByLimit($current_url)
     {
-        $user = Auth::user()->id;
+        define('commic',1);
+        define('novel',2);
         
-        return $this->books()->with('kind')->where('user_id',$user)->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        if ($current_url == 'myshelf/1'){
+            $kind = $this::find(commic);
+        }elseif($current_url == 'myshelf/2'){
+            $kind = $this::find(novel);  
+        }else{
+            return 'ページが存在しません';
+        }
+        
+        $user = Auth::user()->id;
+    
+        return $kind->books()->with('kind')->where('user_id',$user)->orderBy('created_at', 'DESC')->paginate(10);
     }
 }
