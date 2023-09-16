@@ -14,11 +14,17 @@
     <body>
         <center>
         <div>
-            <a href="/myshelf/{{$kind->id}}">{{$kind->kind}}へ</a>
-            <h2>{{$kind->kind}}</h2>
+            <div>
+                <p>
+                    <a href="/myshelf/1">漫画</a>
+                    <a href="/myshelf/2">小説</a>
+                </p>
+            </div>
+            
+            <h2>{{$books->find(1)->kind->name ?? $books->find(2)->kind->name}}</h2>
             <a href="/myshelf/books/register">本の登録</a>
         </div>
-        <form action="/myshelf" method="POST">
+        <form action="/myshelf/books/" method="POST">
             <div>
                 <input type="text" name="book[title]" placeholder="本のタイトルを入力"/>
             </div>
@@ -26,16 +32,17 @@
         </form>
         
         <div>
-            @if({{$books}} === null)
-                <p>本が登録されていません</p>
-                <p>本の登録から新しく登録してください</p>
-            @else
+            @if($books)
                 @foreach($books as $book)
                     <div>
-                        <a href="/myshelf/books/{{$book->id}}">{{$book->title}}</a>
+                        <a href="/myshelf/books/{{$book->id}}/show">{{$book->title}}</a>
                         <img src="{{$book->image}}" width="100" height="50"/>
                     </div>
                 @endforeach
+            @else
+                <p>本が登録されていません</p>
+                <p>本の登録から新しく登録してください</p>
+            @endif
         </div>
         
         <div>

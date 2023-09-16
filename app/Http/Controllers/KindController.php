@@ -9,8 +9,8 @@ class KindController extends Controller
 {
     public function show(Request $request,Kind $kind)
     {
-        $current_url = url(\Route::current()->uri());
+        $current_url = url()->current();
         
-        return view('book.info')->with(['books' => $kind->getPaginateByLimit($current_url)]);
+        return view('home.myshelf')->with(['books' => $kind->getPaginateByLimit($current_url)]);
     }
 }

@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('mypage')" :active="request()->routeIs('mypage')">
                         {{__('マイページ')}}
                     </x-nav-link>
-                    <x-nav-link :href="route('myshelf')" :active="request()->routeIs('myshelf')">
+                    <x-nav-link :href="route('myshelf_commic')" :active="request()->routeIs('myshelf/1')">
                         {{__('私の本棚')}}
                     </x-nav-link>
                     <x-nav-link :href="route('othershelf')" :active="request()->routeIs('othershelf')">
