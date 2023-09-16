@@ -13,7 +13,7 @@
     <body>
         <center>
         <h1>{{$book->title}}</h1>
-        <form action="/myshelf/books/{{$book->id}}" method="POST">
+        <form action="/myshelf/books" method="POST">
         @csrf
             <div class="title">
                 <h2>感想</h2>

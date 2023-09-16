@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\BookRequest;
 use RakutenRws_Client;
 use App\Models\Book;
 use App\Models\Kind;
@@ -36,11 +38,12 @@ class BookController extends Controller
             }
     }
     
-    public function store(Book $book, BookRequest $request)
+    public function store(BookRequest $request, Book $book)
     {
         $input = $request['book'];
+        $input['user_id'] = Auth::user()->id;
         $book->fill($input)->save();
-        return redirect('/myshlef/' . $book->id . '/show');
+        return redirect('/myshelf/books/' . $book->id);
     }
     
     public function show(Book $book)
@@ -48,7 +51,7 @@ class BookController extends Controller
         return view('book.show')->with(['book' => $book]);
     }
     
-    public function create(Kind $kind)
+    public function register(Kind $kind)
     {
         return view('book.register')->with(['kinds' => $kind->get()]);
     }

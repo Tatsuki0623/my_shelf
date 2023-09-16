@@ -17,17 +17,18 @@
             @csrf
             <div class="title">
                 <h2>本のタイトル</h2>
-                <input type="text" name="book[title]" placeholder="本のタイトルを入力" value="old('book.title')"/>
+                <input type="text" name="book[title]" placeholder="本のタイトルを入力" value="{{old('book.title')}}" size="50"/>
                 <p class="title__error" style="color:red">{{$errors->first('book.title')}}</p>
             </div>
             <select name='book[kind_id]'>
                 @foreach($kinds as $kind)
-                    <option value="{{ $kind->id }}">{{ $kind->kind }}</option>
+                    <option value="{{ $kind->id }}">{{ $kind->name }}</option>
                 @endforeach
             </select>
-            <input type="submit" value="保存"/>
+            
+            <p><input type="submit" value="登録"/></p>
         </form>
-        <div class="back">[<a href="/">back</a>]</div>
+        <div class="back">[<a href="/myshelf/1">back</a>]</div>
         </center>
     </body>
     </x-app-layout>

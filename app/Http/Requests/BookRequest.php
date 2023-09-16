@@ -13,7 +13,7 @@ class BookRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,18 @@ class BookRequest extends FormRequest
     {
         return [
             'book.title' => 'required|string|max:100',
+            'book.impression' => 'nullable|string|max:140',
+            'book.point' => 'nullale|integer|between:0,100',
+            'book.volume' => 'nullable|integer|min:1',
+        ];
+    }
+    
+    public function message()
+    {
+        return [
+            'book.impression.max' => '140文字以内で入力してください',
+            'book.point.between' => '0~100の間で入力してください',
+            'book.volume.min' => '1以上の数値を入力してください',
         ];
     }
 }
