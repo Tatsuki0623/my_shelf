@@ -3,6 +3,15 @@
         <meta charset="utf-8">
         <title>MyShelf</title>
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <script>
+            function deletePost(id) {
+                'use strict'
+        
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
     </head>
     
     <x-app-layout>
@@ -20,8 +29,13 @@
                     <a href="/myshelf/2">小説</a>
                 </p>
             </div>
-            
-            <h2>{{$books->find(1)->kind->name ?? $books->find(2)->kind->name}}</h2>
+            <div>
+                @if(url()->current() == url('/') . '/myshelf/1')
+                    <h1>漫画</h1>
+                @else(url()->current() == url('/') . '/myshelf/2')
+                    <h1>小説</h1>
+                @endif
+            </div>
             <a href="/myshelf/books/register">本の登録</a>
         </div>
         <form action="/myshelf/books/" method="POST">
@@ -37,6 +51,13 @@
                     <div>
                         <a href="/myshelf/books/{{$book->id}}">{{$book->title}}</a>
                         <img src="{{$book->image}}" width="100" height="50"/>
+                    </div>
+                    <div>
+                        <form action="/myshelf/books/{{$book->id}}" id="form_{{$book->id}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" onclick="deletePost({{$book->id}})">削除</button> 
+                        </form>
                     </div>
                 @endforeach
             @else

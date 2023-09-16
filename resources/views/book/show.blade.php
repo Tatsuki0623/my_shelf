@@ -3,6 +3,15 @@
         <meta charset="utf-8">
         <title>本の詳細</title>
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <script>
+            function deletePost(id) {
+                'use strict'
+        
+                if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                    document.getElementById(`form_${id}`).submit();
+                }
+            }
+        </script>
     </head>
     <x-app-layout>
         <x-slot name="header">
@@ -47,6 +56,13 @@
                     <p>{{$book->volume}}巻までもっています</p>
                 @endif
             </div>
+        </div>
+        <div>
+            <form action="/myshelf/books/{{ $book->id }}" id="form_{{ $book->id }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="button" onclick="deletePost({{ $book->id }})">削除</button> 
+            </form>
         </div>
         <button onclick="location.href='/myshelf/books/{{$book->id}}/edit'">編集</button>
         <div class="back">[<a href="/myshelf/{{$book->kind_id}}">back</a>]</div>
