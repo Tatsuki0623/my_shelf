@@ -21,7 +21,7 @@ class KindsSeeder extends Seeder
         foreach($kinds as $kind)
         {
             DB::table('kinds')->insert([
-                'kind'=> $kind,
+                'name'=> $kind,
             ]);
         }
     }
