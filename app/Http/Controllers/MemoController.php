@@ -42,4 +42,10 @@ class MemoController extends Controller
         $memo->fill($input)->save();
         return redirect('/mypage/memos/' . $memo->id);
     }
+    
+    public function delete(Memo $memo)
+    {
+        $memo->delete();
+        return redirect('/mypage');
+    }
 }
