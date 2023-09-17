@@ -22,7 +22,7 @@ class MemoFactory extends Factory
         return [
             'user_id' => $user_id,
             'title' => fake()->word(),
-            'body' => Str::random(100),
+            'body' => Str::random(600),
         ];
     }
 }
