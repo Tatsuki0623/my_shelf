@@ -58,6 +58,8 @@ Route::controller(MemoController::class)->middleware(['auth'])->group(function()
     Route::post('/mypage/memos','store')->name('memo_store');
     Route::get('/mypage/memos/add','add')->name('memo_add');
     Route::get('/mypage/memos/{memo}','detail')->name('memo_show');
+    Route::put('/mypage/memos/{memo}','update')->name('memo_update');
+    Route::get('/mypage/memos/{memo}/edit','edit')->name('memo_edit');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
