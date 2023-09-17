@@ -44,8 +44,8 @@ Route::controller(BookController::class)->middleware(['auth'])->group(function()
     Route::get('/myshelf/books/register','register')->name('book_register');
     Route::get('/myshelf/books/{book}','show')->name('book_show');
     Route::put('/myshelf/books/{book}','update')->name('book_update');
-    Route::get('/myshelf/books/{book}/edit','edit')->name('book_edit');
     Route::delete('/myshelf/books/{book}','delete')->name('book_delete');
+    Route::get('/myshelf/books/{book}/edit','edit')->name('book_edit');
 });
 
 Route::controller(KindController::class)->middleware(['auth'])->group(function(){
@@ -59,6 +59,7 @@ Route::controller(MemoController::class)->middleware(['auth'])->group(function()
     Route::get('/mypage/memos/add','add')->name('memo_add');
     Route::get('/mypage/memos/{memo}','detail')->name('memo_show');
     Route::put('/mypage/memos/{memo}','update')->name('memo_update');
+    Route::delete('/mypage/memos/{memo}','delete')->name('memo_delete');
     Route::get('/mypage/memos/{memo}/edit','edit')->name('memo_edit');
 });
 Route::middleware('auth')->group(function () {
