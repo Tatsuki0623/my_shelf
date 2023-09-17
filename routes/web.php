@@ -53,6 +53,8 @@ Route::controller(BookController::class)->middleware(['auth'])->group(function()
 Route::controller(KindController::class)->middleware(['auth'])->group(function(){
     Route::get('/myshelf/1','show')->name('myshelf_commic');
     Route::get('/myshelf/2','show')->name('myshelf_novel');
+    Route::get('/myshelf/1/filter','Cfilter')->name('myshelf_commic_f');
+    Route::get('/myshelf/2/filter','Nfilter')->name('myshelf_novel_f');
 });
 
 Route::controller(MemoController::class)->middleware(['auth'])->group(function(){
