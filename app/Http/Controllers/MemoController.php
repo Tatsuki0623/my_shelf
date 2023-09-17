@@ -30,4 +30,16 @@ class MemoController extends Controller
         $memo->fill($input)->save();
         return redirect('/mypage/memos/' . $memo->id);
     }
+    
+    public function edit(Memo $memo)
+    {
+        return view('memo.edit')->with(['memo' => $memo]);
+    }
+    
+    public function update(MemoRequest $request, Memo $memo)
+    {
+        $input = $request['memo'];
+        $memo->fill($input)->save();
+        return redirect('/mypage/memos/' . $memo->id);
+    }
 }
