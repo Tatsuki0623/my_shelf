@@ -30,12 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->integer('volume')->change();
-            $table->string('impression',600)->nullable(false)->change();
-            $table->integer('point')->change();
-            $table->string('image',100)->nullable(false)->change();
-            $table->string('link_rakuten',100)->nullable(false)->change();
-        });
+        //
     }
 };

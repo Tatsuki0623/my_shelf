@@ -14,11 +14,29 @@
         </h2>
     </x-slot>
     <body class="antialiased">
-
+        <center>
             <h1>{{Auth::user()->name}}のマイページ</h1>
-            
             <div>
                 <h2>メモ</h2>
+                <div>
+                    @if($memos)
+                        @foreach($memos as $memo)
+                            <div>
+                                <p>
+                                    <a href="/mypage/memos/{{$memo->id}}">{{$memo->title}}</a>
+                                </p>
+                            </div>
+                        @endforeach
+                    @else
+                        <div>
+                            <p>メモが登録されていません</p>
+                            <p>メモの追加から新しく登録してください</p>
+                        </div>
+                    @endif
+                </div>
+                <div>
+                    <a href="/mypage/memos/add">メモの追加</a>
+                </div>
             </div>
             
             <div>
@@ -32,6 +50,8 @@
                 <h4>漫画</h4>
                 <h4>小説</h4>
             </div>
+        
+        </center>
             
     </body>
     </x-app-layout>
