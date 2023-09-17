@@ -26,8 +26,8 @@ class BookRequest extends FormRequest
         return [
             'book.title' => 'required|string|max:100',
             'book.impression' => 'nullable|string|max:140',
-            'book.point' => 'nullable|integer|between:0,100',
-            'book.volume' => 'nullable|integer|min:1',
+            'book.point' => 'integer|between:0,100',
+            'book.volume' => 'integer|min:1',
         ];
     }
 }

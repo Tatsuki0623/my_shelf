@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Http\Requests\BookRequest;
 use RakutenRws_Client;
 use App\Models\Book;
@@ -11,7 +12,7 @@ use App\Models\Kind;
 
 class BookController extends Controller
 {
-    public function get_rakuten_items()
+    public function get_rakuten_items($keyword)
     {
         $client = new RakutenRws_Client();
         
@@ -20,20 +21,19 @@ class BookController extends Controller
         $client->setApplicationId(RAKUTEN_APPLICATION_ID);
         
         $response = $client->execute('BooksTotalSearch', array(
-            'keyword' => '日常',
-            'hits' => 3
+            'keyword' => $keyword,
+            'hits' =>10,
         ));
         
+        $items = array();
+        
         if(!$response->isOk()){
-            return 'Error:'.$response->getMessage();
+            return $items[] = 'Error:'.$response->getMessage();
         } else {
-            $items = array();
             foreach($response as $key){
                 $items[] = $key;
                 }
-            return view('home.newbooks')->with([
-                'items' => $items,
-                ]);
+            return $items;
             }
     }
     
@@ -65,6 +65,30 @@ class BookController extends Controller
         $input = $request['book'];
         $book->fill($input)->save();
         return redirect('/myshelf/books/' . $book->id);
+    }
+    
+    public function search(Request $request, Book $book)
+    {
+        if($request->title)
+        {
+            $items = $this->get_rakuten_items($request->title);
+            
+        }else{
+            $items = null;
+        }
+        return view('book.search')->with([
+            'items' => $items,
+            'book' => $book,
+        ]);
+    }
+    
+    public function add(Request $request, Book $book)
+    {
+        $item = preg_split("/&-&/",$request['item']);
+        $book->link_rakuten = $item[0];
+        $book->image = $item[1];
+        $book->save();
+        return redirect('/myshelf/books/'. $book->id);
     }
     
     public function delete(Book $book)

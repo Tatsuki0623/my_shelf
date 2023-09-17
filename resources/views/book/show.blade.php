@@ -29,9 +29,11 @@
                 <a href="{{$book->link_rakuten ?? null}}">{{$book->title}}</a>
                 <img src="{{$book->image ?? "/no_image.jpg"}}" width="200" height="100"/>
             </div>
-            <div>
-                <button onclick="location.href='/myshelf/books/{{$book->id}}/link/edit'">リンクをつける</button>
-            </div>
+        </div>
+        <div>
+            <P>
+                <a href="/myshelf/books/{{$book->id}}/link/search">リンクをつける</a>
+            </p>
         </div>
         <div>
             <div>
@@ -58,10 +60,10 @@
             </div>
         </div>
         <div>
-            <form action="/myshelf/books/{{ $book->id }}" id="form_{{ $book->id }}" method="post">
+            <form action="/myshelf/books/{{$book->id}}" id="form_{{$book->id}}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="button" onclick="deletePost({{ $book->id }})">削除</button> 
+                <button type="button" onclick="deletePost({{$book->id}})">削除</button> 
             </form>
         </div>
         <button onclick="location.href='/myshelf/books/{{$book->id}}/edit'">編集</button>
