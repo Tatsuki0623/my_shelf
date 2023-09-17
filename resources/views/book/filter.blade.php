@@ -38,7 +38,7 @@
             </div>
             <a href="/myshelf/books/register">本の登録</a>
         </div>
-        <form action="/{{request()->path()}}/filter" method="GET">
+        <form action="/{{request()->path()}}" method="GET">
             @csrf
             <div><h3>本棚を検索</h3></div>
             <div>
@@ -46,30 +46,30 @@
             </div>
             <input type="submit" value="検索"/>
         </form>
-        
+        <h3>{{$keyword}}で検索</h3>
         <div>
-            @if($books)
-                @foreach($books as $book)
-                    <div>
-                        <a href="/myshelf/books/{{$book->id}}">{{$book->title}}</a>
-                        <img src="{{$book->image}}" width="100" height="50"/>
-                    </div>
-                    <div>
-                        <form action="/myshelf/books/{{$book->id}}" id="form_{{$book->id}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" onclick="deletePost({{$book->id}})">削除</button> 
-                        </form>
-                    </div>
-                @endforeach
-            @else
-                <p>本が登録されていません</p>
-                <p>本の登録から新しく登録してください</p>
-            @endif
+        @if($filters)
+            @foreach($filters as $book)
+                <div>
+                    <a href="/myshelf/books/{{$book->id}}">{{$book->title}}</a>
+                    <img src="{{$book->image}}" width="100" height="50"/>
+                </div>
+                <div>
+                    <form action="/myshelf/books/{{$book->id}}" id="form_{{$book->id}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" onclick="deletePost({{$book->id}})">削除</button> 
+                    </form>
+                </div>
+            @endforeach
+        @else
+            <p>検索結果がありません</p>
+            <p>検索ワードを入力してください</p>
+        @endif
         </div>
         
         <div class='paginate'>
-            {{$books->links()}}
+            {{isset($filters->links) ?? null}}
         </div>
         
         <div>

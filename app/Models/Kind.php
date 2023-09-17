@@ -20,23 +20,50 @@ class Kind extends Model
     
     public function getPaginateByLimit($current_url)
     {
-        define('commic',1);
-        define('novel',2);
+        
         
         $split_url = substr($current_url,-1,1);
-        
         $kind_id = $split_url[-1];
         
         if ($kind_id == "1"){
-            $kind = $this::find(commic);
+            $kind = $this::find(1);
         }elseif($kind_id == "2"){
-            $kind = $this::find(novel);
+            $kind = $this::find(2);
         }else{
-            return "ページが存在しません";
+            return null;
         }
-        
+
         $user = Auth::user()->id;
-    
         return $kind->books()->with('kind')->where('user_id',$user)->orderBy('created_at', 'DESC')->paginate(5);
+    }
+    
+    public function getFilterCommic($keyword)
+    {
+        if($keyword){
+            
+            $kind = $this::find(1);
+            $user = Auth::user()->id;
+            $filter = $kind->books()->with('kind')->where('user_id',$user)->where('title',"LIKE","%$keyword%")->orderBy('created_at', 'DESC')->paginate(5);
+            
+            return $filter;
+        }else{
+            
+            return null;
+        }
+    }
+    
+    public function getFilterNovel($keyword)
+    {
+        if($keyword){
+            
+            $kind = $this::find(2);
+            $user = Auth::user()->id;
+            $filter = $kind->books()->with('kind')->where('user_id',$user)->where('title',"LIKE","%$keyword%")->orderBy('created_at', 'DESC')->paginate(5);
+            
+            return $filter;
+        }else{
+            
+            return null;
+        }
     }
 }
