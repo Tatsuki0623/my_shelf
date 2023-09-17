@@ -24,11 +24,6 @@ class Book extends Model
         'user_id'
         ];
     
-    protected $attributes = [
-        'volume' => 0,
-        'point' => 0,
-        ];
-    
     public function user()
     {
         return $this->belongsTo(User::class);

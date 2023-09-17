@@ -1,8 +1,6 @@
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <title>SearchBook</title>
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     </head>
     <x-app-layout>
         <x-slot name="header">
@@ -12,28 +10,35 @@
         </x-slot>
     <body>
         <center>
-        <form action="/myshelf/books/{{$book->id}}/link/edit" method="POST">
+        <form action="/myshelf/books/{{$book->id}}/link/search" method="GET">
             @csrf
-            <div class="title">
-                <h2>楽天で検索</h2>
-                <input type="text" name="book[title]" placeholder="本のタイトルを入力"/>
+            <div><h3>楽天で検索</h3></div>
+            <div>
+                <input type="text" name="title" placeholder="本のタイトルを入力"/>
             </div>
             <input type="submit" value="検索"/>
         </form>
-        
         <div>
-            @if($items == null)
-                <p>検索結果がありません</p>
-                <p>検索ワードを入力してください</p>
-            @else
-                @foreach($items as $item)
-                <ul>
-                <li>
-                    <p>{{$item->title}}</p>
-                    <img src="{{$item->largeImageUrl}}" width="300" height="200"/>
-                </li>
-                </ul>
-            @endif
+        @if($items)
+            <form action="/myshelf/books/{{$book->id}}/link" method="POST">
+            @csrf
+            @method('PUT')
+            <select name="item">
+            @foreach($items as $item)
+                <option value="{{$item['itemUrl']}}&-&{{$item['largeImageUrl']}}">{{$item['title']}}</option>
+            @endforeach
+            </select>
+            <p><input type="submit" value="決定"/></p>
+            </form>
+            
+            @foreach($items as $item)
+                <p>{{$item['title']}}</p>
+                <img src="{{$item['largeImageUrl']}}" width="100" height="50"/>
+            @endforeach
+        @else
+            <p>検索結果がありません</p>
+            <p>検索ワードを入力してください</p>
+        @endif
         </div>
         </center>
     </body>

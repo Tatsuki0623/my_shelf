@@ -37,6 +37,6 @@ class Kind extends Model
         
         $user = Auth::user()->id;
     
-        return $kind->books()->with('kind')->where('user_id',$user)->orderBy('created_at', 'DESC')->paginate(10);
+        return $kind->books()->with('kind')->where('user_id',$user)->orderBy('created_at', 'DESC')->paginate(5);
     }
 }
