@@ -66,4 +66,39 @@ class Kind extends Model
             return null;
         }
     }
+    
+    public function getBookData()
+    {
+        $user = Auth::user()->id;
+        
+        $register_books = Book::get()->where('user_id',$user) ?? 0;
+        
+        $comic = $this::find(1);
+        
+        $novel = $this::find(2);
+        
+        
+        
+        $all_register_books = $register_books->count() ?? 0;
+        
+        $comics = $comic->books()->with('kind')->where('user_id',$user)->get()->count() ?? 0;
+        
+        $novels = $novel->books()->with('kind')->where('user_id',$user)->get()->count() ?? null;
+        
+        $total_books = $register_books->sum('volume') ?? 0;
+        
+        $total_comics = $comic->books()->with('kind')->where('user_id',$user)->get()->sum('volume') ?? 0;
+        
+        $total_novels = $novel->books()->with('kind')->where('user_id',$user)->get()->sum('volume') ?? 0;
+        
+        
+        return $book_data = array(
+                            'all_register_books' => $all_register_books,
+                            'comics' => $comics,
+                            'novels' => $novels,
+                            'total_books' => $total_books,
+                            'total_comics' => $total_comics,
+                            'total_novels' => $total_novels,
+                            );
+    }
 }

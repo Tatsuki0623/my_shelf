@@ -34,4 +34,9 @@ class KindController extends Controller
             'keyword' => $keyword,
             ]);
     }
+    
+    public function info(Kind $kind)
+    {
+        return view('book.info')->with(['books' => $kind->getBookData()]);
+    }
 }

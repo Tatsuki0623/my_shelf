@@ -26,14 +26,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/myshelf/add',function (){
-    return view('book.add_book');
-})->middleware(['auth','verified'])->name('add_book');
-
-Route::get('/myshelf/add/search',function (){
-    return view('book.search_book');
-})->middleware(['auth','verified'])->name('search_book');
-
 Route::get('/othershelf',function (){
     return view('home.othershelf');
 })->middleware(['auth','verified'])->name('othershelf');
@@ -55,6 +47,7 @@ Route::controller(KindController::class)->middleware(['auth'])->group(function()
     Route::get('/myshelf/2','show')->name('myshelf_novel');
     Route::get('/myshelf/1/filter','Cfilter')->name('myshelf_commic_f');
     Route::get('/myshelf/2/filter','Nfilter')->name('myshelf_novel_f');
+    Route::get('/myshelf/info','info')->name('myshelf_info');
 });
 
 Route::controller(MemoController::class)->middleware(['auth'])->group(function(){
@@ -66,6 +59,7 @@ Route::controller(MemoController::class)->middleware(['auth'])->group(function()
     Route::delete('/mypage/memos/{memo}','delete')->name('memo_delete');
     Route::get('/mypage/memos/{memo}/edit','edit')->name('memo_edit');
 });
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

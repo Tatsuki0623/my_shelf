@@ -30,9 +30,9 @@
                 </p>
             </div>
             <div>
-                @if(url()->current() == url('/') . '/myshelf/1')
+                @if(strpos(url()->current(),'/myshelf/1') !== false)
                     <h1>漫画</h1>
-                @else(url()->current() == url('/') . '/myshelf/2')
+                @else
                     <h1>小説</h1>
                 @endif
             </div>
