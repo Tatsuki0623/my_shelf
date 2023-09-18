@@ -12,7 +12,34 @@
         </x-slot>
     <body>
         <center>
-        <h1>本の詳細</h1>
+        <h1>本統計情報</h1>
+        <h2>基本情報</h2>
+        <ul>
+            <li>
+                <p>本棚登録数（全て）</p>
+                <h3>{{$books['all_register_books']}}　冊</h3>
+            </li>
+            <li>
+                <p>本の冊数（全て）</p>
+                <h3>{{$books['total_books']}}　冊</h3>
+            </li>
+            <li>
+                <p>本棚登録数（漫画のみ）</p>
+                <h3>{{$books['comics']}}　冊</h3>
+            </li>
+            <li>
+                <p>本の冊数（漫画のみ）</p>
+                <h3>{{$books['total_comics']}}　冊</h3>
+            </li>
+            <li>
+                <p>本棚登録数（小説のみ）</p>
+                <h3>{{$books['novels']}}　冊</h3>
+            </li>
+            <li>
+                <p>本の冊数（小説のみ）</p>
+                <h3>{{$books['total_novels']}}　冊</h3>
+            </li>
+        </ul>
         <div class="back">[<a href="/">back</a>]</div>
         </center>
     </body>

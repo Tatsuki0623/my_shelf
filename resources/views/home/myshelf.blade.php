@@ -73,7 +73,7 @@
         </div>
         
         <div>
-            <a href="/myshelf/books/info">統計情報</a>
+            <a href="/myshelf/info">統計情報</a>
             <a href="/myshelf/books/register">本の登録</a>
             <p>ページトップへ</p>
         </div>
