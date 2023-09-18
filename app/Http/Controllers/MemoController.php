@@ -4,13 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\MemoRequest;
+use App\Models\Kind;
 use App\Models\Memo;
 
 class MemoController extends Controller
 {
-    public function show(Memo $memo)
+    public function show(Memo $memo, Kind $kind)
     {
-        return view('home.mypage')->with(['memos' => $memo->getPaginateByLimit()]);
+        $books = $kind->getOrderBypoint();
+        
+        return view('home.mypage')->with([
+            'memos' => $memo->getPaginateByLimit(),
+            'comics' => $books['comics'],
+            'novels' => $books['novels'],
+            ]);
     }
     
     public function detail(Memo $memo)

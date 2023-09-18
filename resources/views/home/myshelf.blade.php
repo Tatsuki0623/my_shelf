@@ -38,12 +38,14 @@
             </div>
             <a href="/myshelf/books/register">本の登録</a>
         </div>
-        <form action="/{{request()->path()}}/filter" method="GET">
+        
+        <form action="/myshelf/filter" method="GET">
             @csrf
             <div><h3>本棚を検索</h3></div>
             <div>
                 <input type="text" name="title" placeholder="本のタイトルを入力"/>
             </div>
+            <input type="hidden" name="kind_id" value="{{ $kind_id}}">
             <input type="submit" value="検索"/>
         </form>
         
