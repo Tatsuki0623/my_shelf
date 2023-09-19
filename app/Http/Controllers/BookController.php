@@ -37,6 +37,7 @@ class BookController extends Controller
             }
     }
     
+    //myshelf
     public function store(BookRequest $request, Book $book)
     {
         $input = $request['book'];
@@ -72,7 +73,6 @@ class BookController extends Controller
         if($request->title)
         {
             $items = $this->get_rakuten_items($request->title);
-            
         }else{
             $items = null;
         }
@@ -95,7 +95,22 @@ class BookController extends Controller
     {
         $kind_id = $book->kind_id;
         $book->delete();
-        return redirect('/myshelf/' .$kind_id);
+        return redirect('/myshelf/' . $kind_id);
+    }
+    
+    //newbooks
+    public function preview(Request $request)
+    {
+        if($request->title)
+        {
+            $items = $this->get_rakuten_items($request->title);
+        }else{
+            $items = null;
+        }
+        return view('home.newbooks')->with([
+            'items' => $items,
+            'keyword' => $request['title'],
+            ]);
     }
 }
 
