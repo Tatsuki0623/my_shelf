@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\KindController;
 use App\Http\Controllers\MemoController;
+use App\Http\Controllers\ReadTimeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,6 +60,11 @@ Route::controller(MemoController::class)->middleware(['auth'])->group(function()
     Route::delete('/mypage/memos/{memo}','delete')->name('memo_delete');
     Route::get('/mypage/memos/{memo}/edit','edit')->name('memo_edit');
 });
+
+Route::controller(ReadTimeController::class)->middleware(['auth'])->group(function(){
+    Route::post('/mypage/ReadTime','store')->name('ReadTime_store');
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

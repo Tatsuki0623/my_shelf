@@ -40,15 +40,32 @@
             </div>
             
             <div>
-                <h2>一週間の読書量</h2>
+                <h2>一週間の読書時間</h2>
                 <div>
-                    <form 
+                    @if($read_times['week'])
+                        @foreach($read_times['week'] as $read_time)
+                            <p>{{$read_time->read_time}}</p>
+                        @endforeach
+                    @else
+                        <p>読書時間が登録されていません</p>
+                    @endif
+                </div>
+                <div>
+                    <form action="/mypage/ReadTime" method="POST">
+                        @csrf
+                        <div>
+                            <h2>今日の読書時間</h2>
+                            <input type="number" name="ReadTime[read_time]" placeholder="{{$read_times['today']->read_time ?? '0'}}" min="0" max="24"/>
+                            <p class="ReadTime__error" style="color:red">{{$errors->first('ReadTime.read_time')}}</p>
+                        </div>
+                        <input type="submit" value="追加"/>
+                    </form>
                 </div>
             </div>
             
             <div>
                 <p>今日は</p>
-                <p>DateTime</p>
+                <p>{{date('m-d')}}</p>
             </div>
             <div>
                 <h2>本の評価</h2>
