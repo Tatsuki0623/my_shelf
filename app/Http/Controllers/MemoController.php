@@ -4,19 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\MemoRequest;
-use App\Models\Kind;
 use App\Models\Memo;
+use App\Models\Kind;
+use App\Models\ReadTime;
 
 class MemoController extends Controller
 {
     public function show(Memo $memo, Kind $kind, ReadTime $read_time)
     {
-        $fake_array = array('本が登録されていません');
-        $books = $kind->getOrderByPoint();
-        
+        $read_times = array(
+                    'today' => $read_time->getTodayReadTime(),
+                    'week' => $read_time->getWeekReadTime(),
+                    );
+                    
         return view('home.mypage')->with([
             'memos' => $memo->getPaginateByLimit(),
-            'book_list' => $books,
+            'book_list' => $kind->getOrderByPoint(),
+            'read_times' => $read_times,
             ]);
     }
     
