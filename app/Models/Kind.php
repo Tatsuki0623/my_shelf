@@ -87,18 +87,19 @@ class Kind extends Model
                             );
     }
     
-    public function getOrderBypoint()
+    public function getOrderByPoint()
     {
         $user = Auth::user()->id;
         $comic = $this::find(1);
         $novel = $this::find(2);
         
-        $comics = $comic->books()->with('kind')->where('user_id',$user)->orderBy('point', 'DESC')->get() ?? null;
-        $novels = $novel->books()->with('kind')->where('user_id',$user)->orderBy('point', 'DESC')->get() ?? null;
+        $comics = $comic->books()->with('kind')->where('user_id',$user)->orderBy('point', 'DESC')->get();
+        $novels = $novel->books()->with('kind')->where('user_id',$user)->orderBy('point', 'DESC')->get();
+        
         return $books = array(
-                        'comics' => $comics,
-                        'novels' => $novels,
-                        );
+                '漫画' => $comics,
+                '小説' => $comics,
+                );;
         
     }
 }

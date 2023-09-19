@@ -41,14 +41,33 @@
             
             <div>
                 <h2>一週間の読書量</h2>
-                <p>今日は</p>
-                <p>datatime</p>
+                <div>
+                    <form 
+                </div>
             </div>
             
             <div>
+                <p>今日は</p>
+                <p>DateTime</p>
+            </div>
+            <div>
                 <h2>本の評価</h2>
-                <h4>漫画</h4>
-                <h4>小説</h4>
+                @foreach($book_list as $index => $books)
+                    <div>
+                        <h1>{{$index}}</h1>
+                    @if($books)    
+                            <div>
+                                <ul>
+                        @foreach($books as $book)
+                                    <li><a href="myshelf/books/{{$book->id}}" name="{{$book->point}}">{{$book->point}}:{{$book->title}}</a></li>
+                        @endforeach
+                                </ul>
+                            </div>
+                    @else
+                        <h2>何も入ってないよ</h2>
+                    @endif
+                    </div>
+                @endforeach
             </div>
         
         </center>

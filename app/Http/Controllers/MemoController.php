@@ -9,14 +9,14 @@ use App\Models\Memo;
 
 class MemoController extends Controller
 {
-    public function show(Memo $memo, Kind $kind)
+    public function show(Memo $memo, Kind $kind, ReadTime $read_time)
     {
-        $books = $kind->getOrderBypoint();
+        $fake_array = array('本が登録されていません');
+        $books = $kind->getOrderByPoint();
         
         return view('home.mypage')->with([
             'memos' => $memo->getPaginateByLimit(),
-            'comics' => $books['comics'],
-            'novels' => $books['novels'],
+            'book_list' => $books,
             ]);
     }
     
