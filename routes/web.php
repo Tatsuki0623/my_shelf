@@ -32,7 +32,7 @@ Route::get('/othershelf',function (){
 })->middleware(['auth','verified'])->name('othershelf');
 
 Route::controller(BookController::class)->middleware(['auth'])->group(function(){
-    Route::get('/newbooks','get_rakuten_items')->name('newbooks');
+    Route::get('/newbooks','preview')->name('newbooks');
     Route::post('/myshelf/books','store')->name('book_store');
     Route::get('/myshelf/books/register','register')->name('book_register');
     Route::get('/myshelf/books/{book}','show')->name('book_show');

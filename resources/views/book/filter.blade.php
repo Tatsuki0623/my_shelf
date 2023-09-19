@@ -29,8 +29,9 @@
                     <a href="/myshelf/2">小説</a>
                 </p>
             </div>
+            
             <div>
-                @if(strpos(url()->current(),'/myshelf/1') !== false)
+                @if(strpos(request()->fullUrl(),'kind_id=1') == true)
                     <h1>漫画</h1>
                 @else
                     <h1>小説</h1>
@@ -44,6 +45,7 @@
             <div>
                 <input type="text" name="title" placeholder="本のタイトルを入力"/>
             </div>
+            <input type="hidden" name="kind_id" value="{{ $kind_id}}">
             <input type="submit" value="検索"/>
         </form>
         <h3>{{$keyword}}で検索</h3>

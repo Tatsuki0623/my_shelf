@@ -14,30 +14,47 @@
         </h2>
     </x-slot>
     <body class="antialiased">
+        <center>
         <div>
             <h1>
                 新刊情報
             </h1>
         </div>
         <div>
-            <p>検索</p>
-        </div>
-        @foreach($items as $item)
-        <div>
+            <div>
+                <p>検索</p> 
+            </div>
+            <div>
+                <form action="/newbooks" method="GET">
+                @csrf
+                <div><h3>楽天で検索</h3></div>
                 <div>
-                    <ol>
-                            <li>
-                                <a href = {{$item['itemUrl']}}>{{$item['title']}}</a>
-                                <img src = {{$item['largeImageUrl']}} width="300" height="200"/>
-                                
-                            </li>
-                    </ol>
+                    <input type="text" name="title" placeholder="本のタイトルを入力" size="60"/>
                 </div>
+                    <input type="submit" value="検索"/>
+                </form>
+            </div>
         </div>
-        @endforeach
+        <div>
+            <p>{{$keyword ?? "検索ワードなし"}}で検索</p>
+            @if($items)
+                @foreach($items as $item)
+                    <div>
+                        <a href="{{$item['itemUrl']}}">{{$item['title']}}</a>
+                        <img src="{{$item['largeImageUrl']}}"/>
+                    </div>
+                @endforeach
+            @else
+                <p>検索結果がありません</p>
+                <p>検索ワードを入力してください</p>
+            @endif
+        </div>
+        
+        
         <div>
             <p>ページトップへ</p>
         </div>
+        </center>
     </body>
     </x-app-layout>
 </html>
