@@ -20,13 +20,18 @@
                 <h2>メモ</h2>
                 <div>
                     @if($memos)
+                        <div>
                         @foreach($memos as $memo)
-                            <div>
-                                <p>
+                            <ul>
+                                <li>
                                     <a href="/mypage/memos/{{$memo->id}}">{{$memo->title}}</a>
-                                </p>
-                            </div>
+                                </li>
+                            </ul>
                         @endforeach
+                        </div>
+                        <div class='paginate'>
+                            <p>{{$memos->links() ?? null}}</p>
+                        </div>
                     @else
                         <div>
                             <p>メモが登録されていません</p>
@@ -46,20 +51,36 @@
                         @foreach($read_times['week'] as $read_time)
                             <p>{{$read_time->read_time}}</p>
                         @endforeach
+                        <div class='paginate'>
+                            {{$read_times['week']->links() ?? null}}
+                        </div> 
                     @else
                         <p>読書時間が登録されていません</p>
                     @endif
                 </div>
                 <div>
-                    <form action="/mypage/ReadTime" method="POST">
-                        @csrf
-                        <div>
-                            <h2>今日の読書時間</h2>
-                            <input type="number" name="ReadTime[read_time]" placeholder="{{$read_times['today']->read_time ?? '0'}}" min="0" max="24"/>
-                            <p class="ReadTime__error" style="color:red">{{$errors->first('ReadTime.read_time')}}</p>
-                        </div>
-                        <input type="submit" value="追加"/>
-                    </form>
+                    @if($read_times['today'])
+                        <form action="/mypage/ReadTime/{{$read_times['today']->id}}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div>
+                                <h2>今日の読書時間</h2>
+                                <input type="number" name="ReadTime[read_time]" placeholder="{{$read_times['today']->read_time}}" min="0" max="24"/>
+                                <p class="ReadTime__error" style="color:red">{{$errors->first('ReadTime.read_time')}}</p>
+                            </div>
+                            <input type="submit" value="変更"/>
+                        </form>
+                    @else
+                        <form action="/mypage/ReadTime" method="POST">
+                            @csrf
+                            <div>
+                                <h2>今日の読書時間</h2>
+                                <input type="number" name="ReadTime[read_time]" placeholder="0" min="0" max="24"/>
+                                <p class="ReadTime__error" style="color:red">{{$errors->first('ReadTime.read_time')}}</p>
+                            </div>
+                            <input type="submit" value="追加"/>
+                        </form>
+                    @endif
                 </div>
             </div>
             

@@ -63,6 +63,7 @@ Route::controller(MemoController::class)->middleware(['auth'])->group(function()
 
 Route::controller(ReadTimeController::class)->middleware(['auth'])->group(function(){
     Route::post('/mypage/ReadTime','store')->name('ReadTime_store');
+    Route::put('/mypage/ReadTime/{read_time}','update')->name('ReadTime_update');
 });
 
 
