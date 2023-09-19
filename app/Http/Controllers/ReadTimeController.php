@@ -17,4 +17,10 @@ class ReadTimeController extends Controller
         $read_time->fill($input)->save();
         return redirect('/mypage');
     }
+    public function update(ReadTimeRequest $request, ReadTime $read_time)
+    {
+        $input = $request['ReadTime'];
+        $read_time->fill($input)->save();
+        return redirect('/mypage');
+    }
 }

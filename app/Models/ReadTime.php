@@ -21,15 +21,17 @@ class ReadTime extends Model
         return $this->belongsTo(User::class);
     }
     
-    public function getWeekReadTime()
+    public function getReadTimes()
     {
         $user = Auth::user()->id;
-        return $this->where('user_id',$user)->orderBy('created_at','DESC')->paginate(7);
-    }
-    
-    public function getTodayReadTime()
-    {
-        $user = Auth::user()->id;
-        return $this->where('user_id',$user)->whereDay('created_at',date('d'))->orderBy('created_at','DESC')->first();
+        
+        $week = $this->where('user_id',$user)->orderBy('created_at','DESC')->paginate(7,['*'],'ReadTime-page');
+        $today = $this->where('user_id',$user)->whereDay('created_at',date('d'))->orderBy('created_at','DESC')->first();
+        
+        return $read_times = array(
+                            'week' => $week,
+                            'today' => $today,
+                            );
+        
     }
 }

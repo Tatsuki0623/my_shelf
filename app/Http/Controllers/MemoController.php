@@ -12,15 +12,10 @@ class MemoController extends Controller
 {
     public function show(Memo $memo, Kind $kind, ReadTime $read_time)
     {
-        $read_times = array(
-                    'today' => $read_time->getTodayReadTime(),
-                    'week' => $read_time->getWeekReadTime(),
-                    );
-                    
         return view('home.mypage')->with([
             'memos' => $memo->getPaginateByLimit(),
             'book_list' => $kind->getOrderByPoint(),
-            'read_times' => $read_times,
+            'read_times' => $read_time->getReadTimes(),
             ]);
     }
     
