@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\KindController;
 use App\Http\Controllers\MemoController;
 use App\Http\Controllers\ReadTimeController;
+use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,10 +27,6 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/othershelf',function (){
-    return view('home.othershelf');
-})->middleware(['auth','verified'])->name('othershelf');
 
 Route::controller(BookController::class)->middleware(['auth'])->group(function(){
     Route::get('/newbooks','preview')->name('newbooks');
@@ -66,6 +63,11 @@ Route::controller(ReadTimeController::class)->middleware(['auth'])->group(functi
     Route::put('/mypage/ReadTime/{read_time}','update')->name('ReadTime_update');
 });
 
+Route::controller(FavoriteController::class)->middleware(['auth'])->group(function(){
+    Route::get('/othershelf','show')->name('othershelf');
+    Route::post('/othershelf/favorite','favorite')->name('user_favorite');
+    Route::delete('/othershelf/favorite/{favorite}','unFavorite')->name('user_favorite_delete');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

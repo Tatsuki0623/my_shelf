@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Auth;
 
 
 class User extends Authenticatable
@@ -61,8 +62,38 @@ class User extends Authenticatable
         return $this->hasMany(ReadTime::class);
     }
     
+    public function favoriteUsers()
+    {
+        return $this->belongsToMany(User::class,'favorites','registing_id','registered_id')->withPivot('id','registing_id','registered_id');
+    }
+    
     public function favorites()
     {
-        return $this->belongsToMany(User::class,'favorites','registing_id','registered_id');
+        return $this->belongsToMany(User::class,'favorites','registered_id','registing_id');
+    }
+    
+    
+    public function getAllUsers()
+    {
+        return $this->all();
+    }
+    
+    public function getFavoriteUser()
+    {
+        $favorite_users = Auth::user()->favoriteUsers()->get();
+        
+        return $favorite_users;
+    }
+    
+    public function getNotFavoriteUser()
+    {
+        $favorited_users = $this->getFavoriteUser();
+        
+        $favorited_users_id = array();
+        foreach($favorited_users as $favorited_user){
+            $favorited_users_id[] = $favorited_user->id;
+        }
+        
+        return $this->whereNotIn('id',$favorited_users_id)->get();
     }
 }
