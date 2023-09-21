@@ -73,11 +73,6 @@ class User extends Authenticatable
     }
     
     
-    public function getAllUsers()
-    {
-        return $this->all();
-    }
-    
     public function getFavoriteUser()
     {
         $favorite_users = Auth::user()->favoriteUsers()->get();
@@ -88,8 +83,9 @@ class User extends Authenticatable
     public function getNotFavoriteUser()
     {
         $favorited_users = $this->getFavoriteUser();
-        
-        $favorited_users_id = array();
+        $my_id = Auth::user()->id;
+    
+        $favorited_users_id = array($my_id);
         foreach($favorited_users as $favorited_user){
             $favorited_users_id[] = $favorited_user->id;
         }

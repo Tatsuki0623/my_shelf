@@ -41,11 +41,12 @@ Route::controller(BookController::class)->middleware(['auth'])->group(function()
 });
 
 Route::controller(KindController::class)->middleware(['auth'])->group(function(){
-    Route::get('/myshelf/1','show')->name('myshelf_commic');
-    Route::get('/myshelf/2','show')->name('myshelf_novel');
-    Route::get('/myshelf/filter','filter')->name('myshelf_filter');
-    Route::get('/myshelf/info','info')->name('myshelf_info');
-    Route::get('/test','evaluation')->name('test');
+    Route::get('/myshelf/users/{user}/1','show')->name('myshelf_commic');
+    Route::get('/myshelf/users/{user}/2','show')->name('myshelf_novel');
+    Route::get('/myshelf/users/{user}/filter','filter')->name('myshelf_filter');
+    Route::get('/myshelf/users/{user}/info','info')->name('myshelf_info');
+    Route::get('/othershelf/users/{user}/1','show')->name('othershelf');
+    Route::get('/othershelf/users/{user}/2','show')->name('othershelf');
 });
 
 Route::controller(MemoController::class)->middleware(['auth'])->group(function(){

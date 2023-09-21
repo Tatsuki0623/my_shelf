@@ -40,7 +40,8 @@
                         <form action="/othershelf/favorite" method="POST" name="{{$user->name}}フォーム">
                             @csrf
                             <input type="hidden" name="favorite[registered_id]" value="{{$user->id}}">
-                            <p>{{$user->name}}</p>
+                            <p><a href="/othershelf/users/{{$user->id}}/1">{{$user->name}}</a></p>
+                            <p>の本棚</p>
                             <input type="submit" value="お気に入り"/>
                         </form>
                     </div>
@@ -52,7 +53,7 @@
             @if($favorited_users)
                 @foreach($favorited_users as $user)
                     <div>
-                    <form action="/othershelf/favorite/{{$user->pivot->id}}" id="form_{{$user->pivot->id}}" method="POST">
+                    <form action="/othershelf/favorite/users/{{$user->pivot->id}}" id="form_{{$user->pivot->id}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <p>
