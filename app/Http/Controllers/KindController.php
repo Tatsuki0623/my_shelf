@@ -4,39 +4,42 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kind;
+use App\Models\User;
 
 class KindController extends Controller
 {
-    public function show(Request $request,Kind $kind)
+    public function show(Request $request, Kind $kind, User $user)
     {
-        
         $split_url = str_replace(url('/myshelf/'),"",request()->fullUrl());
         $kind_id = $split_url[-1];
         
-        $current_url = url()->current();
-        $keyword = $request['title'];
+        $user_id = $user->id;
         
         return view('home.myshelf')->with([
-            'books' => $kind->getPaginateByLimit($current_url),
+            'user_id' => $user_id,
+            'books' => $kind->getPaginateByLimit($kind_id,$user_id),
             'kind_id' => $kind_id,
             ]);
     }
     
-    public function filter(Request $request, Kind $kind)
+    public function filter(Request $request, Kind $kind, User $user)
     {
         $split_url = str_replace(url('/myshelf/'),"",request()->fullUrl());
         $kind_id = $split_url[-1];
         
         $keyword = $request['title'];
         $kind_id = $request['kind_id'];
+        $user_id = $user->id;
+        
         return view('book.filter')->with([
-            'filters' => $kind->getFilter($keyword,$kind_id),
+            'filters' => $kind->getFilter($keyword,$kind_id,$user_id),
             'keyword' => $keyword,
             'kind_id' => $kind_id,
+            'user_id' => $user_id,
             ]); 
     }
     
-    public function info(Kind $kind)
+    public function info(Kind $kind, User $user)
     {
         return view('book.info')->with(['books' => $kind->getBookData()]);
     }

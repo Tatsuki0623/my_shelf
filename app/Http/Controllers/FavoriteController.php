@@ -9,7 +9,7 @@ use App\Models\Favorite;
 
 class FavoriteController extends Controller
 {
-    public function show(Favorite $favorite, User $user)
+    public function show(User $user)
     {
         
         return view('home.othershelf')->with([

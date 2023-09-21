@@ -25,21 +25,21 @@
         <div>
             <div>
                 <p>
-                    <a href="/myshelf/1">漫画</a>
-                    <a href="/myshelf/2">小説</a>
+                    <a href="/myshelf/users/{{$user_id}}/1">漫画</a>
+                    <a href="/myshelf/users/{{$user_id}}/2">小説</a>
                 </p>
             </div>
             <div>
-                @if(url()->current() == url('/') . '/myshelf/1')
+                @if($kind_id == 1)
                     <h1>漫画</h1>
-                @else(url()->current() == url('/') . '/myshelf/2')
+                @else
                     <h1>小説</h1>
                 @endif
             </div>
             <a href="/myshelf/books/register">本の登録</a>
         </div>
         
-        <form action="/myshelf/filter" method="GET">
+        <form action="/myshelf/users/{{$user_id}}/filter" method="GET">
             @csrf
             <div><h3>本棚を検索</h3></div>
             <div>
@@ -75,7 +75,7 @@
         </div>
         
         <div>
-            <a href="/myshelf/info">統計情報</a>
+            <a href="/myshelf/users/{{$user_id}}/info">統計情報</a>
             <a href="/myshelf/books/register">本の登録</a>
             <p>ページトップへ</p>
         </div>

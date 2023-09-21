@@ -18,44 +18,33 @@ class Kind extends Model
     
     
     
-    public function getPaginateByLimit($current_url)
+    public function getPaginateByLimit($kind_id, $user_id)
     {
-        
-        
-        $split_url = substr($current_url,-1,1);
-        $kind_id = $split_url[-1];
-        
         if ($kind_id == "1"){
             $kind = $this::find(1);
         }elseif($kind_id == "2"){
             $kind = $this::find(2);
-        }else{
-            return null;
         }
-
-        $user = Auth::user()->id;
-        return $kind->books()->with('kind')->where('user_id',$user)->orderBy('created_at', 'DESC')->paginate(5);
+        
+        return $kind->books()->with('kind')->where('user_id',$user_id)->orderBy('created_at', 'DESC')->paginate(5);
     }
     
-    public function getFilter($keyword, $kind_id)
+    public function getFilter($keyword, $kind_id,$user_id)
     {
         if($keyword){
             
             $kind = Kind::find($kind_id);
-            $user = Auth::user()->id;
-            $filter = $kind->books()->where([['user_id',$user],['title',"LIKE","%$keyword%"]])->orderBy('created_at', 'DESC')->paginate(5);
+            $filter = $kind->books()->where([['user_id',$user_id],['title',"LIKE","%$keyword%"]])->orderBy('created_at', 'DESC')->paginate(5);
             
             return $filter;
         }else{
             
-            return null;
+            return;
         }
     }
     
-    public function getBookData()
+    public function getBookData($user_id)
     {
-        $user = Auth::user()->id;
-        
         $register_books = Book::get()->where('user_id',$user) ?? 0;
         $comic = $this::find(1);
         $novel = $this::find(2);
