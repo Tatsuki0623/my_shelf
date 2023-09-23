@@ -8,6 +8,7 @@ use App\Http\Requests\BookRequest;
 use RakutenRws_Client;
 use App\Models\Book;
 use App\Models\Kind;
+use App\Models\User;
 
 
 class BookController extends Controller
@@ -46,19 +47,25 @@ class BookController extends Controller
         return redirect('/myshelf/books/' . $book->id);
     }
     
-    public function show(Book $book)
+    public function show(User $user,Book $book)
     {
-        return view('book.show')->with(['book' => $book]);
+        return view('book.show')->with([
+            'book' => $book,
+            'user' => $user,
+            ]);
     }
     
-    public function register(Kind $kind)
+    public function register(Kind $kind,)
     {
         return view('book.register')->with(['kinds' => $kind->get()]);
     }
     
-    public function edit(Book $book)
+    public function edit(Book $book, User $user)
     {
-        return view('book.edit')->with(['book' => $book]);
+        return view('book.edit')->with([
+            'book' => $book,
+            'user' => $user,
+            ]);
     }
     
     public function update(BookRequest $request, Book $book)
@@ -68,7 +75,7 @@ class BookController extends Controller
         return redirect('/myshelf/books/' . $book->id);
     }
     
-    public function search(Request $request, Book $book)
+    public function search(Request $request, Book $book, User $user)
     {
         if($request->title)
         {
@@ -79,6 +86,7 @@ class BookController extends Controller
         return view('book.search')->with([
             'items' => $items,
             'book' => $book,
+            'user' => $user,
         ]);
     }
     

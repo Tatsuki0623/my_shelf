@@ -23,10 +23,10 @@ class Memo extends Model
     }
     
     
-    public function getPaginateByLimit()
+    public function getPaginateByLimit($user)
     {
-        $user = Auth::user()->id;
+        $user_id = $user->id;
         
-        return $this->where('user_id',$user)->orderBy('created_at', 'DESC')->paginate(5,['*'],'memo-page');
+        return $this->where('user_id',$user_id)->orderBy('created_at', 'DESC')->paginate(5,['*'],'memo-page');
     }
 }

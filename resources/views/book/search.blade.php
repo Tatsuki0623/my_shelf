@@ -6,7 +6,7 @@
     <x-app-layout>
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('私の本棚') }}
+                {{$user->name}}の本棚
             </h2>
         </x-slot>
     <body>

@@ -35,59 +35,62 @@
         </div>
         <div>
             <div>
-                @foreach($not_favorite_users as $user)
+                @foreach($unFavorite_users as $user)
                     <div>
                         <form action="/othershelf/favorite" method="POST" name="{{$user->name}}フォーム">
                             @csrf
                             <input type="hidden" name="favorite[registered_id]" value="{{$user->id}}">
-                            <p><a href="/othershelf/users/{{$user->id}}/1">{{$user->name}}</a></p>
-                            <p>の本棚</p>
+                            <p>{{$user->name}}</p>
+                            <p>
+                                <a href="/othershelf/users/{{$user->id}}/1">本棚へ</a>
+                                <a href="/mypage/users/{{$user->id}}">マイページへ</a>
+                            </p>
                             <input type="submit" value="お気に入り"/>
                         </form>
                     </div>
                 @endforeach
+                <div class='paginate'>
+                    {{$unFavorite_users->links()}}
+                </div>
             </div>
         </div>
         <br/>
-        <div>
-            @if($favorited_users)
-                @foreach($favorited_users as $user)
-                    <div>
-                    <form action="/othershelf/favorite/users/{{$user->pivot->id}}" id="form_{{$user->pivot->id}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <p>
-                            {{$user->name}}
-                            <button type="button" onclick="deletePost({{$user->pivot->id}})">お気に入り解除</button>
-                        </p>
-                    </form>
-                    </div>
-                @endforeach
-            @else
-                <p>お気に入りユーザーは登録されていません</p>
-            @endif
-        </div>
+        
         <br/>
         <div>
             <div>
                 <p>-----------お気に入りユーザ----------</p>
             </div>
             <div>
-                @if($favorited_users)
-                    @foreach($favorited_users as $favorited_user)
-                        <p>{{$favorited_user->name}}</p>
-                    @endforeach
-                @else
-                    <p>お気に入りユーザーは登録されていません</p>
-                @endif
-            </div>
+            @if($favorited_users)
+                @foreach($favorited_users as $user)
+                    <div>
+                    <form action="/othershelf/favorite/{{$user->pivot->id}}" id="form_{{$user->pivot->id}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <p>{{$user->name}}</p>
+                        <p>
+                            <a href="/othershelf/users/{{$user->id}}/1">本棚へ</a>
+                            <a href="/mypage/users/{{$user->id}}">マイページへ</a>
+                        </p>
+                        <button type="submit" onclick="deletePost({{$user->id}})">お気に入り解除</button>
+                    </form>
+                    </div>
+                @endforeach
+                <div class='paginate'>
+                    {{$favorited_users->links()}}
+                </div>
+            @else
+                <p>お気に入りユーザーは登録されていません</p>
+            @endif
+        </div>
             <div>
                 <p>------------------------------------</p>
             </div>
         </div>
         <br/>
         <div>
-            <p>ページトップへ</p>
+            <p><a href="#">ページトップへ戻る</a></p>
         </div>
         </center>
     </body>

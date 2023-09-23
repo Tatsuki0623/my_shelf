@@ -21,12 +21,12 @@ class ReadTime extends Model
         return $this->belongsTo(User::class);
     }
     
-    public function getReadTimes()
+    public function getReadTimes($user)
     {
-        $user = Auth::user()->id;
+        $user_id = $user->id;
         
-        $week = $this->where('user_id',$user)->orderBy('created_at','DESC')->paginate(7,['*'],'ReadTime-page');
-        $today = $this->where('user_id',$user)->whereDay('created_at',date('d'))->orderBy('created_at','DESC')->first();
+        $week = $this->where('user_id',$user_id)->orderBy('created_at','DESC')->paginate(7,['*'],'ReadTime-page');
+        $today = $this->where('user_id',$user_id)->whereDay('created_at',date('d'))->orderBy('created_at','DESC')->first();
         
         return $read_times = array(
                             'week' => $week,

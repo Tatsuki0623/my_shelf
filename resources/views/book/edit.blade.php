@@ -7,7 +7,7 @@
     <x-app-layout>
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('私の本棚') }}
+                {{Auth->user()->name}}の本棚
             </h2>
         </x-slot>
     <body>
@@ -39,7 +39,7 @@
                 </div>
                 <input type="submit" value="保存"/>
             </form>
-            <div class="back">[<a href="/myshelf/books/{{$book->id}}">back</a>]</div>
+            <div class="back">[<a href="javascript:history.back()">back</a>]</div>
         </center>
     </body>
     </x-app-layout>

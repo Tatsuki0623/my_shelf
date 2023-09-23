@@ -16,7 +16,7 @@
     <x-app-layout>
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('私の本棚') }}
+                {{$user->name}}の本棚
             </h2>
         </x-slot>
     <body>
@@ -26,19 +26,16 @@
                 <h2>title</h2>
             </div>
             <div>
-                <a href="{{$book->link_rakuten ?? null}}">{{$book->title}}</a>
+                @if($book->link_rakuten)
+                    <a href="{{$book->link_rakuten}}">{{$book->title}}</a>
+                @else
+                    <p>{{$book->title}}</p>
+                @endif
                 <img src="{{$book->image ?? "/no_image.jpg"}}" width="200" height="100"/>
             </div>
         </div>
         <div>
-            <P>
-                <a href="/myshelf/books/{{$book->id}}/link/search">リンクをつける</a>
-            </p>
-        </div>
-        <div>
-            <div>
-                <h2>感想</h2>
-            </div>
+            <h2>感想</h2>
             <div>
                 <p>{{$book->impression ?? ""}}</p>
             </div>
@@ -50,7 +47,7 @@
             <p>点</p>
         </div>
         <div>
-            <h3>何巻まで持っているか</h3>
+            <h3>所有巻数</h3>
             <div>
                 @if($book->volume == null)
                     <p>巻数は登録されていません</p>
@@ -59,15 +56,27 @@
                 @endif
             </div>
         </div>
-        <div>
+        
+        @if($book->user_id == Auth::user()->id)
+            <div>
+                <P>
+                    <a href="/myshelf/books/{{$book->id}}/link/search">リンクをつける</a>
+                </p>
+            </div>
+            <div>
+                <div>
+                    <button onclick="location.href='/myshelf/books/{{$book->id}}/edit'">編集</button>
+                </div>
+            </div>
+            <div>
             <form action="/myshelf/books/{{$book->id}}" id="form_{{$book->id}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="button" onclick="deletePost({{$book->id}})">削除</button> 
             </form>
         </div>
-        <button onclick="location.href='/myshelf/books/{{$book->id}}/edit'">編集</button>
-        <div class="back">[<a href="/myshelf/{{$book->kind_id}}">back</a>]</div>
+        @endif
+        <div class="back">[<a href="/myshelf/users/{{$user->id}}/{{$book->kind_id}}">back</a>]</div>
         </center>
     </body>
     </x-app-layout>

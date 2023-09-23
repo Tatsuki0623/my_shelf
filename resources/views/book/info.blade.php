@@ -7,7 +7,7 @@
     <x-app-layout>
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('私の本棚') }}
+                {{$user->name}}の本棚
             </h2>
         </x-slot>
     <body>
@@ -40,7 +40,7 @@
                 <h3>{{$books['total_novels']}}　冊</h3>
             </li>
         </ul>
-        <div class="back">[<a href="/">back</a>]</div>
+        <div class="back">[<a href="javascript:history.back()">back</a>]</div>
         </center>
     </body>
     </x-app-layout>

@@ -75,7 +75,7 @@ class User extends Authenticatable
     
     public function getFavoriteUser()
     {
-        $favorite_users = Auth::user()->favoriteUsers()->get();
+        $favorite_users = Auth::user()->favoriteUsers()->paginate(10,['*'],'Favorite-page');
         
         return $favorite_users;
     }
@@ -90,6 +90,6 @@ class User extends Authenticatable
             $favorited_users_id[] = $favorited_user->id;
         }
         
-        return $this->whereNotIn('id',$favorited_users_id)->get();
+        return $this->whereNotIn('id',$favorited_users_id)->paginate(10,['*'],'unFavorite-page');
     }
 }

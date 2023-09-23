@@ -7,7 +7,7 @@
     <x-app-layout>
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('私の本棚') }}
+                {{Auth->user()->name}}の本棚
             </h2>
         </x-slot>
     <body>
@@ -22,13 +22,13 @@
             </div>
             <select name='book[kind_id]'>
                 @foreach($kinds as $kind)
-                    <option value="{{ $kind->id }}">{{ $kind->name }}</option>
+                    <option value="{{$kind->id}}">{{$kind->name}}</option>
                 @endforeach
             </select>
             
             <p><input type="submit" value="登録"/></p>
         </form>
-        <div class="back">[<a href="/myshelf/1">back</a>]</div>
+        <div class="back">[<a href="javascript:history.back()">back</a>]</div>
         </center>
     </body>
     </x-app-layout>

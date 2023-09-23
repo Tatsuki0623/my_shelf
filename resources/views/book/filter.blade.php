@@ -17,7 +17,7 @@
     <x-app-layout>
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('私の本棚') }}
+                {{$user->name}}の本棚
             </h2>
         </x-slot>
     <body>
@@ -25,8 +25,8 @@
         <div>
             <div>
                 <p>
-                    <a href="/myshelf/users/{{$user_id}}/1">漫画</a>
-                    <a href="/myshelf/users/{{$user_id}}/2">小説</a>
+                    <a href="/myshelf/users/{{$user->id}}/1">漫画</a>
+                    <a href="/myshelf/users/{{$user->id}}/2">小説</a>
                 </p>
             </div>
             
@@ -39,13 +39,13 @@
             </div>
             <a href="/myshelf/books/register">本の登録</a>
         </div>
-        <form action="/myshelf/users/{{$user_id}}/filter" method="GET">
+        <form action="/myshelf/users/{{$user->id}}/filter" method="GET">
             @csrf
             <div><h3>本棚を検索</h3></div>
             <div>
                 <input type="text" name="title" placeholder="本のタイトルを入力"/>
             </div>
-            <input type="hidden" name="kind_id" value="{{ $kind_id}}">
+            <input type="hidden" name="kind_id" value="{{$kind_id}}">
             <input type="submit" value="検索"/>
         </form>
         <h3>{{$keyword}}で検索</h3>
@@ -53,7 +53,7 @@
         @if($filters)
             @foreach($filters as $book)
                 <div>
-                    <a href="/myshelf/books/{{$book->id}}">{{$book->title}}</a>
+                    <a href="/myshelf/books/users/{{$user->id}}/{{$book->id}}">{{$book->title}}</a>
                     <img src="{{$book->image}}" width="100" height="50"/>
                 </div>
                 <div>
@@ -75,9 +75,9 @@
         </div>
         
         <div>
-            <a href="/myshelf/users/{{$user_id}}/info">統計情報</a>
+            <a href="/myshelf/users/{{$user->id}}/info">統計情報</a>
             <a href="/myshelf/books/register">本の登録</a>
-            <p>ページトップへ</p>
+            <p><a href="#">ページトップへ戻る</a></p>
         </div>
         
         </center>
