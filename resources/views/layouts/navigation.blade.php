@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('mypage')" :active="request()->routeIs('mypage')">
+                    <x-nav-link :href="route('mypage', Auth::user()->id)" :active="request()->routeIs('/mypage/users/{user}')">
                         {{__('マイページ')}}
                     </x-nav-link>
                     <x-nav-link :href="route('myshelf_commic', Auth::user()->id)" :active="request()->routeIs('myshelf/users/{user}/1')">

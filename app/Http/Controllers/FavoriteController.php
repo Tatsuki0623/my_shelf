@@ -14,7 +14,7 @@ class FavoriteController extends Controller
         
         return view('home.othershelf')->with([
             'favorited_users' => $user->getFavoriteUser(),
-            'not_favorite_users' => $user->getNotFavoriteUser(),
+            'unFavorite_users' => $user->getNotFavoriteUser(),
             ]);
     }
     

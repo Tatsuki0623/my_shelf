@@ -16,7 +16,7 @@ class KindController extends Controller
         $user_id = $user->id;
         
         return view('home.myshelf')->with([
-            'user_id' => $user_id,
+            'user' => $user,
             'books' => $kind->getPaginateByLimit($kind_id,$user_id),
             'kind_id' => $kind_id,
             ]);
@@ -35,12 +35,16 @@ class KindController extends Controller
             'filters' => $kind->getFilter($keyword,$kind_id,$user_id),
             'keyword' => $keyword,
             'kind_id' => $kind_id,
-            'user_id' => $user_id,
+            'user' => $user,
             ]); 
     }
     
     public function info(Kind $kind, User $user)
     {
-        return view('book.info')->with(['books' => $kind->getBookData()]);
+        $user_id = $user->id;
+        return view('book.info')->with([
+            'books' => $kind->getBookData($user_id),
+            'user' => $user,
+            ]);
     }
 }

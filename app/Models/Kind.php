@@ -45,17 +45,17 @@ class Kind extends Model
     
     public function getBookData($user_id)
     {
-        $register_books = Book::get()->where('user_id',$user) ?? 0;
+        $register_books = Book::get()->where('user_id',$user_id) ?? "0";
         $comic = $this::find(1);
         $novel = $this::find(2);
         
-        $all_register_books = $register_books->count() ?? 0;
-        $comics = $comic->books()->with('kind')->where('user_id',$user)->get()->count() ?? 0;
-        $novels = $novel->books()->with('kind')->where('user_id',$user)->get()->count() ?? 0;
+        $all_register_books = $register_books->count() ?? "0";
+        $comics = $comic->books()->with('kind')->where('user_id',$user_id)->get()->count() ?? "0";
+        $novels = $novel->books()->with('kind')->where('user_id',$user_id)->get()->count() ?? "0";
         
-        $total_books = $register_books->sum('volume') ?? 0;
-        $total_comics = $comic->books()->with('kind')->where('user_id',$user)->get()->sum('volume') ?? 0;
-        $total_novels = $novel->books()->with('kind')->where('user_id',$user)->get()->sum('volume') ?? 0;
+        $total_books = $register_books->sum('volume') ?? "0";
+        $total_comics = $comic->books()->with('kind')->where('user_id',$user_id)->get()->sum('volume') ?? "0";
+        $total_novels = $novel->books()->with('kind')->where('user_id',$user_id)->get()->sum('volume') ?? "0";
         
         return $book_data = array(
                             'all_register_books' => $all_register_books,
@@ -67,14 +67,14 @@ class Kind extends Model
                             );
     }
     
-    public function getOrderByPoint()
+    public function getOrderByPoint($user)
     {
-        $user = Auth::user()->id;
+        $user_id = $user->id;
         $comic = $this::find(1);
         $novel = $this::find(2);
         
-        $comics = $comic->books()->with('kind')->where('user_id',$user)->orderBy('point', 'DESC')->get();
-        $novels = $novel->books()->with('kind')->where('user_id',$user)->orderBy('point', 'DESC')->get();
+        $comics = $comic->books()->with('kind')->where('user_id',$user_id)->orderBy('point', 'DESC')->get();
+        $novels = $novel->books()->with('kind')->where('user_id',$user_id)->orderBy('point', 'DESC')->get();
         
         return $books = array(
                 '漫画' => $comics,

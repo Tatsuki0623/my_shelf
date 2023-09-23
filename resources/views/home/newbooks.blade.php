@@ -16,11 +16,6 @@
     <body class="antialiased">
         <center>
         <div>
-            <h1>
-                新刊情報
-            </h1>
-        </div>
-        <div>
             <div>
                 <p>検索</p> 
             </div>
@@ -36,7 +31,9 @@
             </div>
         </div>
         <div>
-            <p>{{$keyword ?? "検索ワードなし"}}で検索</p>
+            @if($keyword)
+                <p>{{$keyword}}で検索</p>
+            @endif
             @if($items)
                 @foreach($items as $item)
                     <div>

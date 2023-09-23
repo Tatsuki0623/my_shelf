@@ -10,54 +10,40 @@
     <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            マイページ
+            {{$user->name}}のマイページ
         </h2>
     </x-slot>
     <body class="antialiased">
         <center>
-            <h1>{{Auth::user()->name}}のマイページ</h1>
-            <div>
-                <h2>メモ</h2>
+            @if($user->id == Auth::user()->id)
                 <div>
-                    @if($memos)
-                        <div>
-                        @foreach($memos as $memo)
-                            <ul>
-                                <li>
-                                    <a href="/mypage/memos/{{$memo->id}}">{{$memo->title}}</a>
-                                </li>
-                            </ul>
-                        @endforeach
-                        </div>
-                        <div class='paginate'>
-                            <p>{{$memos->links() ?? null}}</p>
-                        </div>
-                    @else
-                        <div>
-                            <p>メモが登録されていません</p>
-                            <p>メモの追加から新しく登録してください</p>
-                        </div>
-                    @endif
+                    <h2>メモ</h2>
+                    <div>
+                        @if($memos)
+                            <div>
+                            @foreach($memos as $memo)
+                                <ul>
+                                    <li>
+                                        <a href="/mypage/memos/{{$memo->id}}">{{$memo->title}}</a>
+                                    </li>
+                                </ul>
+                            @endforeach
+                            </div>
+                            <div class='paginate'>
+                                <p>{{$memos->links() ?? null}}</p>
+                            </div>
+                        @else
+                            <div>
+                                <p>メモが登録されていません</p>
+                                <p>メモの追加から新しく登録してください</p>
+                            </div>
+                        @endif
+                    </div>
+                    <div>
+                        <a href="/mypage/memos/add">メモの追加</a>
+                    </div>
                 </div>
-                <div>
-                    <a href="/mypage/memos/add">メモの追加</a>
-                </div>
-            </div>
-            
-            <div>
-                <h2>一週間の読書時間</h2>
-                <div>
-                    @if($read_times['week'])
-                        @foreach($read_times['week'] as $read_time)
-                            <p>{{$read_time->read_time}}</p>
-                        @endforeach
-                        <div class='paginate'>
-                            {{$read_times['week']->links() ?? null}}
-                        </div> 
-                    @else
-                        <p>読書時間が登録されていません</p>
-                    @endif
-                </div>
+                <br/>
                 <div>
                     @if($read_times['today'])
                         <form action="/mypage/ReadTime/{{$read_times['today']->id}}" method="POST">
@@ -80,6 +66,22 @@
                             </div>
                             <input type="submit" value="追加"/>
                         </form>
+                    @endif
+                </div>
+            @endif
+            
+            <div>
+                <h2>一週間の読書時間</h2>
+                <div>
+                    @if($read_times['week'])
+                        @foreach($read_times['week'] as $read_time)
+                            <p>{{$read_time->read_time}}</p>
+                        @endforeach
+                        <div class='paginate'>
+                            {{$read_times['week']->links() ?? null}}
+                        </div> 
+                    @else
+                        <p>読書時間が登録されていません</p>
                     @endif
                 </div>
             </div>
@@ -107,7 +109,14 @@
                     </div>
                 @endforeach
             </div>
-        
+            
+            @if($user->id != Auth::user()->id)
+                <div>
+                    <p><a href="/othershelf/users/{{$user->id}}/1">本棚へ</a></p>
+                </div>
+            @endif
+            
+            <p><a href="#">ページトップへ戻る</a></p>
         </center>
             
     </body>
