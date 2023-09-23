@@ -89,6 +89,23 @@
                 <a href="/myshelf/books/register">本の登録</a>
             @else
                 <a href="/mypage/users/{{$user->id}}">マイページへ</a>
+                @if($user->checkFavorite($user->id))
+                        <div>
+                            <form action="/othershelf/favorite/{{$user->id}}/detach" id="form_{{$user->id}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" onclick="deletePost({{$user->id}})">お気に入り解除</button>
+                            </form>
+                        </div>
+                    @else
+                        <div>
+                            <form action="/othershelf/favorite/{{$user->id}}/attach" method="POST" name="{{$user->name}}フォーム">
+                                @csrf
+                                <input type="hidden" name="favorite[registered_id]" value="{{$user->id}}">
+                                <input type="submit" value="お気に入り"/>
+                            </form>
+                        </div>
+                    @endif
             @endif
             <p><a href="#">ページトップへ戻る</a></p>
         </div>
