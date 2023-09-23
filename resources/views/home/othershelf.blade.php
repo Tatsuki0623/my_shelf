@@ -29,52 +29,32 @@
                 私の本棚
             </h2>
         </div>
+        <br/>
         <div>
             <h2>みんなの本棚</h2>
             <p>新たな出会いをあなたに</p>
         </div>
-        <div>
-            <div>
-                @foreach($unFavorite_users as $user)
-                    <div>
-                        <form action="/othershelf/favorite" method="POST" name="{{$user->name}}フォーム">
-                            @csrf
-                            <input type="hidden" name="favorite[registered_id]" value="{{$user->id}}">
-                            <p>{{$user->name}}</p>
-                            <p>
-                                <a href="/othershelf/users/{{$user->id}}/1">本棚へ</a>
-                                <a href="/mypage/users/{{$user->id}}">マイページへ</a>
-                            </p>
-                            <input type="submit" value="お気に入り"/>
-                        </form>
-                    </div>
-                @endforeach
-                <div class='paginate'>
-                    {{$unFavorite_users->links()}}
-                </div>
-            </div>
-        </div>
-        <br/>
-        
         <br/>
         <div>
             <div>
-                <p>-----------お気に入りユーザ----------</p>
+                <p>---------------------------お気に入りユーザ-----------------------</p>
             </div>
             <div>
             @if($favorited_users)
                 @foreach($favorited_users as $user)
                     <div>
-                    <form action="/othershelf/favorite/{{$user->pivot->id}}" id="form_{{$user->pivot->id}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <p>{{$user->name}}</p>
-                        <p>
-                            <a href="/othershelf/users/{{$user->id}}/1">本棚へ</a>
-                            <a href="/mypage/users/{{$user->id}}">マイページへ</a>
-                        </p>
-                        <button type="submit" onclick="deletePost({{$user->id}})">お気に入り解除</button>
-                    </form>
+                        <div>==================================</div>
+                        <form action="/othershelf/favorite/{{$user->id}}/detach" id="form_{{$user->pivot->id}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <p>{{$user->name}}</p>
+                            <p>
+                                <a href="/othershelf/users/{{$user->id}}/1">本棚へ</a>
+                                <a href="/mypage/users/{{$user->id}}">マイページへ</a>
+                            </p>
+                            <button type="submit" onclick="deletePost({{$user->id}})">お気に入り解除</button>
+                        </form>
+                        <div>==================================</div>
                     </div>
                 @endforeach
                 <div class='paginate'>
@@ -85,7 +65,45 @@
             @endif
         </div>
             <div>
-                <p>------------------------------------</p>
+                <p>---------------------------------------------------------</p>
+            </div>
+        </div>
+        <br/>
+        <div>
+            <div>
+                @foreach($users as $user)
+                    <div>
+                        <p>----------------------------------------</p>
+                        <p>{{$user->name}}</p>
+                        <p>
+                            <a href="/othershelf/users/{{$user->id}}/1">本棚へ</a>
+                            <a href="/mypage/users/{{$user->id}}">マイページへ</a>
+                        </p>
+                    </div>
+                    @if($check->checkFavorite($user->id))
+                        <div>
+                            <form action="/othershelf/favorite/{{$user->id}}/detach" id="form_{{$user->id}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" onclick="deletePost({{$user->id}})">お気に入り解除</button>
+                            </form>
+                        </div>
+                    @else
+                        <div>
+                            <form action="/othershelf/favorite/{{$user->id}}/attach" method="POST" name="{{$user->name}}フォーム">
+                                @csrf
+                                <input type="hidden" name="favorite[registered_id]" value="{{$user->id}}">
+                                <input type="submit" value="お気に入り"/>
+                            </form>
+                        </div>
+                    @endif
+                    <div>
+                        <p>-----------------------------------</p>
+                    </div>
+                @endforeach
+                <div class='paginate'>
+                    {{$users->links()}}
+                </div>
             </div>
         </div>
         <br/>

@@ -5,7 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\KindController;
 use App\Http\Controllers\MemoController;
 use App\Http\Controllers\ReadTimeController;
-use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,10 +64,10 @@ Route::controller(ReadTimeController::class)->middleware(['auth'])->group(functi
     Route::put('/mypage/ReadTime/{read_time}','update')->name('ReadTime_update');
 });
 
-Route::controller(FavoriteController::class)->middleware(['auth'])->group(function(){
+Route::controller(UserController::class)->middleware(['auth'])->group(function(){
     Route::get('/othershelf','show')->name('othershelf');
-    Route::post('/othershelf/favorite','favorite')->name('user_favorite');
-    Route::delete('/othershelf/favorite/{favorite}','unFavorite')->name('user_favorite_delete');
+    Route::post('/othershelf/favorite/{user}/attach','favorite')->name('user_favorite');
+    Route::delete('/othershelf/favorite/{user}/detach','unFavorite')->name('user_favorite_delete');
 });
 
 Route::middleware('auth')->group(function () {

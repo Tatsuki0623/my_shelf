@@ -47,6 +47,7 @@ class User extends Authenticatable
     ];
     
     
+    
     public function books()
     {
         return $this->hasMany(Book::class);
@@ -69,27 +70,42 @@ class User extends Authenticatable
     
     public function favorites()
     {
-        return $this->belongsToMany(User::class,'favorites','registered_id','registing_id');
+        return $this->belongsToMany(User::class,'favorites','registered_id','registing_id')->withPivot('id','registered_id','registing_id');
     }
     
     
-    public function getFavoriteUser()
+    
+    public function getUsers()
     {
-        $favorite_users = Auth::user()->favoriteUsers()->paginate(10,['*'],'Favorite-page');
+        return Auth::user()->whereNot('id',Auth::user()->id)->paginate(10,['*'],'user-page');
+    }
+    
+    public function getFavoriteUsers()
+    {
+        return $favorite_users = Auth::user()->favoriteUsers()->paginate(10,['*'],'Favorite-page');;
+    }
+    
+    public function checkFavorite($check_user)
+    {
+        $check = Auth::user()->favoriteUsers()->where([['registing_id', Auth::user()->id],['registered_id', $check_user]])->first();
         
-        return $favorite_users;
-    }
-    
-    public function getNotFavoriteUser()
-    {
-        $favorited_users = $this->getFavoriteUser();
-        $my_id = Auth::user()->id;
-    
-        $favorited_users_id = array($my_id);
-        foreach($favorited_users as $favorited_user){
-            $favorited_users_id[] = $favorited_user->id;
+        if($check){
+            return true;
+        }else{
+            return false;
         }
-        
-        return $this->whereNotIn('id',$favorited_users_id)->paginate(10,['*'],'unFavorite-page');
+    }
+    
+    public function attachFavorite($user_id) 
+    {
+        $registeing_user = $this::find(Auth::user()->id);
+        return $registeing_user->favoriteUsers()->attach($user_id);
+    }
+
+    // フォロー解除する
+    public function detachFavorite($user_id)
+    {
+        $registeing_user = $this::find(Auth::user()->id);
+        return $registeing_user->favoriteUsers()->detach($user_id);
     }
 }
