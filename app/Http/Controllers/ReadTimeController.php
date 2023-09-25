@@ -12,15 +12,23 @@ class ReadTimeController extends Controller
 {
     public function store(ReadTimeRequest $request, ReadTime $read_time)
     {
+        $user_id = Auth::user()->id;
         $input = $request['ReadTime'];
-        $input['user_id'] = Auth::user()->id;
+        $input['user_id'] = $user_id;
+        
         $read_time->fill($input)->save();
-        return redirect('/mypage');
+        
+        return redirect('/mypage/users/'.$user_id);
     }
+    
     public function update(ReadTimeRequest $request, ReadTime $read_time)
     {
+        $user_id = Auth::user()->id;
+        
         $input = $request['ReadTime'];
+        
         $read_time->fill($input)->save();
-        return redirect('/mypage');
+        
+        return redirect('/mypage/users/'.$user_id);
     }
 }

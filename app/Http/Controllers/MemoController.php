@@ -14,7 +14,7 @@ class MemoController extends Controller
     public function show(Memo $memo, Kind $kind, ReadTime $read_time, User $user)
     {
         return view('home.mypage')->with([
-            'memos' => $memo->getPaginateByLimit($memo),
+            'memos' => $memo->getPaginateByLimit($user),
             'book_list' => $kind->getOrderByPoint($user),
             'read_times' => $read_time->getReadTimes($user),
             'user' => $user,

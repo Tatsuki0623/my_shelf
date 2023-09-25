@@ -39,7 +39,7 @@
             <div class="edit">
                 <a href="/mypage/memos/{{$memo->id}}/edit">edit</a>
             </div>
-            <div class="footer">[<a href="/mypage">戻る]</a></div>
+            <div class="back">[<a href="/mypage/users/{{Auth::user()->id}}">back</a>]</div>
         </center>
     </body>
     </x-app-layout>

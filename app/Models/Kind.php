@@ -78,7 +78,7 @@ class Kind extends Model
         
         return $books = array(
                 '漫画' => $comics,
-                '小説' => $comics,
+                '小説' => $novels,
                 );;
         
     }

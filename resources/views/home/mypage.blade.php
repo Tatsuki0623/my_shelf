@@ -99,7 +99,7 @@
                             <div>
                                 <ul>
                         @foreach($books as $book)
-                                    <li><a href="myshelf/books/{{$book->id}}" name="{{$book->point}}">{{$book->point}}:{{$book->title}}</a></li>
+                                    <li><a href="/myshelf/books/users/{{$user->id}}/{{$book->id}}" name="{{$book->point}}">{{$book->point}}:{{$book->title}}</a></li>
                         @endforeach
                                 </ul>
                             </div>
