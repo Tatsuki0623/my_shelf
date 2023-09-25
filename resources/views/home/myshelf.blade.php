@@ -58,7 +58,7 @@
                             <img src="{{$book->image}}" width="100" height="50"/>
                         </div>
                         <div>
-                            <form action="/myshelf/books/users/{{$user->id}}/{{$book->id}}" id="form_{{$book->id}}" method="POST">
+                            <form action="/myshelf/books/{{$book->id}}" id="form_{{$book->id}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="button" onclick="deletePost({{$book->id}})">削除</button> 

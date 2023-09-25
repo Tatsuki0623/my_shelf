@@ -16,7 +16,7 @@ class Book extends Model
     protected $fillable = [
         'title',
         'volume',
-        'impressiom',
+        'impression',
         'point',
         'image',
         'link_rakuten',
