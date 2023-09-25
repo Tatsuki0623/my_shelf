@@ -41,10 +41,11 @@ class BookController extends Controller
     //myshelf
     public function store(BookRequest $request, Book $book)
     {
+        $user_id = Auth::user()->id;
         $input = $request['book'];
-        $input['user_id'] = Auth::user()->id;
+        $input['user_id'] = $user_id;
         $book->fill($input)->save();
-        return redirect('/myshelf/books/' . $book->id);
+        return redirect('/myshelf/books/users/'. $user_id. '/'. $book->id);
     }
     
     public function show(User $user,Book $book)
@@ -70,9 +71,10 @@ class BookController extends Controller
     
     public function update(BookRequest $request, Book $book)
     {
+        $user_id = Auth::user()->id;
         $input = $request['book'];
         $book->fill($input)->save();
-        return redirect('/myshelf/books/' . $book->id);
+        return redirect('/myshelf/books/users/'. $user_id. '/'. $book->id);
     }
     
     public function search(Request $request, Book $book, User $user)
@@ -92,18 +94,21 @@ class BookController extends Controller
     
     public function add(Request $request, Book $book)
     {
+        $user_id = Auth::user()->id;
+        $kind_id = $book->kind_id;
         $item = preg_split("/&-&/",$request['item']);
         $book->link_rakuten = $item[0];
         $book->image = $item[1];
         $book->save();
-        return redirect('/myshelf/books/'. $book->id);
+        return redirect('/myshelf/users/'. $user_id. '/'. $kind_id);
     }
     
     public function delete(Book $book)
     {
+        $user_id = Auth::user()->id;
         $kind_id = $book->kind_id;
         $book->delete();
-        return redirect('/myshelf/' . $kind_id);
+        return redirect('/myshelf/users/'. $user_id. '/'. $kind_id);
     }
     
     //newbooks

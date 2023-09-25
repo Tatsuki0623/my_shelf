@@ -7,7 +7,7 @@
     <x-app-layout>
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{Auth->user()->name}}の本棚
+                {{Auth::user()->name}}の本棚
             </h2>
         </x-slot>
     <body>
@@ -20,6 +20,7 @@
                 <input type="text" name="book[title]" placeholder="本のタイトルを入力" value="{{old('book.title')}}" size="50"/>
                 <p class="title__error" style="color:red">{{$errors->first('book.title')}}</p>
             </div>
+            
             <select name='book[kind_id]'>
                 @foreach($kinds as $kind)
                     <option value="{{$kind->id}}">{{$kind->name}}</option>
