@@ -28,7 +28,7 @@
             </div>
             <p><input type="submit" value="保存"/></p>
         </form>
-        <div class="back">[<a href="/mypage/memos/{{$memo->id}}">back</a>]</div>
+        <div class="back">[<a href="javascript:history.back()">back</a>]</div>
         </center>
     </body>
     </x-app-layout>

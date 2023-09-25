@@ -27,7 +27,7 @@
             </div>
             <p><input type="submit" value="追加"/></p>
         </form>
-        <div class="back">[<a href="/mypage">back</a>]</div>
+        <div class="back">[<a href="javascript:history.back()">back</a>]</div>
         </center>
     </body>
     </x-app-layout>

@@ -67,7 +67,7 @@ Route::controller(KindController::class)->middleware(['auth', 'verified'])->grou
 Route::controller(MemoController::class)->middleware(['auth', 'verified'])->group(function(){
     Route::get('/mypage/users/{user}','show')->name('mypage');
     Route::post('/mypage/memos','store')->name('memo_store');
-    Route::get('/mypage/memo/add','add')->name('memo_add');
+    Route::get('/mypage/memos/add','add')->name('memo_add');
     Route::get('/mypage/memos/{memo}','detail')->name('memo_show');
     Route::put('/mypage/memos/{memo}','update')->name('memo_update');
     Route::delete('/mypage/memos/{memo}','delete')->name('memo_delete');
