@@ -26,6 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'public',
     ];
 
     /**
@@ -78,12 +79,12 @@ class User extends Authenticatable implements MustVerifyEmail
     
     public function getUsers()
     {
-        return Auth::user()->whereNot('id',Auth::user()->id)->paginate(10,['*'],'user-page');
+        return Auth::user()->whereNot('id',Auth::user()->id)->where('public',true)->paginate(10,['*'],'user-page');
     }
     
     public function getFavoriteUsers()
     {
-        return $favorite_users = Auth::user()->favoriteUsers()->paginate(10,['*'],'Favorite-page');;
+        return $favorite_users = Auth::user()->favoriteUsers()->where('public',true)->paginate(10,['*'],'Favorite-page');;
     }
     
     public function checkFavorite($check_user)

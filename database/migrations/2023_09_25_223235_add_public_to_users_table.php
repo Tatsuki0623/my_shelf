@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('string_numbe', function (Blueprint $table) {
-            //
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('public')->default(false);
         });
     }
 
@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('string_numbe', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

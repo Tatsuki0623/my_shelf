@@ -25,9 +25,31 @@
     <body class="antialiased">
         <center>
         <div>
-            <h2>
-                私の本棚
-            </h2>
+            <div>
+                <h2>本棚の公開</h2>
+                <p>以下のボタンから自分の本棚を公開してみよう</p>
+            </div>
+            <div>
+                @if(Auth::user()->public)
+                    <form action="/othershelf/favorite/{{Auth::user()->id}}/public" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="title">
+                            <input type="hidden" name="user[public]" value="0">
+                            <input type="submit" value="非公開"/>
+                        </div>
+                    </form>
+                @else
+                    <form action="/othershelf/favorite/{{Auth::user()->id}}/public" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="title">
+                            <input type="hidden" name="user[public]" value="1">
+                            <input type="submit" value="公開"/>
+                        </div>
+                    </form>
+                @endif
+            </div>
         </div>
         <br/>
         <div>

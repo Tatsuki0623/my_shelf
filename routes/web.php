@@ -82,6 +82,7 @@ Route::controller(ReadTimeController::class)->middleware(['auth', 'verified'])->
 Route::controller(UserController::class)->middleware(['auth', 'verified'])->group(function(){
     Route::get('/othershelf','show')->name('othershelf');
     Route::post('/othershelf/favorite/{user}/attach','favorite')->name('user_favorite');
+    Route::put('/othershelf/favorite/{user}/public','Public')->name('user_favorite_delete');
     Route::delete('/othershelf/favorite/{user}/detach','unFavorite')->name('user_favorite_delete');
 });
 

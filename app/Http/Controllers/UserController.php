@@ -29,4 +29,11 @@ class UserController extends Controller
         $user->detachFavorite($user->id);
         return redirect('/othershelf');
     }
+    
+    public function Public(Request $request, User $user)
+    {
+        $input = $request['user'];
+        $user->fill($input)->save();
+        return redirect('/othershelf');
+    }
 }
