@@ -28,7 +28,7 @@ class MemoController extends Controller
     
     public function add(Memo $memo)
     {
-        return view('memo.add')->with(['memos' => $memo->get()]);
+        return view('memo.add')->with(['memo' => $memo]);
     }
     
     public function store(MemoRequest $request, Memo $memo)
@@ -54,6 +54,6 @@ class MemoController extends Controller
     public function delete(Memo $memo)
     {
         $memo->delete();
-        return redirect('/mypage');
+        return redirect('/mypage/users/'. $memo->user_id);
     }
 }

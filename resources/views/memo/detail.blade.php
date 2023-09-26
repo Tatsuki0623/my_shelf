@@ -1,9 +1,8 @@
-<!DOCTYPE HTML>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>メモの詳細</title>
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{Auth::user()->name}}のマイページ_メモの詳細
+        </h2>
         <script>
             function deleteMemo(id) {
                 'use strict'
@@ -13,34 +12,37 @@
                 }
             }
         </script>
-    </head>
-    <x-app-layout>
-        <x-slot name="header">
-            マイページ
     </x-slot>
-    <body>
-        <center>
-            <h1 class="title">
-                {{$memo->title}}
-            </h1>
-            <div class="content">
-                <div class="content__memo">
+    <center>
+        <div id="memo_{{$memo->id}}-content" class="memo-content">
+            <div class="memo-title-value">
+                <h2>
+                    {{$memo->title}}
+                </h2>
+            </div>
+            <div class="memo-body-value">
+                <div id="memo-body-value-label" class="memo-body-value-label">
                     <h3>本文</h3>
-                    <p>{{$memo->body}}</p>    
+                </div>
+                <div class="memo-body-value">
+                    <p>{{$memo->body}}</p>
                 </div>
             </div>
-            <div>
+        </div>
+        
+        <div id="memo-delete-value" class="memo-delete-value">
             <form action="/mypage/memos/{{$memo->id}}" id="form_{{$memo->id}}" method="post">
                 @csrf
                 @method('DELETE')
-                <button type="button" onclick="deleteMemo({{$memo->id}})">削除</button> 
+                <div class="memo-delete-button">
+                    <button type="button" onclick="deleteMemo({{$memo->id}})">削除</button> 
+                </div>
             </form>
         </div>
-            <div class="edit">
-                <a href="/mypage/memos/{{$memo->id}}/edit">edit</a>
-            </div>
-            <div class="back">[<a href="/mypage/users/{{Auth::user()->id}}">back</a>]</div>
-        </center>
-    </body>
-    </x-app-layout>
-</html>
+        
+        <div class="edit">
+            <a href="/mypage/memos/{{$memo->id}}/edit">edit</a>
+        </div>
+        <div class="back">[<a href="/mypage/users/{{Auth::user()->id}}">back</a>]</div>
+    </center>
+</x-app-layout>
