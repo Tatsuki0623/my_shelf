@@ -3,10 +3,10 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{$user->name}}のマイページ
         </h2>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </x-slot>
     <div id="content" class="content">
         <center>
-            
             <div id="now-time" class="now-time">
                 <div class="date-time-label">
                     <h2>今日は</h2>
@@ -16,7 +16,6 @@
                     <p>{{date('H:i')}}</p>
                 </div>
             </div>
-            
             <br/>
             @if($user->id == Auth::user()->id)
                 <!--閲覧しているユーザーがログインしているユーザーであればメモリストと今日の読書時間の追加フォームを表示-->
@@ -77,24 +76,24 @@
                                         <p class="ReadTime__error" style="color:red">{{$errors->first('ReadTime.read_time')}}</p>
                                     </div>
                                     <div class="read-time-today-form-value-submit">
-                                        <input type="submit" value="変更"/>
+                                        <input type="submit" value="追加"/>
                                     </div>
                                 </form>
                             @endif
                             </div>
                         </div>
-            @endif
                         <div id="read-time-week-content" class="read-time-week-content">
                             <div class="read-time-week-label">
                                 <h2>一週間の読書時間</h2>
                             </div>
                             <div class="read-time-week-values">
-                                @if($read_times['week'])
-                                    @foreach($read_times['week'] as $read_time)
-                                        <div class="read-time-week-value">
-                                            <p>{{$read_time->read_time}}</p>
-                                        </div>
-                                    @endforeach
+                                @if($read_times['week']->first())
+                                    <div>
+                                        <canvas id="myChart"></canvas>
+                                        <script>
+                                            var read_times_data = @json($read_times['week']);
+                                        </script>
+                                    </div>
                                     <div class='paginate'>
                                         {{$read_times['week']->links() ?? null}}
                                     </div> 
@@ -106,6 +105,32 @@
                             </div>
                         </div>
                     </div>
+                @else
+                    <div id="read-time-content" class="read-time-content">
+                        <div id="read-time-week-content" class="read-time-week-content">
+                            <div class="read-time-week-label">
+                                <h2>一週間の読書時間</h2>
+                            </div>
+                            <div class="read-time-week-values">
+                                @if($read_times['week']->first())
+                                    <div>
+                                        <canvas id="myChart"></canvas>
+                                        <script>
+                                            var read_times_data = @json($read_times['week']);
+                                        </script>
+                                    </div>
+                                    <div class='paginate'>
+                                        {{$read_times['week']->links() ?? null}}
+                                    </div> 
+                                @else
+                                    <div class="dont-have-read-time">
+                                        <p>読書時間が登録されていません</p>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                @endif
             
             <br/>
             
@@ -130,7 +155,6 @@
                     </div>
                 @endforeach
             </div>
-            
             @if($user->id != Auth::user()->id)
                 <div class="move-page">
                     <p><a href="/othershelf/users/{{$user->id}}/1">本棚へ</a></p>
@@ -142,7 +166,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <div class="un-favorite-button">
-                                    <button type="submit" onclick="deletePost({{$user->id}})">お気に入り解除</button>
+                                    <button type="submit">お気に入り解除</button>
                                 </div>
                             </form>
                         </div>
