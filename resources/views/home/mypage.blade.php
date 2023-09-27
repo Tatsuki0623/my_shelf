@@ -4,18 +4,17 @@
             {{$user->name}}のマイページ
         </h2>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script>
+            var read_times_data = @json($read_times['week']);
+        </script>
     </x-slot>
-    <div id="content" class="content">
+    <div id="mypage_content" class="mypage_content">
         <center>
-            <div id="now-time" class="now-time">
-                <div class="date-time-label">
-                    <h2>今日は</h2>
-                </div>
-                <div class="date-time">
-                    <p>{{date('m-d')}}</p>
-                    <p>{{date('H:i')}}</p>
-                </div>
+            <div class="date-time">
+                <p id="date-day">今日は{{date('m月d日')}}</p>
+                <p id="date-time"></p>
             </div>
+            
             <br/>
             @if($user->id == Auth::user()->id)
                 <!--閲覧しているユーザーがログインしているユーザーであればメモリストと今日の読書時間の追加フォームを表示-->
@@ -89,7 +88,7 @@
                             <div class="read-time-week-values">
                                 @if($read_times['week']->first())
                                     <div>
-                                        <canvas id="myChart"></canvas>
+                                        <canvas id="Rtime"></canvas>
                                         <script>
                                             var read_times_data = @json($read_times['week']);
                                         </script>
@@ -114,10 +113,7 @@
                             <div class="read-time-week-values">
                                 @if($read_times['week']->first())
                                     <div>
-                                        <canvas id="myChart"></canvas>
-                                        <script>
-                                            var read_times_data = @json($read_times['week']);
-                                        </script>
+                                        <canvas id="Rtime"></canvas>
                                     </div>
                                     <div class='paginate'>
                                         {{$read_times['week']->links() ?? null}}
