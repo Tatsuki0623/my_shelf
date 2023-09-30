@@ -127,39 +127,36 @@
                 @endif
             
             <br/>
-            {{dd()}}
-            <div id="book-point-content" class="relative bg-yellow-100 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-100/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10 drop-shadow-xl">
-                <div class="relative bg-yellow-50 ring-gray-100 sm:mx-auto sm:max-w-lg sm:rounded-lg drop-shadow-xl">
+            <div id="book-point-content">
+                <div>
                     <h2>本の評価</h2>
                 </div>
-                <div class="flex space-x-24 space-y-7">
-                  <div class="flex sp">
-                    @foreach($book_list as $index => $books)  
+                <div>
+                    <div>
+                    @foreach($books_list as $index => $book_list)  
                         <table>
                             <thead>
-                                <tr class="border">
-                                    <th class="border">点数</th>
-                                    <th class="border">{{$index}}</th>
+                                <tr>
+                                    <th>点数</th>
+                                    <th>{{$index}}</th>
                                 </tr>
                             </thead>
-                        <tbody>
-                        @foreach($books as $index => $book)
-                            <tr>
-                                <th class="border">{{$index}}</th>
-                                    <td>
-                                        @foreach($books[{{$index}}] as $book)
-                                            @if($book->id)
-                                                <ul class="book-point-value">
-                                                    <li>
-                                                        <a href="myshelf/books/{{$book}}" name="{{$book->point}}">{{$book->point}}:{{$book->title}}</a>
-                                                    </li>
-                                                </ul>
-                                            @endif
+                            <tbody>
+                                @foreach($book_list as $index => $books)
+                                    <tr>
+                                        <th>{{$index}}</th>
+                                        <td>
+                                            @foreach($books as $book)
+                                            <ul class="book-point-value">
+                                                <li>
+                                                <a href="myshelf/books/{{$book}}" name="{{$book->point}}">{{$book->point}}:{{$book->title}}</a>
+                                            </li>
+                                        </ul>
                                         @endforeach
-                                    </td>
-                            </tr>
-                        </tbody>
-                        @endforeach
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     @endforeach
                     </div>
