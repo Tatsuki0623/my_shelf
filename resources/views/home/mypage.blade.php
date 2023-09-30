@@ -127,7 +127,6 @@
                 @endif
             
             <br/>
-            
             <div id="book-point-content">
                 <div>
                     <h2>本の評価</h2>
