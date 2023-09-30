@@ -6,16 +6,17 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\MemoRequest;
 use App\Models\Memo;
 use App\Models\Kind;
+use App\Models\Book;
 use App\Models\ReadTime;
 use App\Models\User;
 
 class MemoController extends Controller
 {
-    public function show(Memo $memo, Kind $kind, ReadTime $read_time, User $user)
+    public function show(Memo $memo, Book $book, ReadTime $read_time, User $user)
     {
         return view('home.mypage')->with([
             'memos' => $memo->getPaginateByLimit($user),
-            'book_list' => $kind->getOrderByPoint($user),
+            'books_list' => $book->getBookPoint($user),
             'read_times' => $read_time->getReadTimes($user),
             'user' => $user,
             ]);

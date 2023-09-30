@@ -66,20 +66,4 @@ class Kind extends Model
                             'total_novels' => $total_novels,
                             );
     }
-    
-    public function getOrderByPoint($user)
-    {
-        $user_id = $user->id;
-        $comic = $this::find(1);
-        $novel = $this::find(2);
-        
-        $comics = $comic->books()->with('kind')->where('user_id',$user_id)->orderBy('point', 'DESC')->get();
-        $novels = $novel->books()->with('kind')->where('user_id',$user_id)->orderBy('point', 'DESC')->get();
-        
-        return $books = array(
-                '漫画' => $comics,
-                '小説' => $novels,
-                );;
-        
-    }
 }

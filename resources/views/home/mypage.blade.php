@@ -8,18 +8,16 @@
             var read_times_data = @json($read_times['week']);
         </script>
     </x-slot>
-    <div id="mypage_content" class="mypage_content">
+    <div id="mypage_content" class="flex flex-col">
         <center>
-            <div class="date-time">
+            <div class="text-center">
                 <p id="date-day">今日は{{date('m月d日')}}</p>
                 <p id="date-time"></p>
             </div>
             
             <br/>
             @if($user->id == Auth::user()->id)
-                <!--閲覧しているユーザーがログインしているユーザーであればメモリストと今日の読書時間の追加フォームを表示-->
-                <!--86行目に終了-->
-                <div id="memos-content" class="memos-content">
+                <div id="memos-content" class="basis-1/4">
                     <div class="memos-label">
                         <h2>メモ</h2>
                     </div>
@@ -49,7 +47,7 @@
                         
                     <br/>
                     
-                    <div id="read-time-content" class="read-time-content">
+                    <div id="read-time-content" class="basis-3/4">
                         <div id="read-time-today-content" class="read-time-today-content">
                             <div class="read-time-today-form-label">
                                 <h2>今日の読書時間</h2>
@@ -130,27 +128,44 @@
             
             <br/>
             
-            <div id="book-point-content" class="book-point-content">
-                <div class="book-point-label">
+            <div id="book-point-content">
+                <div>
                     <h2>本の評価</h2>
                 </div>
-                @foreach($book_list as $index => $books)
-                    <div class="book-point-kind-label">
-                        <h1>{{$index}}</h1>
-                    @if($books)    
-                            <div id="book-point-{{$index}}" class="book-point-{{$index}}">
-                                <ul class="book-point-value">
-                        @foreach($books as $book)
-                                    <li>
-                                        <a href="myshelf/books/{{$book->id}}" name="{{$book->point}}">{{$book->point}}:{{$book->title}}</a>
-                                    </li>
-                        @endforeach
-                                </ul>
-                            </div>
-                    @endif
+                <div>
+                    <div>
+                    @foreach($books_list as $index => $book_list)  
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>点数</th>
+                                    <th>{{$index}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($book_list as $index => $books)
+                                    <tr>
+                                        <th>{{$index}}</th>
+                                        <td>
+                                            @foreach($books as $book)
+                                            <ul class="book-point-value">
+                                                <li>
+                                                <a href="myshelf/books/{{$book}}" name="{{$book->point}}">{{$book->point}}:{{$book->title}}</a>
+                                            </li>
+                                        </ul>
+                                        @endforeach
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endforeach
                     </div>
-                @endforeach
+                </div>
             </div>
+            
+            
+            
             @if($user->id != Auth::user()->id)
                 <div class="move-page">
                     <p><a href="/othershelf/users/{{$user->id}}/1">本棚へ</a></p>
