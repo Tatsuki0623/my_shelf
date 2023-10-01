@@ -1,6 +1,6 @@
 import Chart from "chart.js/auto";
 
-if(document.getElementById("Rtime")){
+function show_Rtime (){
     const ctx = document.getElementById("Rtime");
 
     var date = [];
@@ -28,8 +28,9 @@ if(document.getElementById("Rtime")){
             ],
         },
     });
-}else if(document.getElementById("info-register")){
-    const ctx = document.getElementById("info-register");
+}
+function show_data () {
+    const ctx_register = document.getElementById("info-register");
 
     console.log(books_data);
     
@@ -38,7 +39,7 @@ if(document.getElementById("Rtime")){
     
     var books_num = [comics,novels];
     
-    const info_register_num = new Chart(ctx, {
+    const info_register_num = new Chart(ctx_register, {
         type: "pie",
         data: {
             labels: ['漫画','小説'],
@@ -58,14 +59,14 @@ if(document.getElementById("Rtime")){
         },
     });
     
-    const ctx1 = document.getElementById("info-total");
+    const ctx_total = document.getElementById("info-total");
     
     var total_comics = books_data.total_comics;
     var total_novels = books_data.total_novels;
     
     var books_total_num = [total_comics,total_novels];
     
-    const info_total_num = new Chart(ctx1, {
+    const info_total_num = new Chart(ctx_total, {
         type: "pie",
         data: {
             labels: ['漫画','小説'],
@@ -84,4 +85,12 @@ if(document.getElementById("Rtime")){
             ],
         },
     });
+}
+
+if(document.getElementById("Rtime")){
+    show_Rtime();
+}
+
+if(document.getElementById("info-register")){
+    show_data();
 }

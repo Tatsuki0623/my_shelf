@@ -24,7 +24,7 @@
                 </div>
                 <div class>
                     <h2>感想</h2>
-                    <textarea name="book[impression]" rows="6" cols="40" placeholder="140文字以下で入力してください">{{$book->impression}}</textarea>
+                    <textarea name="book[impression]" rows="6" cols="40" placeholder="600文字以下で入力してください">{{$book->impression}}</textarea>
                     <p class="impression__error" style="color:red">{{$errors->first('book.impression')}}</p>
                 </div>
                 <div>
