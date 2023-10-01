@@ -29,7 +29,6 @@ class AuthServiceProvider extends ServiceProvider
         
         VerifyEmail::toMailUsing(function ($notifiable, $url) {
         return (new MailMessage)
-            ->from('myshelfservice@gmail.com')
             ->greeting('ご登録ありがとうございます')
             ->line('この度はご登録いただき、ありがとうございます。')
             ->line('ご登録を続けるには、以下のボタンを押し認証をしてください。')
