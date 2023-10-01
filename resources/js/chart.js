@@ -28,6 +28,9 @@ function show_Rtime (){
             ],
         },
     });
+    
+    Rtime.canvas.style.height = '250px';
+    Rtime.canvas.style.width = '250px';
 }
 function show_data () {
     const ctx_register = document.getElementById("info-register");
@@ -59,6 +62,9 @@ function show_data () {
         },
     });
     
+    info_register_num.canvas.style.height = '250px';
+    info_register_num.canvas.style.width = '250px';
+    
     const ctx_total = document.getElementById("info-total");
     
     var total_comics = books_data.total_comics;
@@ -85,6 +91,9 @@ function show_data () {
             ],
         },
     });
+    
+    info_total_num.canvas.style.height = '250px';
+    info_total_num.canvas.style.width = '250px';
 }
 
 if(document.getElementById("Rtime")){

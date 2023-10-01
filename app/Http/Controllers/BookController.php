@@ -21,18 +21,18 @@ class BookController extends Controller
         
         $client->setApplicationId(RAKUTEN_APPLICATION_ID);
         
-        $response = $client->execute('BooksTotalSearch', array(
+        $responses = $client->execute('BooksTotalSearch', array(
             'keyword' => $keyword,
             'hits' =>10,
         ));
         
         $items = array();
         
-        if(!$response->isOk()){
+        if(!$responses->isOk()){
             return $items[] = 'Error:'.$response->getMessage();
         } else {
-            foreach($response as $key){
-                $items[] = $key;
+            foreach($responses as $response){
+                $items[] = $response;
                 }
             return $items;
             }
