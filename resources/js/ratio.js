@@ -1,7 +1,3 @@
-document.getElementById("comics-ratio").innerHTML = ratio(1);
-document.getElementById("novels-ratio").innerHTML = ratio(2);
-document.getElementById("comics-total-ratio").innerHTML = ratio(3);
-document.getElementById("novels-total-ratio").innerHTML = ratio(4);
 function ratio(num) {
     switch (num) {
         case 1:
@@ -52,3 +48,11 @@ function ratio(num) {
     }
     
 }
+
+if(document.getElementById("comics-ratio")){
+    document.getElementById("comics-ratio").innerHTML = ratio(1);
+    document.getElementById("novels-ratio").innerHTML = ratio(2);
+    document.getElementById("comics-total-ratio").innerHTML = ratio(3);
+    document.getElementById("novels-total-ratio").innerHTML = ratio(4);
+}
+

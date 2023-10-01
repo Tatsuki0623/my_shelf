@@ -59,7 +59,7 @@
                                     @method('PUT')
                                     <div class="read-time-today-form-value">
                                         <input type="number" name="ReadTime[read_time]" placeholder="{{$read_times['today']->read_time}}" min="0" max="24"/>
-                                        <p class="ReadTime__error" style="color:red">{{$errors->first('ReadTime.read_time')}}</p>
+                                        <p class="ReadTime__error" style="color:red">{{$errors->first('Readtime.read_time')}}</p>
                                     </div>
                                     <div class="read-time-today-form-value-submit">
                                         <input type="submit" value="変更"/>
