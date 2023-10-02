@@ -1,43 +1,58 @@
 {
-    "Name": "ユーザーネーム",
-    "Laravel": "myshelf",
-    "Hello!": "こんにちは！",
-    "Regards": "どうぞよろしくお願いします",
-    "Profile": "ユーザー情報",
-    "You're logged in!": "ようこそ!!　My shelf　へ、買い忘れはありませんか？",
-    "Dashboard": "ようこそ",
+    "A new verification link has been sent to the email address you provided during registration.": "新しい確認リンクが、登録時に指定したメール アドレスに送信されました。",
+    "A new verification link has been sent to the email address you provided during registration.": "新しい確認リンクが、登録時に入力したメールアドレスに送信されました。",
+    "Are you sure you want to delete your account?" : "本当に消去しますか？",
+    "Already registered?": "登録済みの場合はこちら",
+    
     "Cancel": "キャンセル",
-    "Log Out": "ログアウト",
-    "Log in": "ログイン",
-    "Password": "パスワード",
-    "Reset Password": "パスワードの再設定",
     "Confirm Password": "パスワードの確認",
     "Current Password": "現在のパスワード",
-    "New Password": "新しいパスワード",
-    "Update Password": "パスワードの変更",
+    
+    "Dashboard": "ようこそ",
     "Delete Account": "アカウントの削除",
-    "Save": "保存",
-    "Profile Information": "プロフィール情報",
+    
     "Email": "メールアドレス",
-    "Resend Verification Email": "もう一度送る",
-    "Forgot your password?": "パスワードをお忘れですか？",
-    "Remember me": "パスワードを保存する",
-    "Register": "登録する",
-    "Already registered?": "登録済みの場合はこちら",
-    "Whoops! Something went wrong.": "エラーです",
-    "Are you sure you want to delete your account?" : "本当に消去しますか？",
-    "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.": "ご登録いただきありがとうございます!先ほどメールでお送りしたリンクに移動してして、メールアドレスを認証してください。",
-    "A new verification link has been sent to the email address you provided during registration.": "新しい確認リンクが、登録時に指定したメール アドレスに送信されました。",
-    "Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.": "削除する場合はパスワードを入力してください",
-    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.":"パスワードの再設定はフォームにメールアドレスを入力してください",
-    "A new verification link has been sent to the email address you provided during registration.": "新しい確認リンクが、登録時に入力したメールアドレスに送信されました。",
-    "Update your account's profile information and email address.": "アカウントのプロフィール情報とメールアドレスの変更",
-    "Ensure your account is using a long, random password to stay secure.": "パスワードは定期的に変更しておきましょう",
-    "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "アカウントを削除するともとには戻せません。本当によろしいですか？",
     "Email Password Reset Link": "パスワードの再設定をする",
+    "Ensure your account is using a long, random password to stay secure.": "パスワードは定期的に変更しておきましょう",
+    
+    "Forgot your password?": "パスワードをお忘れですか？",
+    "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.":"パスワードの再設定はフォームにメールアドレスを入力してください",
+    
+    "Hello!": "こんにちは！",
+    
     "If you’re having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser:": ":actionTextボタンをクリックできない場合は、次のURLをコピーしてブラウザに貼り付けてください。\n",
+    "If you did not request a password reset, no further action is required.": "もしこのメールにお心当たりがない場合は、このまま放置していただいて大丈夫です。",
+
+    "Laravel": "myshelf",
+    "Log Out": "ログアウト",
+    "Log in": "ログイン",
+    
+    "Name": "ユーザーネーム",
+    "New Password": "新しいパスワード",
+    
+    "Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.": "削除する場合はパスワードを入力してください",
+    
+    "Password": "パスワード",
+    "Profile": "ユーザー情報",
+    "Profile Information": "プロフィール情報",
+    
     "Reset Password Notification": "パスワード再設定のお知らせ",
-    "You are receiving this email because we received a password reset request for your account.": "あなたのアカウントからパスワード再設定のリクエストがありました。",
+    "Reset Password": "パスワードの再設定",
+    "Resend Verification Email": "もう一度送る",
+    "Regards": "どうぞよろしくお願いします",
+    "Register": "登録する",
+    "Remember me": "パスワードを保存する",
+    
+    "Save": "保存",
+    
     "This password reset link will expire in :count minutes.": "このリンクの有効期限は、:count 分後までです。",
-    "If you did not request a password reset, no further action is required.": "もしこのメールにお心当たりがない場合は、このまま放置していただいて大丈夫です。"
+    "Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.": "ご登録いただきありがとうございます!先ほどメールでお送りしたリンクに移動してして、メールアドレスを認証してください。",
+    
+    "Update Password": "パスワードの変更",
+    "Update your account's profile information and email address.": "アカウントのプロフィール情報とメールアドレスの変更",
+    
+    "Whoops! Something went wrong.": "エラーです",
+    
+    "You're logged in!": "ようこそ!!　My shelf　へ、買い忘れはありませんか？",
+    "You are receiving this email because we received a password reset request for your account.": "あなたのアカウントからパスワード再設定のリクエストがありました。"
 }
