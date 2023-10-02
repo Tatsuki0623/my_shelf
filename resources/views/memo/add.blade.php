@@ -4,37 +4,52 @@
             {{Auth::user()->name}}のマイページ_メモの追加
         </h2>
     </x-slot>
-    <center>
-        <div id="memo-add-content" class="memo-add-content">
-            <div class="memo-add-label">
-                <h1>メモの追加</h1>
+    <section class="text-gray-600 body-font relative mx-10 my-24 content-center">
+        <div class="container bg-lime-100 px-5 py-24 mx-auto rounded-2xl shadow-2xl">
+            <div class="flex flex-col text-center w-full mb-12 justify-center">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+                  メモの追加
+                </h1>
             </div>
-            <div id="memo-add-form" class="memo-add-from">
-                <form action="/mypage/memos/{{$memo->id}}" method="POST">
+            <div class="bg-yellow-50">
+                <form action="/mypage/memos" method="POST">
                     @csrf
-                    <div class="memo-title">
-                        <div class="memo-title-label">
-                            <h2>メモのタイトル</h2>
+                    <div class="lg:w-1/2 md:w-2/3 mx-auto ">
+                        <div class="py-5">
+                            <div class="bg-yellow-100 rounded-lg mx-56 shadow-xl">
+                                <h2 class="text-center text-2xl text-stone-500">メモのタイトル</h2>
+                            </div>
+                            <div class="memo-title-value text-center py-5">
+                                <input type="text" 
+                                       name="memo[title]" 
+                                       class="w-auto bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" 
+                                       placeholder="本のタイトルを入力" 
+                                       value="{{old('memo.title')}}" 
+                                       size="50"/>
+                                <p class="title__error mt-2" style="color:red">{{$errors->first('memo.title')}}</p>
+                            </div>
+                            </div>
+    
+    
+                            <div class="py-5">
+                            <div class="bg-yellow-100 rounded-lg mx-56 shadow-xl">
+                                <h2 class="text-center text-2xl text-stone-500">メモの本文</h2>
+                            </div>
+                            <div class="memo-body-value text-center py-5">
+                                <textarea name="memo[body]" 
+                                          rows="8" 
+                                          cols="70" 
+                                          class="w-auto bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" 
+                                          placeholder="600文字以下で入力してください">{{old('memo.body')}}</textarea>
+                                <p class="body__error" style="color:red">{{$errors->first('memo.body')}}</p>
+                            </div>
+                            </div>
+                            <div class="memo-value-submit py-5">
+                            <p><input type="submit" class="flex text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mx-auto" value="追加"/></p>
                         </div>
-                        <div class="memo-title-value">
-                            <input type="text" name="memo[title]" placeholder="本のタイトルを入力" value="{{old('memo.title')}}" size="50"/>
-                            <p class="title__error" style="color:red">{{$errors->first('memo.title')}}</p>
-                        </div>
-                    <div class="memo-body">
-                        <div class="memo-body-label">
-                            <h2>メモの本文</h2>
-                        </div>
-                        <div class="memo-body-value">
-                            <textarea name="memo[body]" rows="6" cols="40" placeholder="600文字以下で入力してください">{{old('memo.body')}}</textarea>
-                            <p class="body__error" style="color:red">{{$errors->first('memo.body')}}</p>
-                        </div>
-                    </div>
-                    <div class="memo-value-submit">
-                        <p><input type="submit" value="追加"/></p>
                     </div>
                 </form>
+                <div class="back py-8 text-center">[<a href="javascript:history.back()">back</a>]</div>
             </div>
-            <div class="back">[<a href="javascript:history.back()">back</a>]</div>
         </div>
-    </center>
 </x-app-layout>

@@ -48,7 +48,7 @@ class Book extends Model
         
         $book_list = [];
         $pointGroups = [];
-        $books_point = $this::where('user_id', $user_id)->get();
+        $books_point = $this::where('user_id', $user_id)->orderBy('point', 'DESC')->get();
         
             for($kind_id = 1; $kind_id < 3; $kind_id++){
                 $pointGroups['100'] = $books_point->where('point', 100)->where('kind_id',$kind_id);
