@@ -10,9 +10,8 @@ class KindController extends Controller
 {
     public function show(Request $request, Kind $kind, User $user)
     {
-        $split_url = str_replace(url('/myshelf/'),"",request()->fullUrl());
+        $split_url = str_replace(url('/myshelf/'),"",request()->path());
         $kind_id = $split_url[-1];
-        
         $user_id = $user->id;
         
         return view('home.myshelf')->with([

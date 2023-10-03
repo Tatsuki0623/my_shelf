@@ -26,7 +26,7 @@ class Kind extends Model
             $kind = $this::find(2);
         }
         
-        return $kind->books()->with('kind')->where('user_id',$user_id)->orderBy('created_at', 'DESC')->paginate(5);
+        return $kind->books()->with('kind')->where('user_id',$user_id)->orderBy('created_at', 'DESC')->paginate(10);
     }
     
     public function getFilter($keyword, $kind_id,$user_id)
