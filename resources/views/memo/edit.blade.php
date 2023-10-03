@@ -27,7 +27,7 @@
                                        placeholder="本のタイトルを入力" 
                                        value="{{$memo->title}}" 
                                        size="50"/>
-                                <p class="title__error mt-2" style="color:red">{{$errors->first('memo.title')}}</p>
+                                <p class="title__error mt-2 text-red-400" style="color:red">{{$errors->first('memo.title')}}</p>
                             </div>
                             </div>
     
@@ -42,7 +42,7 @@
                                           cols="70" 
                                           class="w-auto bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" 
                                           placeholder="600文字以下で入力してください">{{$memo->body}}</textarea>
-                                <p class="body__error" style="color:red">{{$errors->first('memo.body')}}</p>
+                                <p class="body__error mt-2 text-red-400">{{$errors->first('memo.body')}}</p>
                             </div>
                             </div>
                             <div class="memo-value-submit py-5">

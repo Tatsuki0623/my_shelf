@@ -1,10 +1,11 @@
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">   
-    <head>
-        <meta charset="utf-8">
-        <title>本の詳細</title>
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{Auth::user()->name}}の本棚＿本の詳細
+        </h2>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script>
-            function deletePost(id) {
+            function deleteBook(id) {
                 'use strict'
         
                 if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
@@ -12,72 +13,95 @@
                 }
             }
         </script>
-    </head>
-    <x-app-layout>
-        <x-slot name="header">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{$user->name}}の本棚
-            </h2>
-        </x-slot>
-    <body>
-        <center>
-        <div>
-            <div>
-                <h2>title</h2>
+    </x-slot>
+    <div class="bg-green-100 py-12">
+    <section class="text-gray-600 body-font relative mx-10 content-center">
+        <div class="container bg-yellow-50 px-5 py-12 mx-auto rounded-2xl shadow-2xl">
+            <div class="flex flex-col text-center w-full mb-12 justify-center">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+                  {{$book->title}}
+                  の詳細画面
+                </h1>
             </div>
-            <div>
-                @if($book->link_rakuten)
-                    <a href="{{$book->link_rakuten}}">{{$book->title}}</a>
-                @else
-                    <p>{{$book->title}}</p>
-                @endif
-                <img src="{{$book->image ?? "/no_image.jpg"}}" width="200" height="100"/>
+            <div class="bg-yellow-100">
+                    <div class="lg:w-1/2 md:w-2/3 mx-auto text-center">
+                        <center class="py-5">
+                            <div class="item-center">
+                                <img src="{{$book->image ?? "/no_image.jpg"}}"/>
+                            </div>
+                        </center>
+                        <div class="py-5">
+                            <div class="bg-yellow-200 rounded-lg mx-56 shadow-xl">
+                                <h2 class="text-center text-2xl text-stone-500">本のタイトル</h2>
+                            </div>
+                            <div class="text-center py-5">
+                                @if($book->link_rakuten)
+                                    <a class="text-black hover:text-blue-500" href="{{$book->link_rakuten}}">{{$book->title}}</a>
+                                @else
+                                    <p class="text-black">{{$book->title}}</p>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <div class="py-5">
+                            <div class="bg-yellow-200 rounded-lg mx-56 shadow-xl">
+                                <h2 class="text-center text-2xl text-stone-500">感想</h2>
+                            </div>
+                            <div class="text-center py-5">
+                                <p class="text-black">{{$book->impression}}</p>
+                            </div>
+                        </div>
+
+
+                        <div class="py-5">
+                              <div class="bg-yellow-200 rounded-lg mx-56 shadow-xl">
+                                  <h2 class="text-center text-2xl text-stone-500">点数</h2>
+                              </div>
+                              <div class="text-center py-5">
+                                  <p class="text-cyan-500">{{$book->point}}</p>
+                              </div>
+                        </div>
+
+                        <div class="py-5">
+                              <div class="bg-yellow-200 rounded-lg mx-56 shadow-xl">
+                                  <h2 class="text-center text-2xl text-stone-500">所有巻数</h2>
+                              </div>
+                              <div class="text-center py-5">
+                                  <p class="text-black"><span class="text-cyan-500">{{$book->volume}}</span>巻までもっています</p>
+                              </div>
+                        </div>
+
+                        
+
+                      @if($book->user_id == Auth::user()->id)
+                      <div class="grid grid-cols-3">
+                            <div>
+                                <P>
+                                    <button type="button" class="bg-transparent hover:bg-blue-400 text-black font-semibold hover:text-lime-100 py-2 px-4 border border-blue-400 hover:border-transparent rounded-lg shadow-md" onclick="location.href='/myshelf/books/{{$book->id}}/link/search'">リンクをつける</button>
+                                </p>
+                            </div>
+                            <div>
+                                <div>
+                                    <button type="button" class="bg-transparent hover:bg-lime-400 text-black font-semibold hover:text-lime-100 py-2 px-4 border border-lime-400 hover:border-transparent rounded-lg shadow-md" onclick="location.href='/myshelf/books/{{$book->id}}/edit'">編集</button>
+                                </div>
+                            </div>
+                            <div>
+                                <form action="/myshelf/books/{{$book->id}}" id="form_{{$book->id}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="bg-transparent hover:bg-red-400 text-black font-semibold hover:text-lime-100 py-2 px-4 border border-red-400 hover:border-transparent rounded-lg shadow-md" onclick="deleteBook({{$book->id}})">削除</button> 
+                                </form>
+                            </div>
+                        </div>
+                      @endif
+
+                    </div>
+                </form>
+                <div class="back py-8 text-center hover:text-blue-500">[<a href="javascript:history.back()">back</a>]</div>
             </div>
         </div>
-        <div>
-            <h2>感想</h2>
-            <div>
-                <p>{{$book->impression ?? ""}}</p>
-            </div>
-        </div>
-        <div>
-            <div>
-                <h3>{{$book->point ?? 0}}
-            </div>
-            <p>点</p>
-        </div>
-        <div>
-            <h3>所有巻数</h3>
-            <div>
-                @if($book->volume == null)
-                    <p>巻数は登録されていません</p>
-                @else
-                    <p>{{$book->volume}}巻までもっています</p>
-                @endif
-            </div>
-        </div>
-        
-        @if($book->user_id == Auth::user()->id)
-            <div>
-                <P>
-                    <a href="/myshelf/books/{{$book->id}}/link/search">リンクをつける</a>
-                </p>
-            </div>
-            <div>
-                <div>
-                    <button onclick="location.href='/myshelf/books/{{$book->id}}/edit'">編集</button>
-                </div>
-            </div>
-            <div>
-            <form action="/myshelf/books/{{$book->id}}" id="form_{{$book->id}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="button" onclick="deletePost({{$book->id}})">削除</button> 
-            </form>
-        </div>
-        @endif
-        <div class="back">[<a href="/myshelf/users/{{$user->id}}/{{$book->kind_id}}">back</a>]</div>
-        </center>
-    </body>
-    </x-app-layout>
-</html>
+    </section>
+  </div>
+</x-app-layout>
+

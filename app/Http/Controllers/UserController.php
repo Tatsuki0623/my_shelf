@@ -21,19 +21,22 @@ class UserController extends Controller
     public function favorite(User $user)
     {
         $user->attachFavorite($user->id);
-        return redirect('/othershelf');
+        $previous = url()->previous();
+        return redirect($previous);
     }
     
     public function unFavorite(User $user)
     {
         $user->detachFavorite($user->id);
-        return redirect('/othershelf');
+        $previous = url()->previous();
+        return redirect($previous);
     }
     
     public function Public(Request $request, User $user)
     {
         $input = $request['user'];
         $user->fill($input)->save();
-        return redirect('/othershelf');
+        $previous = url()->previous();
+        return redirect($previous);
     }
 }
