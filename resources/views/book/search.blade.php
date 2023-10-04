@@ -13,7 +13,7 @@
                         <div class="text-center pt-4">
                             <div class="contents">
                                 <div>
-                                    <p class="bg-yellow-100 text-xl text-black-600 font-semibold shadow-md rounded-lg mx-60">リンクの付与</a>
+                                    <p class="bg-yellow-100 text-xl text-black-600 font-semibold shadow-md rounded-lg mx-60">リンクの付与</p>
                                 </div>
                             </div>
                             <br/>
@@ -35,6 +35,13 @@
                                 </div>            
                             </form>
                         </div>
+                        @if($keyword)
+                            <div class="py-10">
+                                <div class="bg-yellow-100 mx-24 py-5 text-center roudede-xl shadow-xl">
+                                    <h3>{{$keyword}}で検索</h3>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </section>
                 
@@ -47,6 +54,9 @@
                                         <div class="relative mx-auto max-w-2xl">
                                             @if($items)
                                                 <center>
+                                                    <div class="py-5">
+                                                        <p class="bg-yellow-100 text-xl text-black-600 font-semibold shadow-md rounded-lg mx-auto">以下の項目から選択してください</p>
+                                                    </div>
                                                     <form action="/myshelf/books/{{$book->id}}/link" method="POST">
                                                         @csrf
                                                         @method('PUT')
