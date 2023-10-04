@@ -102,10 +102,11 @@
                             @endif
                         </div>
                     </div>
+                </div>
             @else
-                <div class="relative flex-1 space-y-5 bg-yellow-100 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-100/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10 drop-shadow-xl text-center">
+                <div id="read-time-content" class="flex-1 space-y-16 relative bg-yellow-50 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-100/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10 drop-shadow-xl">
+                    <div class="relative flex-1 space-y-5 bg-yellow-100 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-100/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10 drop-shadow-xl text-center">
                         <div class="bg-yellow-50 w-25 h-12 ring-1 ring-gray-100 sm:mx-auto sm:max-w-lg sm:rounded-lg drop-shadow-xl">
-                        <div class="read-time-week-label">
                             <h2>一週間の読書時間</h2>
                         </div>
                         <div class="flex-1 space-y-5 text-center">
@@ -125,7 +126,6 @@
                     </div>
                 </div>
             @endif
-            </div>
             <br/>
             <div id="book-point-content" class="flex-1 space-y-16 relative bg-yellow-50 px-6 py-10 shadow-xl ring-1 ring-gray-100/5 mx-16 drop-shadow-xl rounded-xl text-center">
               <div class="relative  flex-1 space-y-5 bg-yellow-100 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-100/5 drop-shadow-xl rounded-xl">
@@ -172,7 +172,7 @@
                                     <div class="relative px-5 py-10 sm:px-6 lg:py-16 lg:px-8">
                                         <div class="relative mx-auto max-w-2xl">
                                             <div class="py-5">
-                                                <a class="text-black hover:text-blue-500" href="/myshelf/users/{{$user->id}}">{{$user->name}}の本棚へ</a>
+                                                <a class="text-black hover:text-blue-500" href="/myshelf/users/{{$user->id}}/1">{{$user->name}}の本棚へ</a>
                                             </div>
                                             @if($user->checkFavorite($user->id))
                                                 <div>
