@@ -1,57 +1,104 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>mypage</title>
-        <!-- Fonts -->
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    </head>
-    
-    <x-app-layout>
+<x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('新刊情報') }}
+            新刊情報
         </h2>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </x-slot>
-    <body class="antialiased">
-        <center>
-        <div>
-            <div>
-                <p>検索</p> 
-            </div>
-            <div>
-                <form action="/newbooks" method="GET">
-                @csrf
-                <div><h3>楽天で検索</h3></div>
-                <div>
-                    <input type="text" name="title" placeholder="本のタイトルを入力" size="60"/>
-                </div>
-                    <input type="submit" value="検索"/>
-                </form>
-            </div>
-        </div>
-        <div>
-            @if($keyword)
-                <p>{{$keyword}}で検索</p>
-            @endif
-            @if($items)
-                @foreach($items as $item)
-                    <div>
-                        <a href="{{$item['itemUrl']}}">{{$item['title']}}</a>
-                        <img src="{{$item['largeImageUrl']}}"/>
+    <div class="bg-green-100 rounded-xl shadow-lg">
+        <div class="relative px-4 py-10 sm:px-6 lg:py-16 lg:px-8">
+            <div class="relative mx-auto max-w-2xl">
+                <section>
+                    <div class="mx-auto rounded-md shadow-lg bg-yellow-50">
+                        <div class="text-center pt-4">
+                            <div class="contents">
+                                <div>
+                                    <p class="bg-yellow-100 text-xl text-black-600 font-semibold shadow-md rounded-lg mx-60">新刊を探す</p>
+                                </div>
+                            </div>
+                            <br/>
+                        <div>
+                            <form action="/newbooks" method="GET">
+                                @csrf
+                                <div class="text-center">
+                                    <div class="my-2">
+                                        <div class="text-center">
+                                            <h2 class="text-gray-700">楽天で検索</h2>
+                                        </div>
+                                        <div>
+                                            <input type="text" name="title" class="shadow-lg rounded-md" placeholder="本のタイトルを入力"/>
+                                        </div>
+                                        <div>
+                                            <input type="submit" class="bg-lime-500 hover:bg-blue-500 text-lime-100 font-bold my-2 px-4 rounded-full" value="検索"/>
+                                        </div>
+                                    </div>
+                                </div>            
+                            </form>
+                        </div>
                     </div>
-                @endforeach
-            @else
-                <p>検索結果がありません</p>
-                <p>検索ワードを入力してください</p>
-            @endif
-        </div>
-        
-        
-        <div>
-            <p>ページトップへ</p>
-        </div>
-        </center>
-    </body>
-    </x-app-layout>
-</html>
+                    @if($keyword)
+                        <div class="py-10">
+                                <div class="bg-yellow-100 mx-24 py-5 text-center roudede-xl shadow-xl">
+                                    <h3>{{$keyword}}で検索</h3>
+                                </div>
+                        </div>
+                    @endif
+                    <div class="text-center text-red-400 bg-yellow-100 mx-auto py-5">
+                        <p>※新刊を探す際はタイトルの後ろに、スペース、巻数を入れるか</p>
+                        <p>タイトルの後ろに、スペース（巻数）を付けると探しやすいです</p>
+                        <p>例）タイトル　5</p>
+                        <p>例）タイトル　（5）</p>
+                    </div>
+                </section>
+                
+                <section>
+                    <div class="relative px-4 py-10 sm:px-6 lg:py-16 lg:px-8">
+                        <div class="relative  mx-auto max-w-2xl">
+                            <div class="mx-auto rounded-md shadow-lg bg-yellow-50">
+                                <div class="text-center pt-5">
+                                    <div class="relative px-5 py-10 sm:px-6 lg:py-16 lg:px-8">
+                                        <div class="relative mx-auto max-w-2xl">
+                                            @if($items)
+                                                <center>
+                                                    <div class="flex flex-col overflow-hidden rounded-lg shadow-lg bg-yellow-100 py-5 my-12">
+                                                        <div class="grid gap-10 mx-auto lg:grid-cols-2 lg:max-w-none">
+                                                            @foreach($items as $item)
+                                                                <div class="flex flex-col overflow-hidden rounded-lg shadow-lg bg-yellow-50 text-center mx-auto">
+                                                                    <a class="flex-shrink-0 text-center">
+                                                                        <p class="py-5 text-xl bg-red-100 text-neutral-700 hover:text-blue-500">{{$item['title']}}</p>
+                                                                    </a>
+                                                                    <div class="flex-shrink-0 text-center mx-auto my-auto">
+                                                                        <img src="{{$item['largeImageUrl']}}" width="150" height="252"/>
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                            @else
+                                                <div class="flex flex-col overflow-hidden rounded-lg shadow-lg bg-yellow-100">
+                                                    <div class="text-center text-red-400">
+                                                        <p>検索結果がありません</p>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                                </center>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </section>
+              </div>
+                
+                
+        <footer>                                
+            <div class="py-7 rounded-md shadow-lg bg-yellow-50">
+                <div class="text-center">
+                    <p class="pt-5"><a href="#" class="text-neutral-500 hover:text-blue-500">ページトップへ戻る</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</x-app-layout>
