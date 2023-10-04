@@ -64,7 +64,7 @@
                                                         <div class="grid gap-10 mx-auto lg:grid-cols-2 lg:max-w-none">
                                                             @foreach($items as $item)
                                                                 <div class="flex flex-col overflow-hidden rounded-lg shadow-lg bg-yellow-50 text-center mx-auto">
-                                                                    <a class="flex-shrink-0 text-center">
+                                                                    <a href="{{$item['itemUrl']}}" class="flex-shrink-0 text-center">
                                                                         <p class="py-5 text-xl bg-red-100 text-neutral-700 hover:text-blue-500">{{$item['title']}}</p>
                                                                     </a>
                                                                     <div class="flex-shrink-0 text-center mx-auto my-auto">
