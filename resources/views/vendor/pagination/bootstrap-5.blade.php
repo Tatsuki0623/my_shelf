@@ -7,10 +7,10 @@
                     {{-- Previous Page Link --}}
                     @if ($paginator->onFirstPage())
                         <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
-                            <span class="page-link" aria-hidden="true">前のページへ　　</span>
+                            <span class="page-link" aria-hidden="true">前のページへ　</span>
                     @else
                         <li class="page-item">
-                            <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">前のページへ　　</a>
+                            <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">前のページへ　</a>
                     @endif
 
                     {{-- Pagination Elements --}}
@@ -33,10 +33,10 @@
                     @endforeach
                     {{-- Next Page Link --}}
                     @if ($paginator->hasMorePages())
-                            <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">　　次のページへ</a>
+                            <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">　次のページへ</a>
                         </li>
                     @else
-                            <span class="page-link" aria-hidden="true">　　次のページへ</span>
+                            <span class="page-link" aria-hidden="true">　次のページへ</span>
                         </li>
                     @endif
                 </ul>
