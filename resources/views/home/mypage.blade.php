@@ -80,7 +80,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="relative flex-1 space-y-5 bg-yellow-100 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-100/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10 drop-shadow-xl">
+                    <div class="relative flex-1 space-y-5 bg-yellow-100 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-100/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10 drop-shadow-xl text-center">
                         <div class="bg-yellow-50 w-25 h-12 ring-1 ring-gray-100 sm:mx-auto sm:max-w-lg sm:rounded-lg drop-shadow-xl">
                             <h2>一週間の読書時間</h2>
                         </div>
@@ -103,21 +103,21 @@
                         </div>
                     </div>
             @else
-                <div id="read-time-content" class="read-time-content">
-                    <div id="read-time-week-content" class="read-time-week-content">
+                <div class="relative flex-1 space-y-5 bg-yellow-100 px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-100/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10 drop-shadow-xl text-center">
+                        <div class="bg-yellow-50 w-25 h-12 ring-1 ring-gray-100 sm:mx-auto sm:max-w-lg sm:rounded-lg drop-shadow-xl">
                         <div class="read-time-week-label">
                             <h2>一週間の読書時間</h2>
                         </div>
-                        <div class="read-time-week-values">
+                        <div class="flex-1 space-y-5 text-center">
                             @if($read_times['week']->first())
-                                <div>
+                                <div class="relative bg-yellow-50 ring-gray-100 sm:mx-auto sm:max-w-lg sm:rounded-lg drop-shadow-xl">
                                     <canvas id="Rtime"></canvas>
                                 </div>
-                                <div class='paginate leading-10 text-center'>
+                                <div class='paginate leading-10'>
                                     {{$read_times['week']->onEachSide(3)->links()}}
                                 </div> 
                             @else
-                                <div class="dont-have-read-time">
+                                <div>
                                     <p class="text-red-400">読書時間が登録されていません</p>
                                 </div>
                             @endif
@@ -163,40 +163,47 @@
                 </div>
             </div>
             
+            @if($user->id != Auth::user()->id)
+                <section>
+                    <div class="relative px-4 py-10 sm:px-6 lg:py-16 lg:px-8">
+                        <div class="relative  mx-auto max-w-2xl">
+                            <div class="mx-auto rounded-md shadow-lg bg-yellow-50">
+                                <div class="text-center pt-4 mx-auto">
+                                    <div class="relative px-5 py-10 sm:px-6 lg:py-16 lg:px-8">
+                                        <div class="relative mx-auto max-w-2xl">
+                                            <div class="py-5">
+                                                <a class="text-black hover:text-blue-500" href="/myshelf/users/{{$user->id}}">{{$user->name}}の本棚へ</a>
+                                            </div>
+                                            @if($user->checkFavorite($user->id))
+                                                <div>
+                                                    <form action="/othershelf/favorite/{{$user->id}}/detach" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="bg-transparent hover:bg-red-400 text-blue-300 font-semibold hover:text-lime-100 py-2 px-4 border border-red-400 hover:border-transparent rounded-lg shadow-md">お気に入り解除</button>
+                                                    </form>
+                                                </div>
+                                            @else
+                                                <div>
+                                                    <form action="/othershelf/favorite/{{$user->id}}/attach" method="POST" name="{{$user->name}}フォーム">
+                                                        @csrf
+                                                        <input type="hidden" name="favorite[registered_id]" value="{{$user->id}}">
+                                                        <input type="submit" class="bg-transparent hover:bg-blue-500 text-blue-300 font-semibold hover:text-lime-100 py-2 px-4 border border-lime-500 hover:border-transparent rounded-lg shadow-md" value="お気に入り"/>
+                                                    </form>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            @endif
+            
             <footer id="footer" class="text-center bg-lime-200 rounded-lg">
-                @if($user->id != Auth::user()->id)
-                    <div class="move-page">
-                        <p><a href="/othershelf/users/{{$user->id}}/1">本棚へ</a></p>
-                    </div>
-                    <div id="favorite-select" class="favorite-select">
-                        @if($user->checkFavorite($user->id))
-                            <div class="un-favorite">
-                                <form action="/othershelf/favorite/{{$user->id}}/detach" id="form_{{$user->id}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <div class="un-favorite-button">
-                                        <button type="submit" class="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-lime-400 text-xl">
-                                            お気に入り解除
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        @else
-                            <div class="favorite">
-                                <form action="/othershelf/favorite/{{$user->id}}/attach" method="POST" name="{{$user->name}}フォーム">
-                                    @csrf
-                                    <div class="favorite-submit">
-                                        <input type="hidden" name="favorite[registered_id]" value="{{$user->id}}">
-                                        <button type="submit" value="お気に入り" class="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 rounded-md text-lime-400 text-xl"/>
-                                    </div>
-                                </form>
-                            </div>
-                        @endif
-                    </div>
-                @endif
-            <div id="go-to-top" class="go-to-top py-10">
-                <a href="#">ページトップへ戻る</a>
-            </div>
-        </footer>
-    </div>
+                <div id="go-to-top" class="go-to-top py-10">
+                    <a class="hover:text-blue-500" href="#">ページトップへ戻る</a>
+                </div>
+            </footer>
+        </div>
 </x-app-layout>
