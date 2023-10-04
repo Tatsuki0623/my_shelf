@@ -89,6 +89,7 @@ class BookController extends Controller
             'items' => $items,
             'book' => $book,
             'user' => $user,
+            'keyword' => $request->title,
         ]);
     }
     
