@@ -82,6 +82,7 @@
                                                                     <div class="flex-1">
                                                                         <a href="/myshelf/books/users/{{$user->id}}/{{$book->id}}" class="block mt-2">
                                                                             <p class="text-xl text-neutral-500 font-semibold hover:text-blue-500">{{$book->title}}</p>
+                                                                            <p class="text-xl text-neutral-500 font-semibold hover:text-blue-500">既存巻:{{$book->volume}}</p>
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -103,29 +104,30 @@
                                                         @endforeach
                                                     @endif
                                                 @else
-                                                    </div>
+                                            </div>
                                                         <div class="flex flex-col overflow-hidden rounded-lg shadow-lg bg-yellow-100">
                                                             <div class="text-center text-red-400">
                                                                 <p>本が登録されていません</p>
                                                             </div>
                                                         </div>
                                                 @endif
-                                            </div>
-                                                @if($books->links()->elements['1'] ?? null)
-                                                    <div class="pt-5">
-                                                        <div class='paginate pt-5 bg-yellow-100'>
-                                                            {{$books->onEachSide(3)->links()}}
-                                                        </div>
-                                                    </div>
-                                                @endif
                                         </div>
+                                        @if($books->links()->elements['1'] ?? null)
+                                            <div class="pt-5">
+                                                <div class='paginate pt-5 bg-yellow-100'>
+                                                    {{$books->onEachSide(3)->links()}}
+                                                </div>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </section>
+            </div>
+        </div>
+                
                 
                 @if($user->id != Auth::user()->id)
                     <section>
@@ -163,7 +165,7 @@
                         </div>
                     </section>
                 @endif
-        </div>
+    </div>
         <footer>                                
             <div class="py-7 rounded-md shadow-lg bg-yellow-50">
                 <div class="text-center">
