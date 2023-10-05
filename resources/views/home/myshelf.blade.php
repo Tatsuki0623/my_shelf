@@ -82,8 +82,8 @@
                                                                     <div class="flex-1">
                                                                         <a href="/myshelf/books/users/{{$user->id}}/{{$book->id}}" class="block mt-2">
                                                                             <p class="text-xl text-neutral-500 font-semibold hover:text-blue-500">{{$book->title}}</p>
-                                                                            <p class="text-xl text-neutral-500 font-semibold hover:text-blue-500">既存巻:{{$book->volume}}</p>
                                                                         </a>
+                                                                        <p class="text-xl text-neutral-500 font-semibold">既存巻:{{$book->volume}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="my-auto">
