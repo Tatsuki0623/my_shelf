@@ -10,10 +10,10 @@
           <form method="POST" action="{{ route('register') }}">
               @csrf
           <div class="lg:w-1/2 md:w-2/3 mx-auto">
-            <div class="grid gap-4 grid-cols-2 justify-items-center">
+            <div class="text-center justify-items-center">
 
 
-              <div class="p-2 w-1/2">
+              <div class="p-2 mx-auto">
                 <div class="relative">
                     <x-input-label for="name" :value="__('Name')" class="leading-7 text-sm text-gray-600"/>
                     <x-text-input id="name" 
@@ -28,7 +28,7 @@
               </div>
 
 
-              <div class="p-2 w-1/2">
+              <div class="p-2 mx-auto">
                 <div class="relative">
                     <x-input-label for="email" :value="__('Email')" class="leading-7 text-sm text-gray-600" />
                     <x-text-input id="email" 
@@ -43,7 +43,7 @@
               </div>
 
 
-              <div class="p-2 w-1/2">
+              <div class="p-2 mx-auto">
                 <div class="relative">
                     <x-input-label for="password" :value="__('Password')" class="leading-7 text-sm text-gray-600" />
                     <x-text-input id="password" 
@@ -57,7 +57,7 @@
               </div>
 
 
-              <div class="p-2 w-1/2">
+              <div class="p-2 mx-auto">
                 <div class="relative">
                     <x-input-label for="password_confirmation" :value="__('Confirm Password')" class="leading-7 text-sm text-gray-600" />
                   <x-text-input id="password_confirmation" 
