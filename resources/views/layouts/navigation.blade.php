@@ -60,6 +60,18 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('mypage', Auth::user()->id)" :active="request()->routeIs('/mypage/users/{user}')">
+                {{__('マイページ')}}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('myshelf_commic', Auth::user()->id)" :active="request()->routeIs('myshelf/users/{user}/1')">
+                {{__('私の本棚')}}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('othershelf')" :active="request()->routeIs('othershelf')">
+                {{__('みんなの本棚')}}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('newbooks')" :active="request()->routeIs('newbooks')">
+                {{__('新刊情報')}}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -71,7 +83,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('プロフィール') }}
+                    {{ __('Profile') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -81,7 +93,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('ログアウト') }}
+                        {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
