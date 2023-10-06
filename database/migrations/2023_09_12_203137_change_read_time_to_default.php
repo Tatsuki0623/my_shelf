@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('read_times', function (Blueprint $table) {
-            $table->integer('read_time')->change();
+            //
         });
     }
 };
