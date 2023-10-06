@@ -16,7 +16,7 @@
                 </h1>
             </div>
             <div class="bg-yellow-100">
-                <form action="/myshelf/books/" method="POST">
+                <form action="/myshelf/books" method="POST">
                     @csrf 
                     <div class="lg:w-1/2 md:w-2/3 mx-auto ">
                         <div class="py-5">
