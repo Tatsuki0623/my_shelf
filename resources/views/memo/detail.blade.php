@@ -55,7 +55,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="back text-center">[<a href="/mypage/users/{{Auth::user()->id}}">back</a>]</div>
+                    <div class="back text-center hover:text-blue-500">[<a href="/mypage/users/{{Auth::user()->id}}">back</a>]</div>
                 </div>
             </div>
             </div>

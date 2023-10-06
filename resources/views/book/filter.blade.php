@@ -76,7 +76,7 @@
                                         <div class="relative mx-auto max-w-2xl">
                                             
                                             <div class="grid gap-10 mx-auto lg:grid-cols-2 lg:max-w-none">
-                                                @if($filters->first())
+                                                @if($filters['0'] ?? null)
                                                     @if($user->id == Auth::user()->id)
                                                         @foreach($filters as $book)
                                                             <div class="flex flex-col overflow-hidden rounded-lg shadow-lg bg-yellow-100">
@@ -107,6 +107,15 @@
                                                             </div>
                                                         @endforeach
                                                     @endif
+                                                    <div class="pt-5">
+                                                        @if($filters->links()->elements[''] ?? null)
+                                                            <div class="pt-5">
+                                                                <div class='paginate pt-5 bg-yellow-100'>
+                                                                    {{$filters->onEachSide(3)->links()}}
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    </div>
                                                 @else
                                                     </div>
                                                         <div class="flex flex-col overflow-hidden rounded-lg shadow-lg bg-yellow-100">
@@ -114,15 +123,6 @@
                                                                 <p>検索結果がありませんでした</p>
                                                             </div>
                                                         </div>
-                                                @endif
-                                            </div>
-                                            <div class="pt-5">
-                                                @if($filters->links()->elements['1'] ?? null)
-                                                    <div class="pt-5">
-                                                        <div class='paginate pt-5 bg-yellow-100'>
-                                                            {{$filters->onEachSide(3)->links()}}
-                                                        </div>
-                                                    </div>
                                                 @endif
                                             </div>
                                         </div>

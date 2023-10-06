@@ -30,7 +30,7 @@
     "Name": "ユーザーネーム",
     "New Password": "新しいパスワード",
     
-    "Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.": "削除する場合はパスワードを入力してください",
+    "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "アカウントを削除するとデータをもとには戻せません。それでも削除する場合は以下のボタンを押し、パスワードを入力してください",
     
     "Password": "パスワード",
     "Profile": "ユーザー情報",
