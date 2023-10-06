@@ -98,7 +98,10 @@
 
                     </div>
                 </form>
-                <div class="back py-8 text-center hover:text-blue-500">[<a href="javascript:history.back()">back</a>]</div>
+                <div class="back py-8 text-center">
+                    [<a class="hover:text-blue-500" href="/mypage/users/{{$book->user_id}}">マイページへ</a>]
+                    [<a class="hover:text-blue-500" href="/myshelf/users/{{$book->user_id}}/1">本棚へ</a>]
+                </div>
             </div>
         </div>
     </section>

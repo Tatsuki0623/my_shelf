@@ -72,6 +72,9 @@
                         <div class="grid grid-cols-2 gap-10 pt-10 mx-10">
                             <div>
                                 <div class="border border-gray-500 p-6 bg-white rounded-lg shadow-xl text-center">
+                                    <div class="bg-lime-100 rounded-xl shadow-lg text-center">
+                                        漫画と小説の登録数割合
+                                    </div>
                                     <canvas id="info-register"></canvas>
                                     <div class="bg-lime-100 rounded-xl shadow-lg">
                                         <p id="comics-ratio"></p>
@@ -81,6 +84,9 @@
                             </div>
                             <div>
                                 <div class="border border-gray-500 p-6 bg-white rounded-lg shadow-xl text-center">
+                                    <div class="bg-lime-100 rounded-xl shadow-lg text-center">
+                                        漫画と小説の全数割合
+                                    </div>
                                     <canvas id="info-total"></canvas>
                                     <div class="bg-lime-100 rounded-xl shadow-lg">
                                         <p id="comics-total-ratio"></p>

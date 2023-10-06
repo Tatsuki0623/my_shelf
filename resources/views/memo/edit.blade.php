@@ -50,7 +50,7 @@
                         </div>
                     </div>
                 </form>
-                <div class="back py-8 text-center">[<a href="javascript:history.back()">back</a>]</div>
+                <div class="back py-8 text-center hover:text-blue-500">[<a href="javascript:history.back()">back</a>]</div>
             </div>
         </div>
 </x-app-layout>

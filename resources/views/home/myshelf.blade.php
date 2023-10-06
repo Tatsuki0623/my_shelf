@@ -112,7 +112,7 @@
                                                         </div>
                                                 @endif
                                         </div>
-                                        @if($books->links()->elements['1'] ?? null)
+                                        @if($books->links()->elements['0'] ?? null)
                                             <div class="pt-5">
                                                 <div class='paginate pt-5 bg-yellow-100'>
                                                     {{$books->onEachSide(3)->links()}}

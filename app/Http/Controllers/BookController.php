@@ -21,11 +21,10 @@ class BookController extends Controller
         
         $client->setApplicationId(RAKUTEN_APPLICATION_ID);
         
-        $responses = $client->execute('BooksTotalSearch', array(
+        $responses = $client->execute('BooksBookSearch', array(
             'keyword' => $keyword,
-            'hits' =>10,
+            'hits' =>30,
         ));
-        
         $items = array();
         
         if(!$responses->isOk()){
