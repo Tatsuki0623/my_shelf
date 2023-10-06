@@ -27,8 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('memos',function (Blueprint $table) {
-            $table->string('title',20)->change();
-            $table->string('body',140)->change();
+            //
         });
     }
 };

@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::table('kinds', function (Blueprint $table) {
             $table->renameColumn('kind','name');
         });
+        
+        DB::table('kinds')->insert([
+        ['name' => '漫画'],
+        ['name' => '小説'],
+        ]);
     }
 
     /**
@@ -25,8 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('kinds', function (Blueprint $table) {
-            $table->renameColumn('name','kind');
-        });
+        //
     }
 };
