@@ -97,9 +97,18 @@
                                                         @endforeach
                                                     @else
                                                         @foreach($books as $book)
-                                                            <div>
-                                                                <a href="/myshelf/books/users/{{$user->id}}/{{$book->id}}">{{$book->title}}</a>
-                                                                <img src="{{$book->image}}" width="100" height="50"/>
+                                                            <div class="flex flex-col overflow-hidden rounded-lg shadow-lg bg-yellow-100">
+                                                                <div class="flex-shrink-0 mx-auto">
+                                                                    <img src="{{$book->image ?? "/no_image.jpg"}}"/>
+                                                                </div>
+                                                                <div class="flex flex-col justify-between bg-white py-5 routede-xl">
+                                                                    <div class="flex-1">
+                                                                        <a href="/myshelf/books/users/{{$user->id}}/{{$book->id}}" class="block mt-2">
+                                                                            <p class="text-xl text-neutral-500 font-semibold hover:text-blue-500">{{$book->title}}</p>
+                                                                        </a>
+                                                                        <p class="text-xl text-neutral-500 font-semibold">既存巻:{{$book->volume}}</p>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         @endforeach
                                                     @endif
