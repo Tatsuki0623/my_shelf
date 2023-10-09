@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\BookRequest;
-use RakutenRws_Client;
 use App\Models\Book;
 use App\Models\Kind;
 use App\Models\User;
@@ -13,31 +12,7 @@ use App\Models\User;
 
 class BookController extends Controller
 {
-    public function get_rakuten_items($keyword)
-    {
-        $client = new RakutenRws_Client();
-        
-        define('RAKUTEN_APPLICATION_ID', config('app.rakuten_application_id'));
-        
-        $client->setApplicationId(RAKUTEN_APPLICATION_ID);
-        
-        $responses = $client->execute('BooksBookSearch', array(
-            'keyword' => $keyword,
-            'hits' =>30,
-        ));
-        $items = array();
-        
-        if(!$responses->isOk()){
-            return $items[] = 'Error:'.$response->getMessage();
-        } else {
-            foreach($responses as $response){
-                $items[] = $response;
-                }
-            return $items;
-            }
-    }
     
-    //myshelf
     public function store(BookRequest $request, Book $book)
     {
         $user_id = Auth::user()->id;
@@ -45,6 +20,17 @@ class BookController extends Controller
         $input['user_id'] = $user_id;
         $book->fill($input)->save();
         return redirect('/myshelf/books/users/'. $user_id. '/'. $book->id);
+    }
+    
+    public function detail(Request $request, Book $book)
+    {
+        $kind_id = $request['kind_id'];
+        $isbn = $request['isbn'];
+        $item = $book->get_rakuten_items(kind_value: $kind_id, isbn: $isbn);
+        return view('book.isbn')->with([
+            'item' => $item['0'] ?? null,
+            'kind_id' => $kind_id,
+            ]);
     }
     
     public function show(User $user,Book $book)
@@ -76,18 +62,17 @@ class BookController extends Controller
         return redirect('/myshelf/books/users/'. $user_id. '/'. $book->id);
     }
     
-    public function search(Request $request, Book $book, User $user)
+    public function search(Request $request, Book $book)
     {
         if($request->title)
         {
-            $items = $this->get_rakuten_items($request->title);
+            $items = $book->get_rakuten_items($request->title, $request->kind_value);
         }else{
             $items = null;
         }
         return view('book.search')->with([
             'items' => $items,
             'book' => $book,
-            'user' => $user,
             'keyword' => $request->title,
         ]);
     }
@@ -111,12 +96,11 @@ class BookController extends Controller
         return redirect('/myshelf/users/'. $user_id. '/'. $kind_id);
     }
     
-    //newbooks
-    public function preview(Request $request)
+    public function preview(Request $request, Book $book)
     {
         if($request->title)
         {
-            $items = $this->get_rakuten_items($request->title);
+            $items = $book->get_rakuten_items($request->title, $request->kind_value);
         }else{
             $items = null;
         }

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{$user->name}}の本棚＿リンクの付与
+            {{Auth::user()->name}}の本棚＿リンクの付与
         </h2>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </x-slot>
@@ -30,6 +30,12 @@
                                         </div>
                                         <div>
                                             <input type="submit" class="bg-lime-500 hover:bg-blue-500 text-lime-100 font-bold my-2 px-4 rounded-full" value="検索"/>
+                                        </div>
+                                        <div>
+                                            <select name="kind_value">
+                                                <option value="1">漫画</option>
+                                                <option value="2">小説</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>            
@@ -106,8 +112,6 @@
                 </div>
                 </section>
               </div>
-                
-                
         <footer>                                
             <div class="py-7 rounded-md shadow-lg bg-yellow-50">
                 <div class="text-center">

@@ -19,8 +19,7 @@
         <div class="container bg-yellow-50 px-5 py-12 mx-auto rounded-2xl shadow-2xl">
             <div class="flex flex-col text-center w-full mb-12 justify-center">
                 <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-                  {{$book->title}}
-                  の詳細画面
+                  {{$book->title}}の詳細画面
                 </h1>
             </div>
             <div class="bg-yellow-100">
@@ -78,7 +77,7 @@
                       <div class="grid grid-cols-3">
                             <div>
                                 <P>
-                                    <button type="button" class="bg-transparent hover:bg-blue-400 text-black font-semibold hover:text-lime-100 py-2 px-4 border border-blue-400 hover:border-transparent rounded-lg shadow-md" onclick="location.href='/myshelf/books/{{$book->id}}/link/search'">リンクをつける</button>
+                                    <button type="button" class="bg-transparent hover:bg-blue-400 text-black font-semibold hover:text-lime-100 py-2 px-4 border border-blue-400 hover:border-transparent rounded-lg shadow-md" onclick="location.href='/myshelf/books/{{$book->id}}/link/search'">楽天と紐づける</button>
                                 </p>
                             </div>
                             <div>
