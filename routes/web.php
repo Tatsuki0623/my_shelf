@@ -46,6 +46,7 @@ Route::get('/dashboard', function () {
 Route::controller(BookController::class)->middleware(['auth', 'verified'])->group(function(){
     Route::get('/newbooks','preview')->name('newbooks');
     Route::post('/myshelf/books','store')->name('book_store');
+    Route::get('/myshelf/books/isbn','detail')->name('book_isbn_store');
     Route::get('/myshelf/books/register','register')->name('book_register');
     Route::get('/myshelf/books/users/{user}/{book}','show')->name('book_show');
     Route::put('/myshelf/books/{book}','update')->name('book_update');

@@ -31,6 +31,12 @@
                                         <div>
                                             <input type="submit" class="bg-lime-500 hover:bg-blue-500 text-lime-100 font-bold my-2 px-4 rounded-full" value="検索"/>
                                         </div>
+                                        <div>
+                                            <select name="kind_value">
+                                                <option value="1">漫画</option>
+                                                <option value="2">小説</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>            
                             </form>
@@ -44,10 +50,9 @@
                         </div>
                     @endif
                     <div class="text-center text-red-400 bg-yellow-100 mx-auto py-5">
-                        <p>※新刊を探す際はタイトルの後ろに、スペース、巻数を入れるか</p>
-                        <p>タイトルの後ろに、スペース（巻数）を付けると探しやすいです</p>
-                        <p>例）タイトル　5</p>
-                        <p>例）タイトル　（5）</p>
+                        <p>※「本」と検索すると全新刊情報が発売日が新しい順で検索できます</p>
+                        <p>※タイトルの後ろに、　半角スペース、巻数を入れるか、タイトルの後ろに　半角スペース（巻数）を付けると探しやすいです</p>
+                        <p>例）タイトル 5　タイトル (5)</p>
                     </div>
                 </section>
                 

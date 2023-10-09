@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+use RakutenRws_Client;
 
 class Book extends Model
 {
@@ -43,7 +44,8 @@ class Book extends Model
         return $this->where('user_id',$user)->orderBy('created_at', 'DESC')->paginate($limit_count);
     }
     
-    public function getBookPoint($user){
+    public function getBookPoint($user)
+    {
         $user_id = $user->id;
         
         $book_list = [];
@@ -68,5 +70,40 @@ class Book extends Model
         }
         return $book_list;
         
+    }
+    
+    public function get_rakuten_items($keyword = null, $kind_value = 1, $isbn = null)
+    {
+        $client = new RakutenRws_Client();
+        
+        define('RAKUTEN_APPLICATION_ID', config('app.rakuten_application_id'));
+        
+        $client->setApplicationId(RAKUTEN_APPLICATION_ID);
+        
+        if($kind_value ==1){
+            $booksGenreId = "001001";
+        }else{
+            $booksGenreId = "001019";
+        }
+        
+        $responses = $client->execute('BooksTotalSearch', array(
+            'keyword' => $keyword,
+            'isbnjan' => $isbn,
+            'sort' => "-releaseDate",
+            'booksGenreId' => $booksGenreId,
+            'hits' =>30,
+        ));
+        $items = array();
+        
+        if($responses->isOk()){
+            foreach($responses as $response){
+                if($response['author']){
+                    $items[] = $response;
+                }   
+            }
+            return $items;
+        }else{
+            return null;
+        }
     }
 }
