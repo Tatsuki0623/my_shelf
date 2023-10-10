@@ -80,7 +80,7 @@ class Book extends Model
         
         $client->setApplicationId(RAKUTEN_APPLICATION_ID);
         
-        if($kind_value ==1){
+        if($kind_value == 1){
             $booksGenreId = "001001";
         }else{
             $booksGenreId = "001019";
