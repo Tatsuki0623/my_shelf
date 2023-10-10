@@ -27,7 +27,6 @@ class BookController extends Controller
         $kind_value = $request['kind_value'];
         $isbn = $request['isbn'];
         $item = $book->get_rakuten_items(kind_value: $kind_value, isbn: $isbn);
-        dd($book->id);
         return view('book.isbn')->with([
             'item' => $item['0'] ?? null,
             'kind_id' => $kind_value,
