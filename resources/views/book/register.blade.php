@@ -37,9 +37,6 @@
                             <p><input type="submit" class="mx-auto flex rounded border-0 bg-indigo-500 px-8 py-2 text-lg text-white hover:bg-indigo-600 focus:outline-none" value="登録"/></p>
                         </div>
                     </form>
-                    <div class="rounded-xl bg-yellow-100 shadow-xl">
-                        <div class="back text-center">[<a class="hover:text-blue-500" href="/myshelf/users/{{Auth::user()->id}}/1">back</a>]</div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -73,6 +70,9 @@
                                         <input type="submit" class="bg-lime-500 hover:bg-blue-500 text-lime-100 font-bold my-2 px-4 rounded-full" value="検索"/>
                                     </div>
                                 </form>
+                                <div class="rounded-xl bg-yellow-100 shadow-xl py-5">
+                                    <div class="back text-center">[<a class="hover:text-blue-500" href="/myshelf/users/{{Auth::user()->id}}/1">back</a>]</div>
+                                </div>
                             </div>
                         </center>
                     </div>
