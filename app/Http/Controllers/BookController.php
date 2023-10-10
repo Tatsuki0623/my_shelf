@@ -24,12 +24,13 @@ class BookController extends Controller
     
     public function detail(Request $request, Book $book)
     {
-        $kind_id = $request['kind_id'];
+        $kind_value = $request['kind_value'];
         $isbn = $request['isbn'];
-        $item = $book->get_rakuten_items(kind_value: $kind_id, isbn: $isbn);
+        $item = $book->get_rakuten_items(kind_value: $kind_value, isbn: $isbn);
+        dd($book->id);
         return view('book.isbn')->with([
             'item' => $item['0'] ?? null,
-            'kind_id' => $kind_id,
+            'kind_id' => $kind_value,
             ]);
     }
     
@@ -62,18 +63,21 @@ class BookController extends Controller
         return redirect('/myshelf/books/users/'. $user_id. '/'. $book->id);
     }
     
-    public function search(Request $request, Book $book)
+    public function search(Request $request, Book $book, Kind $kind)
     {
-        if($request->title)
+        if($request['title'])
         {
-            $items = $book->get_rakuten_items($request->title, $request->kind_value);
+            $items = $book->get_rakuten_items(keyword: $request['title'], kind_value: $request['kind_value']);
+        }elseif($request['isbn']){
+            $items = $book->get_rakuten_items(isbn: $request['isbn'], kind_value: $request['kind_value']);
         }else{
             $items = null;
         }
         return view('book.search')->with([
             'items' => $items,
             'book' => $book,
-            'keyword' => $request->title,
+            'keyword' => $request['title'],
+            'kinds' => $kind->get(),
         ]);
     }
     

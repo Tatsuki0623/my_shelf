@@ -39,7 +39,7 @@
                         @endif
                     </div>
                     <div class="py-10 text-center">
-                        <a href="/myshelf/books/register" class="hover:text-blue-500">やり直す</a>
+                        <a href="javascript:history.back()" class="hover:text-blue-500">やり直す</a>
                     </div>
                 </div>
             </div>
