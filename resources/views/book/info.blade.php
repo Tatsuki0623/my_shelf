@@ -74,7 +74,9 @@
                                     <div class="bg-lime-100 rounded-xl shadow-lg text-center">
                                         漫画と小説の登録数割合
                                     </div>
-                                    <canvas id="info-register"></canvas>
+                                    <center style="position: relative; height:80vh; width:80vw">
+                                        <canvas id="info-register"></canvas>
+                                    </center>
                                     <div class="bg-lime-100 rounded-xl shadow-lg">
                                         <p id="comics-ratio"></p>
                                         <p id="novels-ratio"></p>
@@ -86,7 +88,9 @@
                                     <div class="bg-lime-100 rounded-xl shadow-lg text-center">
                                         漫画と小説の全数割合
                                     </div>
-                                    <canvas id="info-total"></canvas>
+                                    <center style="position: relative; height:80vh; width:80vw">
+                                        <canvas id="info-total"></canvas>
+                                    </center>
                                     <div class="bg-lime-100 rounded-xl shadow-lg">
                                         <p id="comics-total-ratio"></p>
                                         <p id="novels-total-ratio"></p>
