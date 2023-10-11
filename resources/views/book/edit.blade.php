@@ -22,7 +22,7 @@
                     @method('PUT')
                     <div class="lg:w-1/2 md:w-2/3 mx-auto ">
                         <div class="py-5">
-                            <div class="bg-yellow-200 rounded-lg mx-56 shadow-xl">
+                            <div class="bg-yellow-200 rounded-lg mx-auto shadow-xl">
                                 <h2 class="text-center text-2xl text-stone-500">本のタイトル</h2>
                             </div>
                             <div class="text-center py-5">
@@ -30,30 +30,29 @@
                                        name="book[title]" 
                                        class="w-auto bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                                        placeholder="本のタイトルを入力" 
-                                       value="{{$book->title}}" 
-                                       size="50" />
+                                       value="{{$book->title}}"/>
                                 <p class="title__error mt-2 text-red-400">{{$errors->first('book.title')}}</p>
                             </div>
                         </div>
 
 
                         <div class="py-5">
-                            <div class="bg-yellow-200 rounded-lg mx-56 shadow-xl">
+                            <div class="bg-yellow-200 rounded-lg mx-auto shadow-xl">
                                 <h2 class="text-center text-2xl text-stone-500">本の感想</h2>
                             </div>
                             <div class="text-center py-5">
                                 <textarea name="book[impression]"
-                                          class="w-auto bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" 
+                                          class="w-auto bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 mx-auto py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" 
                                           placeholder="600文字以下で入力してください"
                                           rows="8" 
-                                          cols="70" >{{$book->impression}}</textarea>
+                                          cols="45">{{$book->impression}}</textarea>
                                 <p class="impression__error mt-2 text-red-400">{{$errors->first('book.impression')}}</p>
                             </div>
                         </div>
 
 
                         <div class="py-5">
-                              <div class="bg-yellow-200 rounded-lg mx-56 shadow-xl">
+                              <div class="bg-yellow-200 rounded-lg mx-auto shadow-xl">
                                   <h2 class="text-center text-2xl text-stone-500">点数</h2>
                               </div>
                               <div class="text-center py-5">
@@ -67,7 +66,7 @@
                         </div>
 
                         <div class="py-5">
-                              <div class="bg-yellow-200 rounded-lg mx-56 shadow-xl">
+                              <div class="bg-yellow-200 rounded-lg mx-auto shadow-xl">
                                   <h2 class="text-center text-2xl text-stone-500">所有巻数</h2>
                               </div>
                               <div class="text-center py-5">

@@ -30,7 +30,7 @@
                             </div>
                         </center>
                         <div class="py-5">
-                            <div class="bg-yellow-200 rounded-lg mx-56 shadow-xl">
+                            <div class="bg-yellow-200 rounded-lg mx-auto shadow-xl">
                                 <h2 class="text-center text-2xl text-stone-500">本のタイトル</h2>
                             </div>
                             <div class="text-center py-5">
@@ -44,7 +44,7 @@
 
 
                         <div class="py-5">
-                            <div class="bg-yellow-200 rounded-lg mx-56 shadow-xl">
+                            <div class="bg-yellow-200 rounded-lg mx-auto shadow-xl">
                                 <h2 class="text-center text-2xl text-stone-500">感想</h2>
                             </div>
                             <div class="text-center py-5">
@@ -54,7 +54,7 @@
 
 
                         <div class="py-5">
-                              <div class="bg-yellow-200 rounded-lg mx-56 shadow-xl">
+                              <div class="bg-yellow-200 rounded-lg mx-auto shadow-xl">
                                   <h2 class="text-center text-2xl text-stone-500">点数</h2>
                               </div>
                               <div class="text-center py-5">
@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="py-5">
-                              <div class="bg-yellow-200 rounded-lg mx-56 shadow-xl">
+                              <div class="bg-yellow-200 rounded-lg mx-auto shadow-xl">
                                   <h2 class="text-center text-2xl text-stone-500">所有巻数</h2>
                               </div>
                               <div class="text-center py-5">

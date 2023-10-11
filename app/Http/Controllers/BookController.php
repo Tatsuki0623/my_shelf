@@ -101,9 +101,9 @@ class BookController extends Controller
     
     public function preview(Request $request, Book $book)
     {
-        if($request->title)
+        if($request['title'])
         {
-            $items = $book->get_rakuten_items($request->title, $request->kind_value);
+            $items = $book->get_rakuten_items(keyword: $request['title'], kind_value: $request['kind_value']);
         }else{
             $items = null;
         }

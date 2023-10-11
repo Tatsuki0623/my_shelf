@@ -15,7 +15,7 @@
                                 <div class="item-center"><img src="{{$item['largeImageUrl']}}"/></div>
                             </center>
                             <div class="py-5">
-                                <div class="mx-56 rounded-lg bg-yellow-200 shadow-xl">
+                                <div class="mx-auto rounded-lg bg-yellow-200 shadow-xl">
                                     <h2 class="text-center text-2xl text-stone-500">本のタイトル</h2>
                                 </div>
                                 <form action="/myshelf/books" method="POST">

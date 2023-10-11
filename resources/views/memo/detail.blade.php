@@ -24,16 +24,16 @@
                 <div class="lg:w-1/2 md:w-2/3 mx-auto ">
                     <div class="py-5 text-center">
                         <div class="py-5">
-                            <div class="bg-yellow-100 rounded-lg mx-16 shadow-xl">
+                            <div class="bg-yellow-100 rounded-lg mx-auto shadow-xl">
                                 <h2 class="text-center text-2xl text-stone-500">メモのタイトル</h2>
                             </div>
                             <h2 class="text-center text-2xl text-gray-700 py-5">{{$memo->title}}</h2>
                             <div class="py-5">
-                                <div class="bg-yellow-100 rounded-lg mx-56 shadow-xl">
+                                <div class="bg-yellow-100 rounded-lg mx-auto shadow-xl">
                                     <h2 class="text-center text-2xl text-stone-500">メモの本文</h2>
                                 </div>
                                  <div>
-                                     <p class="text-center text-2xl text-gray-700 py-5">{{$memo->body}}</p>
+                                     <p class="text-center text-2xl text-gray-700 mx-auto py-5">{{$memo->body}}</p>
                                  </div>
                             </div>
                         </div>
