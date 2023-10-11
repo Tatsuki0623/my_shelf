@@ -44,8 +44,7 @@
                                 <textarea name="book[impression]"
                                           class="w-auto bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 mx-auto py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" 
                                           placeholder="600文字以下で入力してください"
-                                          rows="8" 
-                                          cols="45">{{$book->impression}}</textarea>
+                                          rows="8" >{{$book->impression}}</textarea>
                                 <p class="impression__error mt-2 text-red-400">{{$errors->first('book.impression')}}</p>
                             </div>
                         </div>

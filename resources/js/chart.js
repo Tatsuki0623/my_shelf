@@ -62,8 +62,7 @@ function show_data () {
         },
     });
     
-    info_register_num.canvas.style.height = '250px';
-    info_register_num.canvas.style.width = '250px';
+    
     
     const ctx_total = document.getElementById("info-total");
     
@@ -91,9 +90,6 @@ function show_data () {
             ],
         },
     });
-    
-    info_total_num.canvas.style.height = '250px';
-    info_total_num.canvas.style.width = '250px';
 }
 
 if(document.getElementById("Rtime")){
