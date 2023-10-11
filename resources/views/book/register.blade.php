@@ -14,19 +14,20 @@
                         @csrf
                         <div class="mx-auto md:w-2/3 lg:w-1/2">
                             <div class="py-5">
-                                <div class="mx-56 rounded-lg bg-yellow-200 shadow-xl">
+                                <div class="mx-auto rounded-lg bg-yellow-200 shadow-xl">
                                     <h2 class="text-center text-2xl text-stone-500">本のタイトル</h2>
                                 </div>
                                 <div class="py-5 text-center">
-                                    <input type="text" name="book[title]" class="w-auto rounded border border-gray-300 bg-gray-100 bg-opacity-50 px-3 py-1 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200" placeholder="本のタイトルを入力" value="{{old('book.title')}}" size="50" />
+                                    <input type="text" name="book[title]" class="w-auto rounded border border-gray-300 bg-gray-100 bg-opacity-50 mx-auto px-3 py-1 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200" placeholder="本のタイトルを入力" value="{{old('book.title')}}"/>
                                     <p class="title__error" style="color:red">{{$errors->first('book.title')}}</p>
                                 </div>
                             </div>
                         </div>
-                        <center>
-                            <div class="mx-56 rounded-lg bg-yellow-200 shadow-xl">
-                                <h2 class="my-5 text-center text-2xl text-stone-500">本の種類</h2>
+                        
+                            <div class="mx-auto rounded-lg bg-yellow-200 shadow-xl">
+                                <h2 class="text-center text-2xl text-stone-500">本の種類</h2>
                             </div>
+                        <center>
                             <select name="book[kind_id]" class="block rounded-lg border border-gray-300 bg-gray-50 text-base text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500">
                                 @foreach($kinds as $kind)
                                     <option value="{{$kind->id}}">{{$kind->name}}</option>
@@ -55,11 +56,11 @@
                                     <div id="stop"></div>
                                     <div id="interactive" class="viewport"></div>
                                     <div>
-                                        <input id="code" name="isbn" type="text" class="w-auto rounded border border-gray-300 bg-gray-100 bg-opacity-50 px-3 py-1 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200" placeholder="9784から始まるバーコードをスキャンしてください" size="50"/>
+                                        <input id="code" name="isbn" type="text" class="rounded border border-gray-300 bg-gray-100 bg-opacity-50 mx-auto px-3 py-1 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200" placeholder="9784から始まるバーコードをスキャンしてください"/>
                                     </div>
                                     <p class="isbn__error" style="color:red">{{$errors->first('book.isbn')}}</p>
-                                    <div class="mx-56 rounded-lg bg-yellow-200 shadow-xl">
-                                        <h2 class="my-5 text-center text-2xl text-stone-500">本の種類</h2>
+                                    <div class="mx-auto rounded-lg bg-yellow-200 shadow-xl">
+                                        <h2 class="text-center text-2xl text-stone-500">本の種類</h2>
                                     </div>
                                     <select name="kind_value" class="block rounded-lg border border-gray-300 bg-gray-50 text-base text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500">
                                         @foreach($kinds as $kind)

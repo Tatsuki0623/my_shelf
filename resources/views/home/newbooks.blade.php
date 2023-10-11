@@ -13,7 +13,7 @@
                         <div class="text-center pt-4">
                             <div class="contents">
                                 <div>
-                                    <p class="bg-yellow-100 text-xl text-black-600 font-semibold shadow-md rounded-lg mx-60">新刊を探す</p>
+                                    <p class="bg-yellow-100 text-xl text-black-600 font-semibold shadow-md rounded-lg mx-auto">新刊を探す</p>
                                 </div>
                             </div>
                             <br/>

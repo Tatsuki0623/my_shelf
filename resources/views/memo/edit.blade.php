@@ -17,7 +17,7 @@
                     @method('PUT')
                     <div class="lg:w-1/2 md:w-2/3 mx-auto ">
                         <div class="py-5">
-                            <div class="bg-yellow-100 rounded-lg mx-56 shadow-xl">
+                            <div class="bg-yellow-100 rounded-lg mx-auto shadow-xl">
                                 <h2 class="text-center text-2xl text-stone-500">メモのタイトル</h2>
                             </div>
                             <div class="memo-title-value text-center py-5">
@@ -25,21 +25,20 @@
                                        name="memo[title]" 
                                        class="w-auto bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" 
                                        placeholder="本のタイトルを入力" 
-                                       value="{{$memo->title}}" 
-                                       size="50"/>
+                                       value="{{$memo->title}}"/>
                                 <p class="title__error mt-2 text-red-400" style="color:red">{{$errors->first('memo.title')}}</p>
                             </div>
                             </div>
     
     
                             <div class="py-5">
-                            <div class="bg-yellow-100 rounded-lg mx-56 shadow-xl">
+                            <div class="bg-yellow-100 rounded-lg mx-auto shadow-xl">
                                 <h2 class="text-center text-2xl text-stone-500">メモの本文</h2>
                             </div>
                             <div class="memo-body-value text-center py-5">
                                 <textarea name="memo[body]" 
                                           rows="8" 
-                                          cols="70" 
+                                          cols="45" 
                                           class="w-auto bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" 
                                           placeholder="600文字以下で入力してください">{{$memo->body}}</textarea>
                                 <p class="body__error mt-2 text-red-400">{{$errors->first('memo.body')}}</p>
