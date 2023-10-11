@@ -46,16 +46,16 @@ class Kind extends Model
     public function getBookData($user_id)
     {
         $register_books = Book::get()->where('user_id',$user_id) ?? "0";
-        $comic = $this::find(1);
-        $novel = $this::find(2);
+        $comic = $this::find(1)->books()->where('user_id',$user_id)->get();
+        $novel = $this::find(2)->books()->where('user_id',$user_id)->get();
         
         $all_register_books = $register_books->count() ?? "0";
-        $comics = $comic->books()->with('kind')->where('user_id',$user_id)->get()->count() ?? "0";
-        $novels = $novel->books()->with('kind')->where('user_id',$user_id)->get()->count() ?? "0";
+        $comics = $comic->count() ?? "0";
+        $novels = $novel->count() ?? "0";
         
         $total_books = $register_books->sum('volume') ?? "0";
-        $total_comics = $comic->books()->with('kind')->where('user_id',$user_id)->get()->sum('volume') ?? "0";
-        $total_novels = $novel->books()->with('kind')->where('user_id',$user_id)->get()->sum('volume') ?? "0";
+        $total_comics = $comic->sum('volume') ?? "0";
+        $total_novels = $novel->sum('volume') ?? "0";
         
         return $book_data = array(
                             'all_register_books' => $all_register_books,

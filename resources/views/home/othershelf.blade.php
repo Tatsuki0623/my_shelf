@@ -104,8 +104,8 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <p>
-                                                        <a class="hover:text-blue-500" href="/othershelf/users/{{$user->pivot->id}}/1">本棚へ　　　　　</a>
-                                                        <a class="hover:text-blue-500" href="/mypage/users/{{$user->pivot->id}}">マイページへ</a>
+                                                        <a class="hover:text-blue-500" href="/othershelf/users/{{$user->id}}/1">本棚へ　　　　　</a>
+                                                        <a class="hover:text-blue-500" href="/mypage/users/{{$user->id}}">マイページへ</a>
                                                     </p>
                                                     <div class="py-2">
                                                         <button type="submit" class="rounded-lg border border-red-400 bg-transparent px-4 py-2 font-semibold text-blue-300 shadow-md hover:border-transparent hover:bg-red-400 hover:text-lime-100">お気に入り解除</button>
@@ -114,11 +114,11 @@
                                                 <form action="/othershelf/favorite/{{$user->pivot->id}}/attach" method="POST" name="{{$user->name}}フォーム">
                                                     @csrf
                                                     <p>
-                                                        <a class="hover:text-blue-500" href="/othershelf/users/{{$user->pivot->id}}/1">本棚へ　　　　　</a>
-                                                        <a class="hover:text-blue-500" href="/mypage/users/{{$user->pivot->id}}">マイページへ</a>
+                                                        <a class="hover:text-blue-500" href="/othershelf/users/{{$user->id}}/1">本棚へ　　　　　</a>
+                                                        <a class="hover:text-blue-500" href="/mypage/users/{{$user->id}}">マイページへ</a>
                                                     </p>
                                                     <div class="py-2">
-                                                        <input type="hidden" name="favorite[registered_id]" value="{{$user->pivot->id}}" />
+                                                        <input type="hidden" name="favorite[registered_id]" value="{{$user->id}}" />
                                                         <input type="submit" class="rounded-lg border border-blue-500 bg-transparent px-4 py-2 font-semibold text-blue-300 shadow-md hover:border-transparent hover:bg-blue-500 hover:text-lime-100" value="お気に入り" />
                                                     </div>
                                                 </form>

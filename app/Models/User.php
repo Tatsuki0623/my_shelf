@@ -84,7 +84,7 @@ class User extends Authenticatable implements MustVerifyEmail
     
     public function getFavoriteUsers()
     {
-        return $favorite_users = Auth::user()->favoriteUsers()->where('public',true)->paginate(10,['*'],'Favorite-page');;
+        return $favorite_users = Auth::user()->favoriteUsers()->where('public',true)->paginate(10,['*'],'Favorite-page');
     }
     
     public function checkFavorite($check_user)
