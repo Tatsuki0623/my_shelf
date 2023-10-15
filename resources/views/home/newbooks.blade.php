@@ -25,6 +25,11 @@
                                         <div class="text-center">
                                             <h2 class="text-gray-700">楽天で検索</h2>
                                         </div>
+                                        <center class="py-5">
+                                            <!-- Rakuten Web Services Attribution Snippet FROM HERE -->
+                                            <a href="https://webservice.rakuten.co.jp/" target="_blank"><img src="https://webservice.rakuten.co.jp/img/credit/200709/credit_22121.gif" border="0" alt="Rakuten Web Service Center" title="Rakuten Web Service Center" width="221" height="21"/></a>
+                                            <!-- Rakuten Web Services Attribution Snippet TO HERE -->
+                                        <center>
                                         <div>
                                             <input type="text" name="title" class="shadow-lg rounded-md" placeholder="本のタイトルを入力"/>
                                         </div>

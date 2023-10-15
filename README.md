@@ -1,66 +1,124 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# MyShelf
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+あってよかったをあなたへ
 
-## About Laravel
+アプリURL：[MyShelf](https://myshelfuserhavebook-845cc2f808f9.herokuapp.com/)へ移動  
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![myshelf](https://github.com/Tatsuki0623/my_shelf/assets/135039862/28048cba-2027-4c80-b63a-88b210fe0b24)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 概要
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+予定外に本屋に行くことになった際、本を何巻まで買ったかわからず**二度買い**や**買い忘れ**てしまったことはありませんか？本アプリでは本の登録機能を用いてそういったことを防ぐアプリです！  
+本を登録することで**出先**でも本を何巻まで買ったのかの把握ができます。また、登録するのが楽しくなるような機能によって登録のし忘れも防げます。
 
-## Learning Laravel
+## 機能
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+##### CRUD処理
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+・本の登録機能  
+・メモの追加機能  
+・読書時間の登録  
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### ECサイトとの連結
+・楽天API  
+　　新刊検索  
+　　楽天商品ページとの連結  
 
-## Laravel Sponsors
+#### 外部ライブラリ
+・chartjs  
+　読書時間の棒グラフ  
+　本の統計情報の円グラフ  
+Copyright (c) 2014 Chart.js Contributors  
+Released under the MIT license：[MITライセンス](https://opensource.org/license/mit/) 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+・quaggajs  
+　isbnコードの読み取り  
+Copyright (c) 2014 quggajs Christoph Oberhofer  
+Released under the MIT license：[MITライセンス](https://opensource.org/license/mit/)  
 
-### Premium Partners
+#### ログイン機能(breeze)  
+・メールでのユーザー認証機能  
+・自動ログイン機能  
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+#### DB
+・ユーザーのお気に入り機能(多対多)  
+・SUM、COUNT関数を用いたDBの統計処理  
+・ペジネーションによる取得  
+・一対多のリレーションを用いた情報の取得  
+・orderByによるソート機能  
 
-## Contributing
+## 動作環境
+・ネットワークにつなげられるデバイス。
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 使用例
 
-## Code of Conduct
+以下にPDFファイル形式で使い方が記述されていますのでダウンロードして閲覧してください。
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+[MyShelf使い方ガイド.pdf](https://github.com/Tatsuki0623/my_shelf/files/12908861/MyShelf.pdf)
 
-## Security Vulnerabilities
+## 開発環境
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### 使用した言語
 
-## License
+・HTML  
+・css  
+・JavaScript    
+・PHP(8.0.30)  
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### フレームワーク
+
+・laravel(9.52.15)  
+・Tailwind  
+
+#### パッケージ管理ツール
+
+・composer(2.5.8)  
+・npm(8.19.4)  
+
+#### DB
+
+・Mysql(開発環境)  
+・PostgreSQL(本番環境)
+
+#### API
+・楽天ブックス総合検索API
+<!-- Rakuten Web Services Attribution Snippet FROM HERE -->
+<a href="https://webservice.rakuten.co.jp/" target="_blank"><img src="https://webservice.rakuten.co.jp/img/credit/200709/credit_22121.gif" border="0" alt="Rakuten Web Service Center" title="Rakuten Web Service Center" width="221" height="21"/></a>
+<!-- Rakuten Web Services Attribution Snippet TO HERE -->
+#### SDK  
+・rws-php-sdk  
+　Copyright (c) 2012 Shogo Kawahara rws-php-sdk  
+　Released under the MIT license：[MITライセンス](https://opensource.org/license/mit/)
+
+
+## ER図
+
+![MyShelf_ER](https://github.com/Tatsuki0623/my_shelf/assets/135039862/5adc7848-8ea0-4304-9097-d2483b843760)
+
+## 工夫した点  
+
+・楽天APIを用いた検索を行う際にタイトルがsampleの場合sampleに関連するグッズなどといった本以外の商品も取得してきてしまい
+データ量が多くなることがありました。そこでisbnコードを用いた検索をできるようにしたり、bookGenreIdで漫画と小説を分けて指定することによって
+求めていたデータを取り出しやすくしました。
+
+![rakutenAPI](https://github.com/Tatsuki0623/my_shelf/assets/135039862/a9fff2f6-0764-4caa-995d-d37822c0d655)
+
+・本の評価を表示する際、モデル内の連想配列に配列を追加する処理でコードが助長で読みにくい、100件のデータを読み込む際に処理に時間がかかってしまい504 Gateway Timeout エラーが出てしまい
+ページが読み込めないといったことが起きていました。そこで追加する配列を連想配列にすることで処理時間を大幅に減らすことができた。  
+
+#### 変更前  
+![変更前](https://github.com/Tatsuki0623/my_shelf/assets/135039862/d471b087-834e-4bd8-8627-592b269f94d2)  
+
+#### 変更後  
+![変更後](https://github.com/Tatsuki0623/my_shelf/assets/135039862/2d854418-7079-40ed-b028-01e061e1b0ef)  
+
+## 今後の課題
+
+・このアプリでは途中の巻数を買っていないとなった時にそれを視覚的に確認する方法が本の感想欄に書いておくかメモに追加しておくしかできない。そのためこれを視覚的に確認できる機能を追加することが
+課題であると認識しておりどのように実装するかを構想している段階です。
+
+## 開発者
+
+・今給黎　樹  
+・2002/09/29  
+・明星大学理工学部総合理工学科環境科学系　3年

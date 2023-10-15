@@ -25,6 +25,11 @@
                                         <div class="text-center">
                                             <h2 class="text-gray-700">楽天で検索</h2>
                                         </div>
+                                        <center class="py-5">
+                                            <!-- Rakuten Web Services Attribution Snippet FROM HERE -->
+                                            <a href="https://webservice.rakuten.co.jp/" target="_blank"><img src="https://webservice.rakuten.co.jp/img/credit/200709/credit_22121.gif" border="0" alt="Rakuten Web Service Center" title="Rakuten Web Service Center" width="221" height="21"/></a>
+                                            <!-- Rakuten Web Services Attribution Snippet TO HERE -->
+                                        <center>
                                         <div>
                                             <input type="text" name="title" class="shadow-lg rounded-md" placeholder="本のタイトルを入力"/>
                                         </div>
@@ -65,6 +70,11 @@
                                             @csrf
                                             <div id="stop"></div>
                                             <div id="interactive" class="viewport"></div>
+                                            <center class="py-5">
+                                            <!-- Rakuten Web Services Attribution Snippet FROM HERE -->
+                                            <a href="https://webservice.rakuten.co.jp/" target="_blank"><img src="https://webservice.rakuten.co.jp/img/credit/200709/credit_22121.gif" border="0" alt="Rakuten Web Service Center" title="Rakuten Web Service Center" width="221" height="21"/></a>
+                                            <!-- Rakuten Web Services Attribution Snippet TO HERE -->
+                                            <center>
                                             <div>
                                                 <input id="code" name="isbn" type="text" class="w-auto rounded border border-gray-300 bg-gray-100 bg-opacity-50 px-3 py-1 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200" placeholder="9784から始まるバーコードをスキャンしてください" size="50"/>
                                             </div>

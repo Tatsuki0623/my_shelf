@@ -56,6 +56,7 @@
                                     @csrf
                                     <div id="stop"></div>
                                     <div id="interactive" class="viewport"></div>
+                                    
                                     <div>
                                         <input id="code" name="isbn" type="text" class="rounded border border-gray-300 bg-gray-100 bg-opacity-50 mx-auto px-3 py-1 text-base leading-8 text-gray-700 outline-none transition-colors duration-200 ease-in-out focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200" placeholder="9784から始まるバーコードをスキャンしてください"/>
                                     </div>

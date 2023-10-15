@@ -24,7 +24,7 @@
                                 <input type="text" 
                                        name="memo[title]" 
                                        class="w-auto bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" 
-                                       placeholder="本のタイトルを入力" 
+                                       placeholder="メモのタイトルを入力" 
                                        value="{{$memo->title}}"/>
                                 <p class="title__error mt-2 text-red-400" style="color:red">{{$errors->first('memo.title')}}</p>
                             </div>
