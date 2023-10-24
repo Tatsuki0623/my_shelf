@@ -103,14 +103,24 @@ Released under the MIT license：[MITライセンス](https://opensource.org/lic
 
 ![rakutenAPI](https://github.com/Tatsuki0623/my_shelf/assets/135039862/a9fff2f6-0764-4caa-995d-d37822c0d655)
 
-・本の評価を表示する際、モデル内の連想配列に配列を追加する処理でコードが助長で読みにくい、100件のデータを読み込む際に処理に時間がかかってしまい504 Gateway Timeout エラーが出てしまい
-ページが読み込めないといったことが起きていました。そこで追加する配列を連想配列にすることで処理時間を大幅に減らすことができた。  
+・本の評価を表示する際、モデル内の連想配列に配列を追加する処理でコードが助長で読みにくい、100件のデータを点数ごとに連想配列に格納する際にメモリ使用量が大きく504 Gateway Timeout エラーが出てしまい
+ページが読み込めないといったことが起きていました。そこで追加する配列を連想配列にすることでメモリ使用量を大幅に減らすことができた。  
 
 #### 変更前  
 ![変更前](https://github.com/Tatsuki0623/my_shelf/assets/135039862/d471b087-834e-4bd8-8627-592b269f94d2)  
 
 #### 変更後  
 ![変更後](https://github.com/Tatsuki0623/my_shelf/assets/135039862/2d854418-7079-40ed-b028-01e061e1b0ef)  
+
+・本を登録することが楽しくなるように以下の写真のように統計情報の可視化を行いました。
+#### 本の登録数の可視化
+![MyShelf - Google Chrome 2023_10_15 14_53_40](https://github.com/Tatsuki0623/my_shelf/assets/135039862/7c8cfad7-27f5-4829-adb7-ee53b9fc9e0c)
+
+#### 本のジャンルごとの登録数の割合
+![MyShelf - Google Chrome 2023_10_15 14_53_45](https://github.com/Tatsuki0623/my_shelf/assets/135039862/d7839747-0f27-43ad-acca-53c13f8d68f0)
+
+#### 本の全数の割合
+![MyShelf - Google Chrome 2023_10_15 14_53_48](https://github.com/Tatsuki0623/my_shelf/assets/135039862/5950e6c3-8144-4c5b-982a-a73438ccb35e)
 
 ## 今後の課題
 
