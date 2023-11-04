@@ -52,7 +52,7 @@ Released under the MIT license：[MITライセンス](https://opensource.org/lic
 
 ## 使用例
 
-以下にPDFファイル形式で使い方が記述されていますのでダウンロードして閲覧してください。
+以下にPDF形式で使い方が記述されていますのでダウンロードして閲覧してください。
 
 [MyShelf使い方ガイド.pdf](https://github.com/Tatsuki0623/my_shelf/files/12908861/MyShelf.pdf)
 
